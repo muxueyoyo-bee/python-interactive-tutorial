@@ -9,8 +9,17 @@
       <template v-if="error">
         <a-alert
           type="error"
-          :message="'运行错误'"
+          :message="'Python 运行错误'"
           :description="error"
+          show-icon
+          style="margin-bottom: 12px"
+        />
+      </template>
+
+      <template v-if="judgeMessage && !error">
+        <a-alert
+          :type="resultStatus === 1 ? 'success' : 'warning'"
+          :message="judgeMessage"
           show-icon
           style="margin-bottom: 12px"
         />
@@ -67,6 +76,7 @@ const props = withDefaults(
     expectedStdout?: string;
     returnValue?: unknown;
     error?: string | null;
+    judgeMessage?: string | null;
     plots?: string[];
     isExecuting?: boolean;
     showExpected?: boolean;
@@ -77,6 +87,7 @@ const props = withDefaults(
     expectedStdout: "",
     returnValue: undefined,
     error: null,
+    judgeMessage: null,
     plots: () => [],
     isExecuting: false,
     showExpected: false,

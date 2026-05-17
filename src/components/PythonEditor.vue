@@ -63,6 +63,7 @@
         :expected-stdout="expectedStdout"
         :return-value="returnValue"
         :error="errorMsg"
+        :judge-message="judgeMessage"
         :plots="plots"
         :is-executing="isExecuting"
         :show-expected="resultStatus === 0"
@@ -105,6 +106,7 @@ const displayStdout = ref("");
 const expectedStdout = ref("");
 const returnValue = ref<unknown>(undefined);
 const errorMsg = ref<string | null>(null);
+const judgeMessage = ref<string | null>(null);
 const plots = ref<string[]>([]);
 const executionTime = ref(0);
 const activeCollapseKeys = ref<string[]>([]);
@@ -118,6 +120,7 @@ watch(currentCode, () => {
   if (resultStatus.value === JudgeStatus.ERROR) {
     resultStatus.value = JudgeStatus.DEFAULT;
     errorMsg.value = null;
+    judgeMessage.value = null;
   }
 });
 
@@ -130,6 +133,7 @@ watch(
     displayStdout.value = "";
     expectedStdout.value = "";
     errorMsg.value = null;
+    judgeMessage.value = null;
     plots.value = [];
     executionTime.value = 0;
     activeCollapseKeys.value = [];
@@ -176,7 +180,8 @@ async function runCode() {
       : cleanUserStdout + (userResult.stderr ? "\n" + userResult.stderr : "");
     expectedStdout.value = cleanAnswerStdout;
     returnValue.value = userResult.returnValue;
-    errorMsg.value = userResult.error || result.detail;
+    errorMsg.value = userResult.error;
+    judgeMessage.value = result.detail;
     executionTime.value = userResult.executionTimeMs;
 
     // Record attempt
@@ -192,6 +197,7 @@ async function runCode() {
     const err = e as Error;
     resultStatus.value = JudgeStatus.ERROR;
     errorMsg.value = err.message || String(e);
+    judgeMessage.value = null;
     displayStdout.value = "";
     emit("resultChange", JudgeStatus.ERROR, "");
   } finally {
@@ -204,6 +210,7 @@ function resetCode() {
   resultStatus.value = JudgeStatus.DEFAULT;
   displayStdout.value = "";
   errorMsg.value = null;
+  judgeMessage.value = null;
   plots.value = [];
 }
 </script>

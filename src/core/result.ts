@@ -5,9 +5,9 @@ export const enum JudgeStatus {
 }
 
 export const STATUS_TEXT: Record<number, string> = {
-  [JudgeStatus.DEFAULT]: "未执行",
-  [JudgeStatus.ERROR]: "❌ 答案错误",
-  [JudgeStatus.SUCCEED]: "✅ 回答正确",
+  [JudgeStatus.DEFAULT]: "",
+  [JudgeStatus.ERROR]: "答案错误",
+  [JudgeStatus.SUCCEED]: "回答正确",
 };
 
 export type CompareMode = "stdout" | "return" | "both" | "dataframe" | "plot";

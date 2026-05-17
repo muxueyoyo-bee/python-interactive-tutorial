@@ -33,11 +33,11 @@ let stdoutBuf: string[] = [];
 let stderrBuf: string[] = [];
 
 function collectStdout(text: string) {
-  stdoutBuf.push(text + "\n");
+  stdoutBuf.push(text);
 }
 
 function collectStderr(text: string) {
-  stderrBuf.push(text + "\n");
+  stderrBuf.push(text);
 }
 
 export function getPyodide(): PyodideRuntime | null {
@@ -71,13 +71,22 @@ export async function initializePyodide(
     onProgress?.("正在初始化 Python 运行时...");
     pyodideInstance = await loadPyodide({
       indexURL: `https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/full/`,
-      stdout: collectStdout,
-      stderr: collectStderr,
     });
+
+    // Use batched stdout/stderr for proper line-by-line capture
+    pyodideInstance.setStdout({ batched: collectStdout });
+    pyodideInstance.setStderr({ batched: collectStderr });
 
     // Preload commonly used data science packages
     onProgress?.("正在预加载 numpy, pandas, matplotlib...");
     await pyodideInstance.loadPackage(["numpy", "pandas", "matplotlib", "scikit-learn"]);
+
+    // Ensure UTF-8 stdout encoding for Chinese output
+    pyodideInstance.runPython(`
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
+`);
 
     // Setup matplotlib capture hook for Phase 4 data science levels
     pyodideInstance.runPython(`
