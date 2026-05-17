@@ -8,7 +8,7 @@ const level: LevelType = {
   category: "实战",
   description: "创建任务列表, 支持添加/完成/查看",
   content: md,
-  defaultCode: 'class TodoList:\n    def __init__(self):\n        self.tasks = []\n\n    def add(self, task):\n        # TODO: self.tasks.append({"task": task, "done": False})\n        pass\n\n    def done(self, idx):\n        # TODO: self.tasks[idx]["done"] = True\n        pass\n\n    def show(self):\n        # TODO: 打印所有任务, [v]表示完成 [ ]表示未完成\n        pass\n\n# TODO: 创建实例, 添加3个任务, 完成第一个, 打印清单\n',
+  defaultCode: 'class TodoList:\n    def __init__(self):\n        self.tasks = []\n\n    def add(self, task):\n        # 用 {"task": task, "done": False} 格式添加\n        pass\n\n    def done(self, idx):\n        # 把第 idx 个任务的 done 设为 True\n        pass\n\n    def show(self):\n        # 打印所有任务: [v]完成 [ ]未完成 索引. 任务名\n        pass\n\n# 创建实例, 添加"学习Python"/"写项目"/"运动30分钟", 完成第1个, 打印清单',
   answer,
   hint: '实现一个 TodoList 类, 支持 add(task), done(index), show()。添加3个任务, 完...',
   type: "custom",

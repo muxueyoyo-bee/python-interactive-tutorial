@@ -8,7 +8,7 @@ const level: LevelType = {
   category: "实战",
   description: "用梯度提升回归预测加州房价",
   content: md,
-  defaultCode: 'from sklearn.datasets import fetch_california_housing\nfrom sklearn.ensemble import GradientBoostingRegressor\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import r2_score\n\ndata = fetch_california_housing()\nX_train, X_test, y_train, y_test = train_test_split(\n    data.data[:2000], data.target[:2000], test_size=0.2, random_state=42)\n\n# TODO: 创建梯度提升回归模型并训练\n# model = GradientBoostingRegressor(n_estimators=150, max_depth=4, learning_rate=0.1, random_state=42)\n# model.fit(X_train, y_train)\n\n# TODO: 预测并计算 R2\n# y_pred = model.predict(X_test)\n# print(f"R2: {r2_score(y_test, y_pred):.3f}")\n',
+  defaultCode: 'from sklearn.datasets import fetch_california_housing\nfrom sklearn.ensemble import GradientBoostingRegressor\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import r2_score\n\ndata = fetch_california_housing()\nX_train, X_test, y_train, y_test = train_test_split(\n    data.data[:2000], data.target[:2000], test_size=0.2, random_state=42)\n\n# 创建 GradientBoostingRegressor(n_estimators=150, max_depth=4) 并训练\n# 预测并打印 R2 分数',
   answer,
   hint: "用梯度提升回归预测加州房价",
   type: "custom",

@@ -9,5 +9,5 @@ X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test
 
 pipe = Pipeline([("scaler", StandardScaler()), ("svm", SVC())])
 pipe.fit(X_train, y_train)
-print(f"Pipeline测试准确率: {pipe.score(X_test, y_test):.2%}")
-print(f"Pipeline步骤: {[s[0] for s in pipe.steps]}")
+print(f"Pipeline娴嬭瘯鍑嗙‘鐜? {pipe.score(X_test, y_test):.2%}")
+print(f"Pipeline姝ラ: {[s[0] for s in pipe.steps]}")

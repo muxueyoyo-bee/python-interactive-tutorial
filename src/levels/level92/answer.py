@@ -1,16 +1,16 @@
 import numpy as np
 
-# 简易知识图谱: 实体+关系
-# 用字典模拟图结构
+# 绠€鏄撶煡璇嗗浘璋? 瀹炰綋+鍏崇郴
+# 鐢ㄥ瓧鍏告ā鎷熷浘缁撴瀯
 kg = {
-    "Python": ["编程语言", "AI工具"],
-    "AI": ["机器学习", "深度学习", "NLP"],
-    "机器学习": ["监督学习", "无监督学习"],
-    "深度学习": ["Transformer", "CNN", "RNN"],
+    "Python": ["缂栫▼璇█", "AI宸ュ叿"],
+    "AI": ["鏈哄櫒瀛︿範", "娣卞害瀛︿範", "NLP"],
+    "鏈哄櫒瀛︿範": ["鐩戠潱瀛︿範", "鏃犵洃鐫ｅ涔?],
+    "娣卞害瀛︿範": ["Transformer", "CNN", "RNN"],
 }
 
 def graph_search(kg, start, depth=2):
-    """BFS图遍历"""
+    """BFS鍥鹃亶鍘?""
     visited = set()
     queue = [(start, 0)]
     result = {0: [start]}
@@ -25,6 +25,6 @@ def graph_search(kg, start, depth=2):
                 result.setdefault(d+1, []).append(child)
     return result
 
-print("Python知识图谱遍历:")
+print("Python鐭ヨ瘑鍥捐氨閬嶅巻:")
 for depth, nodes in graph_search(kg, "Python", 2).items():
-    print(f"  深度{depth}: {nodes}")
+    print(f"  娣卞害{depth}: {nodes}")

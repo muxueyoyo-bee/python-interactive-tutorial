@@ -8,7 +8,7 @@ const level: LevelType = {
   category: "实战",
   description: "分析30天温度数据的基本统计",
   content: md,
-  defaultCode: 'import numpy as np\n\nnp.random.seed(42)\ntemps = np.random.randint(15, 38, 30)  # 30天温度\n\n# TODO: 计算并打印最高温、最低温、平均温、温差\n# print(f"最高温: {np.max(temps)} C")\n',
+  defaultCode: 'import numpy as np\n\nnp.random.seed(42)\ntemps = np.random.randint(15, 38, 30)\n\n# 计算并打印: 最高温、最低温、平均温、温差',
   answer,
   hint: '你拿到了某城市30天的每日最高温度数据(列表形式)。计算最高温、最低温、平均温、温差。用 numpy 完成。...',
   type: "custom",

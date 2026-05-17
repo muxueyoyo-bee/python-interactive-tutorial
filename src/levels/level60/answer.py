@@ -12,5 +12,5 @@ def feed_forward(x, d_ff=8):
 
 x = np.random.randn(3, 4)
 out = feed_forward(x)
-print("前馈网络输出形状:", out.shape)
-print("LayerNorm 后均值≈0:", round(float(np.mean(layer_norm(out))), 5))
+print("鍓嶉缃戠粶杈撳嚭褰㈢姸:", out.shape)
+print("LayerNorm 鍚庡潎鍊尖増0:", round(float(np.mean(layer_norm(out))), 5))

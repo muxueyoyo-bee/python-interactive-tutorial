@@ -11,5 +11,5 @@ def softmax(x):
 
 attn = softmax(scores)
 output = attn @ V
-print("注意力权重和为 1:", np.allclose(attn.sum(axis=1), 1))
-print("输出形状:", output.shape)
+print("娉ㄦ剰鍔涙潈閲嶅拰涓?1:", np.allclose(attn.sum(axis=1), 1))
+print("杈撳嚭褰㈢姸:", output.shape)

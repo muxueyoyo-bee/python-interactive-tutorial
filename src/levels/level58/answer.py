@@ -14,4 +14,4 @@ def multi_head_attention(Q, K, V, n_heads=2):
 
 x = np.random.randn(4, 4)
 result = multi_head_attention(x, x, x, 2)
-print("多头注意力输出形状:", result.shape)
+print("澶氬ご娉ㄦ剰鍔涜緭鍑哄舰鐘?", result.shape)

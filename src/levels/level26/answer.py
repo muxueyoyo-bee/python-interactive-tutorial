@@ -6,7 +6,7 @@ class Dog:
     def bark(self):
         return f"{self.name} says Woof!"
 
-dog = Dog("小白", 3)
+dog = Dog("灏忕櫧", 3)
 print(dog.name)
 print(dog.age)
 print(dog.bark())

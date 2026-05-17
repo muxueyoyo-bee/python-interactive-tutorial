@@ -12,7 +12,7 @@ def check_password(pw):
         score += 1
     if re.search(r"[!@#$%^&*]", pw):
         score += 1
-    levels = ["弱","一般","中等","强","非常强"]
+    levels = ["寮?,"涓€鑸?,"涓瓑","寮?,"闈炲父寮?]
     return levels[min(score, 4)]
 
 print(check_password("abc123"))

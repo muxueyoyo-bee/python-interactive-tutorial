@@ -6,6 +6,6 @@ X, y = make_classification(n_samples=200, n_features=10, n_informative=5, random
 selector = SelectKBest(f_classif, k=5)
 X_selected = selector.fit_transform(X, y)
 selected_idx = np.argsort(selector.scores_)[-5:]
-print(f"原始特征数: {X.shape[1]}")
-print(f"选择特征数: {X_selected.shape[1]}")
-print(f"Top-5 特征索引: {sorted(selected_idx)}")
+print(f"鍘熷鐗瑰緛鏁? {X.shape[1]}")
+print(f"閫夋嫨鐗瑰緛鏁? {X_selected.shape[1]}")
+print(f"Top-5 鐗瑰緛绱㈠紩: {sorted(selected_idx)}")

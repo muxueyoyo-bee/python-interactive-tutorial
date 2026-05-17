@@ -8,5 +8,5 @@ class Cat(Animal):
     def speak(self):
         return f"{self.name} says Meow!"
 
-cat = Cat("小花")
+cat = Cat("灏忚姳")
 print(cat.speak())

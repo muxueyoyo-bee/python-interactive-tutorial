@@ -4,12 +4,12 @@ class TodoList:
 
     def add(self, task):
         self.tasks.append({"task": task, "done": False})
-        print(f"已添加: {task}")
+        print(f"宸叉坊鍔? {task}")
 
     def done(self, idx):
         if 0 <= idx < len(self.tasks):
             self.tasks[idx]["done"] = True
-            print(f"已完成: {self.tasks[idx]['task']}")
+            print(f"宸插畬鎴? {self.tasks[idx]['task']}")
 
     def show(self):
         for i, t in enumerate(self.tasks):
@@ -17,8 +17,8 @@ class TodoList:
             print(f"[{mark}] {i}. {t['task']}")
 
 todo = TodoList()
-todo.add("学习Python")
-todo.add("写项目")
-todo.add("运动30分钟")
+todo.add("瀛︿範Python")
+todo.add("鍐欓」鐩?)
+todo.add("杩愬姩30鍒嗛挓")
 todo.done(0)
 todo.show()

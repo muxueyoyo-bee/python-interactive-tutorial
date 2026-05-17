@@ -1,6 +1,6 @@
 try:
     result = 10 / 0
 except ZeroDivisionError:
-    print("不能除以零!")
+    print("涓嶈兘闄や互闆?")
 finally:
-    print("程序结束")
+    print("绋嬪簭缁撴潫")

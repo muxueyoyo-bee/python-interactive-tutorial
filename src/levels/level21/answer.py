@@ -1,3 +1,3 @@
-lines = ["第一行", "第二行", "第三行"]
+lines = ["绗竴琛?, "绗簩琛?, "绗笁琛?]
 result = "\n".join(lines)
 print(result)
