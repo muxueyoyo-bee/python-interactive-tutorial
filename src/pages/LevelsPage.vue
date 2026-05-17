@@ -104,6 +104,9 @@ const phases = [
   { name: "中级", icon: "⚡", start: 15, count: 10 },
   { name: "进阶", icon: "🔥", start: 25, count: 10 },
   { name: "数据分析", icon: "📊", start: 35, count: 10 },
+  { name: "AI基础", icon: "🧠", start: 45, count: 10 },
+  { name: "Transformer", icon: "🔬", start: 55, count: 10 },
+  { name: "搭建模型", icon: "🏗️", start: 65, count: 10 },
 ];
 
 function getPhaseCount(start: number, count: number): number {

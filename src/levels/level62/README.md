@@ -1,0 +1,9 @@
+# 第62关：Transformer Decoder 层
+
+实现Cross-Attention，理解Decoder如何关注Encoder
+
+## 🎯 你的任务
+
+仔细阅读右侧编辑器中的代码模板，按照要求完成任务，使得输出与预期结果一致。
+
+> 💡 AI模块从零开始，带你手写机器学习算法的核心逻辑。

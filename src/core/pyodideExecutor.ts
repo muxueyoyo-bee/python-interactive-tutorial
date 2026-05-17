@@ -77,7 +77,7 @@ export async function initializePyodide(
 
     // Preload commonly used data science packages
     onProgress?.("正在预加载 numpy, pandas, matplotlib...");
-    await pyodideInstance.loadPackage(["numpy", "pandas", "matplotlib"]);
+    await pyodideInstance.loadPackage(["numpy", "pandas", "matplotlib", "scikit-learn"]);
 
     // Setup matplotlib capture hook for Phase 4 data science levels
     pyodideInstance.runPython(`

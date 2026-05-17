@@ -84,6 +84,9 @@ const categoryColor = computed(() => {
     中级: "green",
     进阶: "orange",
     数据分析: "purple",
+    AI基础: "cyan",
+    Transformer: "geekblue",
+    搭建模型: "magenta",
     实战: "red",
   };
   return map[props.level.category] || "default";

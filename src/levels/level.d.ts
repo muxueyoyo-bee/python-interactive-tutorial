@@ -5,6 +5,9 @@ export type LevelCategory =
   | "中级"
   | "进阶"
   | "数据分析"
+  | "AI基础"
+  | "Transformer"
+  | "搭建模型"
   | "实战";
 
 export interface LevelType {

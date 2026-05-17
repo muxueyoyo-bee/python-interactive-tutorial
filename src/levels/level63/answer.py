@@ -1,0 +1,12 @@
+import numpy as np
+print("=== 迷你 Transformer 架构 ===\n")
+print("输入 → 位置编码 (+) →")
+print("  Encoder:")
+print("    Self-Attention → Add&Norm →")
+print("    FeedForward  → Add&Norm →")
+print("  Decoder:")
+print("    Masked-Self-Attn → Add&Norm →")
+print("    Cross-Attention  → Add&Norm →")
+print("    FeedForward      → Add&Norm →")
+print("  输出层(Linear + Softmax)")
+print("\n核心创新: 并行处理 + 全局依赖")

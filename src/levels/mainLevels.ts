@@ -45,9 +45,41 @@ import level42 from "./level42";
 import level43 from "./level43";
 import level44 from "./level44";
 import level45 from "./level45";
+import level46 from "./level46";
+import level47 from "./level47";
+import level48 from "./level48";
+import level49 from "./level49";
+import level50 from "./level50";
+import level51 from "./level51";
+import level52 from "./level52";
+import level53 from "./level53";
+import level54 from "./level54";
+import level55 from "./level55";
+import level56 from "./level56";
+import level57 from "./level57";
+import level58 from "./level58";
+import level59 from "./level59";
+import level60 from "./level60";
+import level61 from "./level61";
+import level62 from "./level62";
+import level63 from "./level63";
+import level64 from "./level64";
+import level65 from "./level65";
+import level66 from "./level66";
+import level67 from "./level67";
+import level68 from "./level68";
+import level69 from "./level69";
+import level70 from "./level70";
+import level71 from "./level71";
+import level72 from "./level72";
+import level73 from "./level73";
+import level74 from "./level74";
+import level75 from "./level75";
 
 const mainLevels: LevelType[] = [
-  level1, level2, level3,
+  level1,
+  level2,
+  level3,
   level4,
   level5,
   level6,
@@ -90,6 +122,36 @@ const mainLevels: LevelType[] = [
   level43,
   level44,
   level45,
+  level46,
+  level47,
+  level48,
+  level49,
+  level50,
+  level51,
+  level52,
+  level53,
+  level54,
+  level55,
+  level56,
+  level57,
+  level58,
+  level59,
+  level60,
+  level61,
+  level62,
+  level63,
+  level64,
+  level65,
+  level66,
+  level67,
+  level68,
+  level69,
+  level70,
+  level71,
+  level72,
+  level73,
+  level74,
+  level75,
 ];
 
 export default mainLevels;

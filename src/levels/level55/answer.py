@@ -1,0 +1,11 @@
+import numpy as np
+y_true = np.array([1, 0, 1, 1, 0, 1, 0, 0, 1, 0])
+y_pred = np.array([1, 0, 0, 1, 0, 1, 1, 0, 1, 0])
+tp = np.sum((y_true == 1) & (y_pred == 1))
+tn = np.sum((y_true == 0) & (y_pred == 0))
+fp = np.sum((y_true == 0) & (y_pred == 1))
+fn = np.sum((y_true == 1) & (y_pred == 0))
+print(f"Accuracy: {(tp+tn)/len(y_true):.1%}")
+print(f"Precision: {tp/(tp+fp):.1%}")
+print(f"Recall: {tp/(tp+fn):.1%}")
+print(f"F1: {2*tp/(2*tp+fp+fn):.1%}")
