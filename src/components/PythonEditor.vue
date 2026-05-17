@@ -113,6 +113,14 @@ function onCollapseChange(keys: string[] | string) {
   activeCollapseKeys.value = Array.isArray(keys) ? keys : [keys];
 }
 
+// 编辑代码时自动清除错误状态
+watch(currentCode, () => {
+  if (resultStatus.value === JudgeStatus.ERROR) {
+    resultStatus.value = JudgeStatus.DEFAULT;
+    errorMsg.value = null;
+  }
+});
+
 watch(
   () => props.level.key,
   () => {
