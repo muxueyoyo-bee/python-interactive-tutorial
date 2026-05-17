@@ -1,13 +1,28 @@
-# 第42关：pandas merge 合并
+# 第四十二关: pandas merge 合并
 
-合并多张数据表。
+merge() 类似 SQL 的 JOIN -- 根据共同的列将两张表合并.
 
-## 知识点
+## 合并两张表
 
-本关练习pandas merge 合并的相关知识。请根据右侧编辑器的提示完成代码。
+```python
+import pandas as pd
+left = pd.DataFrame({"id": [1,2,3], "name": ["Alice","Bob","Charlie"]})
+right = pd.DataFrame({"id": [1,2,3], "score": [85,92,78]})
+merged = pd.merge(left, right, on="id")
+print(merged)
+```
 
-## 🎯 你的任务
+## 合并类型
 
-按照要求编写代码，使得输出与预期结果一致。
+| how= | 含义 |
+|------|------|
+| inner | 交集(默认) |
+| left | 保留左表所有行 |
+| right | 保留右表所有行 |
+| outer | 并集 |
 
-> 💡 提示：如果不确定怎么做，可以点击「查看提示」按钮。
+## 你的任务
+
+将两张表按 id 合并, 打印合并结果.
+
+预期输出: 合并后的完整 DataFrame

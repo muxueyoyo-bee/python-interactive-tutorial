@@ -1,13 +1,31 @@
-# 第45关：综合数据分析实战
+# 第四十五关: 综合数据分析实战
 
-综合运用pandas+numpy完成数据分析。
+综合运用 pandas + numpy 完成一个完整的分析任务.
 
-## 知识点
+## 分析流程
 
-本关练习综合数据分析实战的相关知识。请根据右侧编辑器的提示完成代码。
+典型的数据分析项目: 创建数据 -> 计算指标 -> 输出结果.
 
-## 🎯 你的任务
+```python
+import pandas as pd
+import numpy as np
 
-按照要求编写代码，使得输出与预期结果一致。
+np.random.seed(42)
+df = pd.DataFrame({
+    "month": range(1, 13),
+    "sales": np.random.randint(100, 500, 12)
+})
 
-> 💡 提示：如果不确定怎么做，可以点击「查看提示」按钮。
+result = {
+    "total": int(df["sales"].sum()),
+    "avg": round(float(df["sales"].mean()), 1),
+    "max_month": int(df.loc[df["sales"].idxmax(), "month"])
+}
+print(result)
+```
+
+## 你的任务
+
+生成12个月的随机销售数据, 计算总销售额, 月均值, 最高月份, 输出为一个字典.
+
+预期输出: 包含 total/avg/max_month 的字典

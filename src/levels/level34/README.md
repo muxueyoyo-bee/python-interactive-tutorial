@@ -1,13 +1,31 @@
-# 第34关：typing 类型注解
+# 第三十四关: typing 类型注解
 
-给函数添加类型提示。
+类型注解(Type Hints)标注函数参数和返回值的类型, 提高代码可读性.
 
-## 知识点
+## 基本语法
 
-本关练习typing 类型注解的相关知识。请根据右侧编辑器的提示完成代码。
+```python
+from typing import List, Dict
 
-## 🎯 你的任务
+def process(data: List[int]) -> Dict[str, int]:
+    return {"sum": sum(data), "len": len(data), "max": max(data)}
+```
 
-按照要求编写代码，使得输出与预期结果一致。
+## 常用类型
 
-> 💡 提示：如果不确定怎么做，可以点击「查看提示」按钮。
+| 注解 | 含义 |
+|------|------|
+| int, float, str, bool | 基本类型 |
+| List[int] | 整数列表 |
+| Dict[str, int] | 字符串->整数字典 |
+
+> 类型注解不影响运行, 但让 IDE 提供更好的提示.
+
+## 你的任务
+
+定义带类型注解的函数 process(data: List[int]) -> Dict[str, int], 返回 sum/len/max.
+
+预期输出:
+```
+{'sum': 15, 'len': 5, 'max': 5}
+```

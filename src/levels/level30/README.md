@@ -1,13 +1,31 @@
-# 第30关：itertools 实用工具
+# 第三十关: itertools 实用工具
 
-高效的迭代器工具。
+itertools 是一组高效迭代器工具, 用于排列, 组合等场景.
 
-## 知识点
+## combinations -- 组合
 
-本关练习itertools 实用工具的相关知识。请根据右侧编辑器的提示完成代码。
+```python
+from itertools import combinations, permutations
+items = ["A", "B", "C"]
+print(list(combinations(items, 2)))
+# [('A','B'), ('A','C'), ('B','C')] -- 不考虑顺序
+```
 
-## 🎯 你的任务
+## permutations -- 排列
 
-按照要求编写代码，使得输出与预期结果一致。
+```python
+print(list(permutations(items, 2))[0])
+# ('A', 'B') -- 考虑顺序
+```
 
-> 💡 提示：如果不确定怎么做，可以点击「查看提示」按钮。
+组合 vs 排列: AB和BA在组合中算同一种, 排列中算两种.
+
+## 你的任务
+
+对 ["A","B","C"] 取出所有 2 组合和第一个 2 排列, 分别打印.
+
+预期输出:
+```
+[('A', 'B'), ('A', 'C'), ('B', 'C')]
+('A', 'B')
+```

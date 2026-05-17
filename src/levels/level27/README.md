@@ -1,13 +1,31 @@
-# 第27关：类的继承
+# 第二十七关: 类的继承
 
-子类继承父类的属性和方法。
+继承让你在现有类的基础上创建新类, 复用代码.
 
-## 知识点
+## 基本语法
 
-本关练习类的继承的相关知识。请根据右侧编辑器的提示完成代码。
+```python
+class Animal:                   # 父类
+    def __init__(self, name):
+        self.name = name
+    def speak(self):
+        return "..."
 
-## 🎯 你的任务
+class Cat(Animal):              # 子类
+    def speak(self):            # 重写父类方法
+        return f"{self.name} says Meow!"
+```
 
-按照要求编写代码，使得输出与预期结果一致。
+## 关键概念
 
-> 💡 提示：如果不确定怎么做，可以点击「查看提示」按钮。
+- 继承: class Cat(Animal) 表示 Cat 继承 Animal
+- 重写: 子类定义和父类同名的方法, 覆盖父类行为
+
+## 你的任务
+
+创建 Animal 父类和 Cat 子类, Cat 重写 speak(). 创建 Cat("小花") 并调用 speak().
+
+预期输出:
+```
+小花 says Meow!
+```

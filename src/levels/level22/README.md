@@ -1,13 +1,34 @@
-# 第22关：异常处理
+# 第二十二关: 异常处理
 
-try/except/finally捕获异常。
+程序运行时遇到的错误叫异常(Exception). try/except 让你优雅地处理错误.
 
-## 知识点
+## 基本语法
 
-本关练习异常处理的相关知识。请根据右侧编辑器的提示完成代码。
+```python
+try:
+    result = 10 / 0          # 可能出错的代码
+except ZeroDivisionError:
+    print("不能除以零!")      # 出错时的处理
+finally:
+    print("程序结束")         # 无论是否出错都会执行
+```
 
-## 🎯 你的任务
+## 常见异常类型
 
-按照要求编写代码，使得输出与预期结果一致。
+| 异常 | 触发条件 |
+|------|---------|
+| ZeroDivisionError | 除以零 |
+| TypeError | 类型不匹配 |
+| ValueError | 值不正确 |
+| FileNotFoundError | 文件不存在 |
+| KeyError | 字典键不存在 |
 
-> 💡 提示：如果不确定怎么做，可以点击「查看提示」按钮。
+## 你的任务
+
+在 try 块中尝试 10 / 0, 捕获 ZeroDivisionError 输出提示, finally 块打印"程序结束".
+
+预期输出:
+```
+不能除以零!
+程序结束
+```

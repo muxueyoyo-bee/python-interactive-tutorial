@@ -1,13 +1,25 @@
-# 第38关：pandas Series
+# 第三十八关: pandas Series
 
-一维带标签数组。
+Pandas Series 是一个带标签的一维数组.
 
-## 知识点
+## 创建 Series
 
-本关练习pandas Series的相关知识。请根据右侧编辑器的提示完成代码。
+```python
+import pandas as pd
+s = pd.Series([10, 20, 30, 40, 50],
+              index=["a", "b", "c", "d", "e"])
+print(s)
+```
 
-## 🎯 你的任务
+## 基本操作
 
-按照要求编写代码，使得输出与预期结果一致。
+```python
+print(s["a"])          # 按标签索引 -> 10
+print(s.describe())    # 统计摘要 (count/mean/std/min/max)
+```
 
-> 💡 提示：如果不确定怎么做，可以点击「查看提示」按钮。
+## 你的任务
+
+创建 Series 值[10,20,30,40,50]索引[a,b,c,d,e], 打印内容和统计摘要.
+
+预期输出: Series 表格 + describe() 统计信息

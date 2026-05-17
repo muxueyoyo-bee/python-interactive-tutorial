@@ -1,13 +1,23 @@
-# 第40关：pandas 读取CSV
+# 第四十关: pandas 读取 CSV
 
-从CSV数据创建DataFrame。
+CSV(逗号分隔值)是最通用的数据交换格式. Pandas 可以方便地读取和写入 CSV.
 
-## 知识点
+## 读取 CSV
 
-本关练习pandas 读取CSV的相关知识。请根据右侧编辑器的提示完成代码。
+```python
+import pandas as pd
+from io import StringIO
 
-## 🎯 你的任务
+csv_data = "name,score\nAlice,85\nBob,92\nCharlie,78"
+df = pd.read_csv(StringIO(csv_data))
+print(df)
+print(f"平均分: {df['score'].mean():.1f}")
+```
 
-按照要求编写代码，使得输出与预期结果一致。
+常用参数: sep=','分隔符, encoding='utf-8'编码
 
-> 💡 提示：如果不确定怎么做，可以点击「查看提示」按钮。
+## 你的任务
+
+读取 CSV 数据(3条姓名+分数), 打印 DataFrame, 计算并打印平均分(保留1位小数).
+
+预期输出: DataFrame + 平均分

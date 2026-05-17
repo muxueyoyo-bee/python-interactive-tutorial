@@ -1,13 +1,30 @@
-# 第33关：collections 数据结构
+# 第三十三关: collections 数据结构
 
-Counter统计元素频率。
+collections 模块提供比内置容器更强大的数据结构.
 
-## 知识点
+## Counter -- 计数器
 
-本关练习collections 数据结构的相关知识。请根据右侧编辑器的提示完成代码。
+```python
+from collections import Counter
+words = ["a", "b", "c", "a", "b", "a"]
+count = Counter(words)
+print(count.most_common(2))  # [('a', 3), ('b', 2)]
+```
 
-## 🎯 你的任务
+## 其他工具
 
-按照要求编写代码，使得输出与预期结果一致。
+| 类 | 用途 |
+|------|------|
+| Counter | 计数统计 |
+| defaultdict | 带默认值的字典 |
+| deque | 双端队列 |
+| namedtuple | 具名元组 |
 
-> 💡 提示：如果不确定怎么做，可以点击「查看提示」按钮。
+## 你的任务
+
+用 Counter 统计列表词频, 输出出现最多的前 2 个元素.
+
+预期输出:
+```
+[('a', 3), ('b', 2)]
+```

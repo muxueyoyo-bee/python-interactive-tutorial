@@ -1,9 +1,38 @@
-# 第66关：scikit-learn 快速入门
+# 第六十六关: scikit-learn 快速入门
 
-使用sklearn完成第一个分类任务
+scikit-learn 是 Python 最流行的机器学习库, 提供统一的 fit/predict 接口.
 
-## 🎯 你的任务
+## 三步走
 
-仔细阅读右侧编辑器中的代码模板，按照要求完成任务，使得输出与预期结果一致。
+```python
+from sklearn.datasets import load_iris
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
 
-> 💡 AI模块从零开始，带你手写机器学习算法的核心逻辑。
+# 1. 加载数据
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(
+    iris.data, iris.target, test_size=0.3)
+
+# 2. 训练模型
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(X_train, y_train)
+
+# 3. 评估
+print(f"准确率: {model.score(X_test, y_test):.2%}")
+```
+
+## fit/predict/score
+
+- fit(): 训练模型
+- predict(): 预测新数据
+- score(): 评估准确率
+
+## 你的任务
+
+用 KNN (k=3) 分类鸢尾花数据, 打印测试准确率.
+
+预期输出:
+```
+测试准确率: 90%+
+```

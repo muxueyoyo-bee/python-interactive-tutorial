@@ -1,13 +1,37 @@
-# 第26关：面向对象：类与对象
+# 第二十六关: 面向对象: 类与对象
 
-面向对象编程：定义类和创建对象。
+面向对象编程(OOP)用类(class)和对象(object)来组织代码. 类是蓝图, 对象是按蓝图创建的实例.
 
-## 知识点
+## 定义类
 
-本关练习面向对象：类与对象的相关知识。请根据右侧编辑器的提示完成代码。
+```python
+class Dog:
+    def __init__(self, name, age):   # 构造函数
+        self.name = name
+        self.age = age
 
-## 🎯 你的任务
+    def bark(self):                   # 方法
+        return f"{self.name} says Woof!"
+```
 
-按照要求编写代码，使得输出与预期结果一致。
+## 创建和使用对象
 
-> 💡 提示：如果不确定怎么做，可以点击「查看提示」按钮。
+```python
+dog = Dog("小白", 3)
+print(dog.name)             # 访问属性
+print(dog.age)
+print(dog.bark())           # 调用方法
+```
+
+> self 代表实例自身, 是类中每个方法的第一个参数.
+
+## 你的任务
+
+定义 Dog 类, 有 name/age 属性和 bark() 方法. 创建实例并打印属性和方法返回值.
+
+预期输出:
+```
+小白
+3
+小白 says Woof!
+```

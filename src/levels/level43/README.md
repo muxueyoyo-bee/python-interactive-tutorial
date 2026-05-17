@@ -1,13 +1,30 @@
-# 第43关：matplotlib 折线图
+# 第四十三关: matplotlib 折线图
 
-绘制基本折线图。
+Matplotlib 是 Python 最基础的数据可视化库.
 
-## 知识点
+## 绘制折线图
 
-本关练习matplotlib 折线图的相关知识。请根据右侧编辑器的提示完成代码。
+```python
+import matplotlib
+matplotlib.use("Agg")    # 浏览器模式必须设置
+import matplotlib.pyplot as plt
+import numpy as np
 
-## 🎯 你的任务
+x = np.linspace(0, 10, 50)     # 从0到10均匀取50个点
+y = np.sin(x)
 
-按照要求编写代码，使得输出与预期结果一致。
+plt.plot(x, y, "b-", label="sin(x)")  # 蓝实线
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("Sine Wave")
+plt.legend()
+plt.show()
+```
 
-> 💡 提示：如果不确定怎么做，可以点击「查看提示」按钮。
+plt.plot 格式: "b-"中 b=blue, -=实线. 也可用 "r--"(红虚线), "g."(绿点).
+
+## 你的任务
+
+绘制 sin(x) 折线图, 加标题, 坐标轴标签和图例. plt.show() 时图表会自动捕获.
+
+预期输出: 一张正弦波折线图

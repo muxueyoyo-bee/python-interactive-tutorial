@@ -1,9 +1,24 @@
-# 第71关：模型调参 — GridSearchCV
+# 第七十一关: 模型调参 - GridSearchCV
 
-自动搜索SVM的最佳超参数
+超参数在训练前设定(不同于模型学习的参数). GridSearchCV 自动搜索最佳组合.
 
-## 🎯 你的任务
+## 原理
 
-仔细阅读右侧编辑器中的代码模板，按照要求完成任务，使得输出与预期结果一致。
+穷举搜索所有参数组合, 交叉验证评估每种组合, 找出最优配置.
 
-> 💡 AI模块从零开始，带你手写机器学习算法的核心逻辑。
+```python
+from sklearn.model_selection import GridSearchCV
+from sklearn.svm import SVC
+
+param_grid = {"C": [0.1, 1, 10], "kernel": ["linear", "rbf"]}
+gs = GridSearchCV(SVC(), param_grid, cv=3)
+gs.fit(X_train, y_train)
+print(f"最佳参数: {gs.best_params_}")
+print(f"最佳分数: {gs.best_score_:.2%}")
+```
+
+## 你的任务
+
+用 GridSearchCV 搜索 SVM 的最佳 C 和 kernel.
+
+预期输出: 最佳参数和最佳分数

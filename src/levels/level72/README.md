@@ -1,9 +1,22 @@
-# 第72关：特征工程
+# 第七十二关: 特征工程
 
-使用SelectKBest选择最具预测力的特征
+好的特征比复杂的模型更重要. SelectKBest 选出最相关的 K 个特征.
 
-## 🎯 你的任务
+## 特征选择
 
-仔细阅读右侧编辑器中的代码模板，按照要求完成任务，使得输出与预期结果一致。
+```python
+from sklearn.feature_selection import SelectKBest, f_classif
 
-> 💡 AI模块从零开始，带你手写机器学习算法的核心逻辑。
+selector = SelectKBest(f_classif, k=5)
+X_selected = selector.fit_transform(X, y)
+```
+
+## f_classif
+
+方差分析 F 检验: 评估每个特征与标签的统计相关性, 分数越高越相关.
+
+## 你的任务
+
+从10个特征中选出最相关的5个, 打印原始特征数和选择后的特征数.
+
+预期输出: 特征选择前后的维度对比 + Top-5特征索引

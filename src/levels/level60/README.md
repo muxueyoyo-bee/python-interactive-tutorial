@@ -1,9 +1,27 @@
-# 第60关：前馈网络与 LayerNorm
+# 第六十关: 前馈网络与 LayerNorm
 
-实现FeedForward和Layer Normalization
+每个 Transformer 层包含两个子层: Self-Attention 和 FeedForward.
 
-## 🎯 你的任务
+## FeedForward Network
 
-仔细阅读右侧编辑器中的代码模板，按照要求完成任务，使得输出与预期结果一致。
+FFN(x) = ReLU(xW1 + b1)W2 + b2
 
-> 💡 AI模块从零开始，带你手写机器学习算法的核心逻辑。
+两层全连接, 中间用 ReLU 激活. 增强非线性表达能力.
+
+## Layer Normalization
+
+LayerNorm(x) = (x - mean) / sqrt(var + eps)
+
+将每层输出的均值归0, 方差归1. 稳定训练, 加速收敛.
+
+## 残差连接
+
+x = LayerNorm(x + SubLayer(x))
+
+让梯度直接流过, 解决深层网络的训练困难.
+
+## 你的任务
+
+实现 FeedForward 和 LayerNorm, 打印输出形状和 LayerNorm 后均值是否接近0.
+
+预期输出: 形状信息 + 均值验证
