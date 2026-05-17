@@ -10,6 +10,12 @@ import bank_interest from "./custom/bank-interest";
 import movie_spider from "./custom/movie-spider";
 import todo_app from "./custom/todo-app";
 import ai_text_gen from "./custom/ai-text-gen";
+import customer_churn from "./custom/customer-churn";
+import spam_detector from "./custom/spam-detector";
+import handwrite_nn from "./custom/handwrite-nn";
+import housing_predict from "./custom/housing-predict";
+import color_cluster from "./custom/color-cluster";
+import credit_fraud from "./custom/credit-fraud";
 
 const customLevels: LevelType[] = [
   stock_analyzer,
@@ -22,6 +28,12 @@ const customLevels: LevelType[] = [
   movie_spider,
   todo_app,
   ai_text_gen,
+  customer_churn,
+  spam_detector,
+  handwrite_nn,
+  housing_predict,
+  color_cluster,
+  credit_fraud,
 ];
 
 export default customLevels;

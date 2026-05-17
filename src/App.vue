@@ -5,8 +5,8 @@
         <a-col flex="180px">
           <router-link to="/" class="logo-link">
             <a-row align="middle" :wrap="false">
-              <img src="/favicon.svg" alt="Python之母" class="logo" />
-              <span class="title">Python之母</span>
+              <img src="/favicon.svg" alt="Python 交互教程" class="logo" />
+              <span class="title">Python 交互教程</span>
             </a-row>
           </router-link>
         </a-col>
