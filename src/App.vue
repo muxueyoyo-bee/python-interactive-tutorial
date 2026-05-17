@@ -23,9 +23,6 @@
             <a-menu-item key="/levels">
               <appstore-outlined />关卡
             </a-menu-item>
-            <a-menu-item key="/playground">
-              <code-outlined />广场
-            </a-menu-item>
           </a-menu>
         </a-col>
       </a-row>
@@ -39,7 +36,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { BookOutlined, AppstoreOutlined, CodeOutlined } from "@ant-design/icons-vue";
+import { BookOutlined, AppstoreOutlined } from "@ant-design/icons-vue";
 import zhCN from "ant-design-vue/es/locale/zh_CN";
 
 const route = useRoute();

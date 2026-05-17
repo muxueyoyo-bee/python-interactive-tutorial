@@ -1,7 +1,6 @@
 import type { RouteRecordRaw } from "vue-router";
 import IndexPage from "../pages/IndexPage.vue";
 import LevelsPage from "../pages/LevelsPage.vue";
-import PlaygroundPage from "../pages/PlaygroundPage.vue";
 
 export default [
   {
@@ -16,9 +15,5 @@ export default [
   {
     path: "/levels",
     component: LevelsPage,
-  },
-  {
-    path: "/playground",
-    component: PlaygroundPage,
   },
 ] as RouteRecordRaw[];

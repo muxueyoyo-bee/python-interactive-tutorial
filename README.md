@@ -14,13 +14,16 @@
 ## 快速启动
 
 ```bash
-# 1. 安装依赖
+# 1. 进入项目目录
+cd python-mother
+
+# 2. 安装依赖
 npm install
 
-# 2. 启动开发服务器
+# 3. 启动开发服务器
 npm run dev
 
-# 3. 打开浏览器访问
+# 4. 打开浏览器访问
 # http://localhost:5173
 ```
 
