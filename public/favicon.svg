@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="pyBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#306998"/>
+      <stop offset="100%" stop-color="#1e415e"/>
+    </linearGradient>
+    <linearGradient id="pyYellow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD43B"/>
+      <stop offset="100%" stop-color="#FFB13B"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#pyBlue)" stroke="#1e415e" stroke-width="2"/>
+  <text x="50" y="68" text-anchor="middle" font-size="60" font-weight="bold" font-family="Consolas,monospace" fill="url(#pyYellow)">Py</text>
+</svg>
