@@ -3,7 +3,21 @@
 const PYODIDE_VERSION = "0.26.4";
 const PYODIDE_CDN = `https://cdn.jsdelivr.net/npm/pyodide@${PYODIDE_VERSION}/full/pyodide.js`;
 
-declare var loadPyodide: any;
+interface PyodideRuntime {
+  runPython(code: string): unknown;
+  runPythonAsync(code: string): Promise<unknown>;
+  loadPackage(names: string[], options?: { messageCallback?: (msg: string) => void }): Promise<void>;
+  setStdout(options: { batched: (text: string) => void }): void;
+  setStderr(options: { batched: (text: string) => void }): void;
+  globals: Map<string, unknown>;
+  loadedPackages: Record<string, string>;
+}
+
+declare var loadPyodide: (options: {
+  indexURL: string;
+  stdout?: (text: string) => void;
+  stderr?: (text: string) => void;
+}) => Promise<PyodideRuntime>;
 
 export interface PyodideResult {
   stdout: string;
@@ -13,7 +27,7 @@ export interface PyodideResult {
   returnValue: unknown;
 }
 
-let pyodideInstance: any = null;
+let pyodideInstance: PyodideRuntime | null = null;
 let initPromise: Promise<void> | null = null;
 let stdoutBuf: string[] = [];
 let stderrBuf: string[] = [];
@@ -26,7 +40,7 @@ function collectStderr(text: string) {
   stderrBuf.push(text + "\n");
 }
 
-export function getPyodide(): any {
+export function getPyodide(): PyodideRuntime | null {
   return pyodideInstance;
 }
 
