@@ -6,6 +6,7 @@ export type LevelCategory =
   | "进阶"
   | "数据分析"
   | "AI基础"
+  | "AI进阶"
   | "Transformer"
   | "搭建模型"
   | "实战";

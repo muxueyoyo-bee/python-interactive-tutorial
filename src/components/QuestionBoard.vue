@@ -85,6 +85,7 @@ const categoryColor = computed(() => {
     进阶: "orange",
     数据分析: "purple",
     AI基础: "cyan",
+    AI进阶: "gold",
     Transformer: "geekblue",
     搭建模型: "magenta",
     实战: "red",
