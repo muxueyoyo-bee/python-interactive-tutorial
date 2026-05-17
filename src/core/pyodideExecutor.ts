@@ -1,7 +1,7 @@
 // Pyodide singleton — Python execution engine in browser via WebAssembly
 
 const PYODIDE_VERSION = "0.26.4";
-const PYODIDE_CDN = `https://cdn.jsdelivr.net/npm/pyodide@${PYODIDE_VERSION}/full/pyodide.js`;
+const PYODIDE_CDN = `https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/full/pyodide.js`;
 
 interface PyodideRuntime {
   runPython(code: string): unknown;
@@ -70,7 +70,7 @@ export async function initializePyodide(
 
     onProgress?.("正在初始化 Python 运行时...");
     pyodideInstance = await loadPyodide({
-      indexURL: `https://cdn.jsdelivr.net/npm/pyodide@${PYODIDE_VERSION}/full/`,
+      indexURL: `https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/full/`,
       stdout: collectStdout,
       stderr: collectStderr,
     });

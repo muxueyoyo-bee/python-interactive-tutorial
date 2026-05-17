@@ -14,10 +14,10 @@
           @change="onCollapseChange"
           class="toolbar-collapse"
         >
-          <a-collapse-item key="hint" header="查看提示">
+          <a-collapse-panel key="hint" header="查看提示">
             <a-alert type="info" :message="level.hint" />
-          </a-collapse-item>
-          <a-collapse-item key="answer" header="查看答案">
+          </a-collapse-panel>
+          <a-collapse-panel key="answer" header="查看答案">
             <a-alert
               type="warning"
               message="确定要看答案吗？作弊可学不到东西哦！"
@@ -31,15 +31,15 @@
                 />
               </template>
             </a-alert>
-          </a-collapse-item>
-          <a-collapse-item key="init" header="预执行代码" v-if="level.setupCode">
+          </a-collapse-panel>
+          <a-collapse-panel key="init" header="预执行代码" v-if="level.setupCode">
             <CodeEditor
               :model-value="level.setupCode"
               :read-only="true"
               :font-size="14"
               language="python"
             />
-          </a-collapse-item>
+          </a-collapse-panel>
         </a-collapse>
       </a-space>
       <div class="execution-time" v-if="executionTime > 0">
