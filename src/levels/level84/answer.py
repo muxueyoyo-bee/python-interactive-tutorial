@@ -14,6 +14,6 @@ y_prob = model.predict_proba(X_test)[:, 1]
 
 cm = confusion_matrix(y_test, y_pred)
 auc = roc_auc_score(y_test, y_prob)
-print("娣锋穯鐭╅樀:")
+print("混淆矩阵:")
 print(cm)
 print(f"\nAUC: {auc:.3f}")

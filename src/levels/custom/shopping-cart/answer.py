@@ -10,11 +10,11 @@ class ShoppingCart:
 
     def receipt(self):
         for name, amount in self.items.items():
-            print(f"{name}: {amount} 鍏?)
-        print(f"鍚堣: {self.total()} 鍏?)
+            print(f"{name}: {amount} 元")
+        print(f"合计: {self.total()} 元")
 
 cart = ShoppingCart()
-cart.add("Python鍏ラ棬", 59, 2)
-cart.add("绠楁硶瀵艰", 89, 1)
-cart.add("閿洏", 299)
+cart.add("Python入门", 59, 2)
+cart.add("算法导论", 89, 1)
+cart.add("键盘", 299)
 cart.receipt()

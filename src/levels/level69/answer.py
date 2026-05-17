@@ -9,4 +9,4 @@ ridge = Ridge(alpha=1.0)
 
 for name, m in [("Linear", lr), ("Ridge", ridge)]:
     scores = cross_val_score(m, X, y, cv=5, scoring="r2")
-    print(f"{name} R虏: {np.mean(scores):.3f}")
+    print(f"{name} R2: {np.mean(scores):.3f}")

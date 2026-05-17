@@ -22,4 +22,4 @@ def encoder_layer(x, d_model=4, d_ff=8):
 
 x = np.random.randn(3, 4)
 out = encoder_layer(x)
-print("Encoder 杈撳嚭褰㈢姸:", out.shape)
+print("Encoder 输出形状:", out.shape)

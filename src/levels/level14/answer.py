@@ -1,5 +1,5 @@
 def greet(name):
-    return f"浣犲ソ, {name}!"
+    return f"你好, {name}!"
 
-print(greet("灏忔槑"))
-print(greet("灏忕孩"))
+print(greet("小明"))
+print(greet("小红"))

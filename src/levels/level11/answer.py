@@ -1,7 +1,7 @@
 score = 85
 if score >= 90:
-    print("浼樼")
+    print("优秀")
 elif score >= 60:
-    print("鍙婃牸")
+    print("及格")
 else:
-    print("涓嶅強鏍?)
+    print("不及格")

@@ -9,5 +9,5 @@ def positional_encoding(seq_len, d_model):
     return pe
 
 pe = positional_encoding(5, 8)
-print("浣嶇疆缂栫爜褰㈢姸:", pe.shape)
-print("绗竴浣嶇殑鍓?缁?", np.round(pe[0, :4], 3))
+print("位置编码形状:", pe.shape)
+print("第一位的前4维:", np.round(pe[0, :4], 3))

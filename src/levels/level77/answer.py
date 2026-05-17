@@ -14,5 +14,5 @@ b1 = np.zeros(4)
 W2 = np.random.randn(4, 1) * 0.1
 b2 = np.zeros(1)
 out = mlp_forward(X, W1, b1, W2, b2)
-print("杈撳嚭褰㈢姸:", out.shape)
-print("杈撳嚭鍊?", out.flatten().round(3))
+print("输出形状:", out.shape)
+print("输出值:", out.flatten().round(3))
