@@ -41,13 +41,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from "vue";
+import { ref, computed, watch, reactive } from "vue";
 import { useRoute } from "vue-router";
 import QuestionBoard from "../components/QuestionBoard.vue";
 import PythonEditor from "../components/PythonEditor.vue";
-import { getLevelByKey } from "../levels";
+import { getLevelByKey, type LevelType } from "../levels";
 import { useGlobalStore } from "../core/globalStore";
 import { isPyodideLoaded } from "../core/pyodideExecutor";
+import { loadContent } from "../levels/contentLoader";
 
 const props = defineProps<{ levelKey?: string }>();
 const route = useRoute();
@@ -56,19 +57,26 @@ const store = useGlobalStore();
 const resultStatus = ref(-1);
 const loadingPyodide = ref(false);
 const loadingMessage = ref("");
+const levelContent = ref("");
 
-const level = computed(() => {
+const baseLevel = computed(() => {
   const key = props.levelKey || (route.params.levelKey as string) || "level1";
   return getLevelByKey(key);
 });
 
-// When level changes, check if Pyodide needs loading
+const level = computed((): LevelType | null => {
+  if (!baseLevel.value) return null;
+  return { ...baseLevel.value, content: levelContent.value || baseLevel.value.content };
+});
+
+// Lazy-load level content when level changes
 watch(
-  () => level.value?.key,
-  () => {
-    if (level.value) {
-      store.setCurrentLevelKey(level.value.key);
-    }
+  () => baseLevel.value?.key,
+  async (key) => {
+    if (!key) return;
+    store.setCurrentLevelKey(key);
+    levelContent.value = "";
+    levelContent.value = await loadContent(key);
   },
   { immediate: true }
 );
