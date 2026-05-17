@@ -50,16 +50,14 @@ import { ref } from "vue";
 import CodeEditor from "../components/CodeEditor.vue";
 import PythonResult from "../components/PythonResult.vue";
 import {
-  initializePyodide,
   executePython,
-  isPyodideLoaded,
   getPlotBase64,
   stripPlotMarkers,
 } from "../core/pyodideExecutor";
+import { usePython } from "../core/usePython";
 import { JudgeStatus } from "../core/result";
-import { useGlobalStore } from "../core/globalStore";
 
-const store = useGlobalStore();
+const { ensurePyodide, isExecuting } = usePython();
 const codeEditorRef = ref<InstanceType<typeof CodeEditor> | null>(null);
 
 const DEFAULT_CODE = `# Python 练习广场
@@ -75,7 +73,6 @@ print("Hello, Python!")
 `;
 
 const code = ref(DEFAULT_CODE);
-const isExecuting = ref(false);
 const resultStatus = ref(JudgeStatus.DEFAULT);
 const displayStdout = ref("");
 const returnValue = ref<unknown>(undefined);
@@ -92,14 +89,7 @@ async function runCode() {
   plots.value = [];
 
   try {
-    if (!isPyodideLoaded()) {
-      store.pyodideLoading = true;
-      await initializePyodide((msg) => {
-        displayStdout.value = msg;
-      });
-      store.pyodideLoading = false;
-      store.pyodideLoaded = true;
-    }
+    await ensurePyodide();
 
     const result = await executePython(code.value);
     plots.value = getPlotBase64(result.stdout);

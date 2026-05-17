@@ -78,12 +78,11 @@ import CodeEditor from "./CodeEditor.vue";
 import PythonResult from "./PythonResult.vue";
 import { useGlobalStore } from "../core/globalStore";
 import {
-  initializePyodide,
   executePython,
-  isPyodideLoaded,
   getPlotBase64,
   stripPlotMarkers,
 } from "../core/pyodideExecutor";
+import { usePython } from "../core/usePython";
 import { judge, JudgeStatus } from "../core/result";
 import type { LevelType } from "../levels";
 
@@ -96,6 +95,7 @@ const emit = defineEmits<{
 }>();
 
 const store = useGlobalStore();
+const { ensurePyodide } = usePython();
 const codeEditorRef = ref<InstanceType<typeof CodeEditor> | null>(null);
 
 const currentCode = ref(props.level.defaultCode);
@@ -137,15 +137,7 @@ async function runCode() {
   executionTime.value = 0;
 
   try {
-    // Ensure Pyodide is loaded
-    if (!isPyodideLoaded()) {
-      store.pyodideLoading = true;
-      await initializePyodide((msg) => {
-        displayStdout.value = msg;
-      });
-      store.pyodideLoading = false;
-      store.pyodideLoaded = true;
-    }
+    await ensurePyodide();
 
     // Execute user code
     const setupCode = props.level.setupCode || "";
