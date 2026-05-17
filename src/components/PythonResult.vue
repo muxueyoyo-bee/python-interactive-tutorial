@@ -58,7 +58,7 @@
       </a-tabs>
 
       <a-empty
-        v-if="!isExecuting && !hasOutput && !error"
+        v-if="!isExecuting && !hasOutput && !error && !judgeMessage"
         description="点击「运行」按钮执行代码"
       />
     </a-spin>
@@ -96,7 +96,7 @@ const props = withDefaults(
 
 const statusText = computed(() => STATUS_TEXT[props.resultStatus] || "");
 const hasOutput = computed(
-  () => props.stdout || props.plots.length > 0 || props.returnValue !== undefined
+  () => props.stdout || props.plots.length > 0 || props.returnValue !== undefined || !!props.judgeMessage
 );
 const displayStdout = computed(() => props.stdout);
 </script>
