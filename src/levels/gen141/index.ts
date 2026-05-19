@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen141",
-  title: "定义模块的公共 API",
+  title: "编写装饰器: crypto_adapter",
   category: "进阶",
-  description: `__all__ 是 Python 模块的公共接口声明，控制 \`from module import *\` 的行为。
+  description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 __init__.py 暴露了 13 个公开符号。
+源文件 config.py（dolphin-emu/dolphin）中 \`crypto_adapter\` 展示了装饰器模式。
 
-请仿照此模式，为以下符号定义 __all__ 列表。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
-定义 __all__ 列表，包含以下 6 个公开符号: ArrowExtensionArray, ArrowStringArray, BooleanArray, Categorical, DatetimeArray, FloatingArray
+编写装饰器 crypto_adapter，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
-来源：pandas-dev/pandas — pandas\\arrays\\__init__.py`,
+来源：dolphin-emu/dolphin — Externals\\mbedtls\\scripts\\config.py`,
   content: "",
-  defaultCode: `# 定义 __all__ 暴露以下公共 API: ArrowExtensionArray, ArrowStringArray, BooleanArray ...`,
+  defaultCode: `# 编写装饰器 crypto_adapter`,
   answer: "",
-  hint: `__all__ = ['Name1', 'Name2', ...] —— 字符串列表`,
+  hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
   type: "main",
-  difficulty: 1,
+  difficulty: 3,
   compareMode: "return",
-  tags: ["module", "api-design", "__all__"],
+  tags: ["decorator", "functional"],
 };
 
 export default level;

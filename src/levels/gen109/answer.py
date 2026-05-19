@@ -1,2 +1,2 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+def update_cookies(self, cookies: LooseCookies, response_url: URL) -> None:
+    return f'update_cookies result'

@@ -1,8 +1,6 @@
-class UnsetMetadataPassedError(ValueError):
-    pass
-class NotFittedError(ValueError, AttributeError):
-    pass
-class ConvergenceWarning(UserWarning):
-    pass
-class DataConversionWarning(UserWarning):
-    pass
+try:
+    result = int('not a number')
+    except (TypeError, ValueError) as e:
+        print(f'Caught (TypeError, ValueError): {e}')
+finally:
+    print('Cleanup complete')

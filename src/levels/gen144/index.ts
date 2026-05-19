@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen144",
-  title: "编写上下文管理器: Response",
-  category: "进阶",
-  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
+  title: "编写带类型标注的函数: result_processor",
+  category: "中级",
+  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 models.py 定义了类 \`Response\`，实现了 __enter__ / __exit__。
+源文件 psycopg.py（encode/databases）中 \`result_processor\` 展示了完整的参数和返回值类型标注。
 
-请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
+请仿照此模式编写一个带类型标注的函数。
 
-编写类 Response，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
+编写函数 result_processor(self, dialect: typing.Any, coltype: typing.Any) -> typing.Union[float, None]，返回格式化字符串。
 
-来源：psf/requests — src\\requests\\models.py`,
+来源：encode/databases — databases\\backends\\dialects\\psycopg.py`,
   content: "",
-  defaultCode: `# 编写上下文管理器 Response`,
+  defaultCode: `# 编写带类型标注的函数 result_processor`,
   answer: "",
-  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
+  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["context-manager", "class", "with-statement"],
+  tags: ["type-hints", "annotations"],
 };
 
 export default level;

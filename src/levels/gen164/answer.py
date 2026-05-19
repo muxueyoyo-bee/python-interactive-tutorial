@@ -1,8 +1,7 @@
-class RequestError(YoutubeDLError):
-    pass
-class UnsupportedRequest(RequestError):
-    pass
-class NoSupportingHandlers(RequestError):
-    pass
-class TransportError(RequestError):
-    pass
+def api_route(func):
+    def decorator(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return decorator

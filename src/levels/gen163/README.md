@@ -1,33 +1,44 @@
-# 第163关: 定义模块的公共 API
+# 第163关: 定义异常类层级: HTTPException
 
-> 真实案例：sqlalchemy/alembic 的 `alembic\operations\__init__.py` 中使用了这个模式。
+> 真实案例：fastapi/fastapi 的 `fastapi\exceptions.py` 中使用了这个模式。
 
 ## 概念介绍
 
-__all__ 是 Python 模块的公共接口声明，控制 `from module import *` 的行为。
+好的代码库用自定义异常类让调用方精确捕获不同错误。
 
-源文件 __init__.py 暴露了 5 个公开符号。
+源文件 exceptions.py 定义了如下继承层级：
+  • HTTPException → StarletteHTTPException
+  • WebSocketException → StarletteWebSocketException
+  • FastAPIError → RuntimeError
+  • DependencyScopeError → FastAPIError
 
-请仿照此模式，为以下符号定义 __all__ 列表。
+请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
 ## 代码示例
 
 ```python
-__all__ = [
-    "AbstractOperations",
-    "Operations",
-    "BatchOperations",
-    "MigrateOperation",
-    "MigrationScript",
-]
+class HTTPException(StarletteHTTPException):
+    pass
+class WebSocketException(StarletteWebSocketException):
+    pass
+class FastAPIError(RuntimeError):
+    pass
+class DependencyScopeError(FastAPIError):
+    pass
 ```
 
 ## 关键点
 
-__all__ = ['Name1', 'Name2', ...] —— 字符串列表
+class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔
+
+## 常见陷阱
+
+- `__init__` 不是构造器，是初始化方法（构造器是 `__new__`）
+- 实例方法的第一个参数必须显式写 `self`
+- `pass` 是一个空语句，占位用
 
 ## 你的任务
 
-定义 __all__ 列表，包含以下 5 个公开符号: AbstractOperations, Operations, BatchOperations, MigrateOperation, MigrationScript
+定义以下异常类: HTTPException(StarletteHTTPException), WebSocketException(StarletteWebSocketException), FastAPIError(RuntimeError), DependencyScopeError(FastAPIError)
 
 预期行为：参考上方代码示例的输出。

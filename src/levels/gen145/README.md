@@ -1,44 +1,34 @@
-# 第145关: 定义异常类层级: PydanticUserError
+# 第145关: 定义模块的公共 API
 
-> 真实案例：pydantic/pydantic 的 `pydantic\errors.py` 中使用了这个模式。
+> 真实案例：encode/httpx 的 `httpx\__init__.py` 中使用了这个模式。
 
 ## 概念介绍
 
-好的代码库用自定义异常类让调用方精确捕获不同错误。
+__all__ 是 Python 模块的公共接口声明，控制 `from module import *` 的行为。
 
-源文件 errors.py 定义了如下继承层级：
-  • PydanticUserError → PydanticErrorMixin, RuntimeError
-  • PydanticSchemaGenerationError → PydanticUserError
-  • PydanticInvalidForJsonSchema → PydanticUserError
-  • PydanticForbiddenQualifier → PydanticUserError
+源文件 __init__.py 暴露了 67 个公开符号。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式，为以下符号定义 __all__ 列表。
 
 ## 代码示例
 
 ```python
-class PydanticUserError(PydanticErrorMixin, RuntimeError):
-    pass
-class PydanticSchemaGenerationError(PydanticUserError):
-    pass
-class PydanticInvalidForJsonSchema(PydanticUserError):
-    pass
-class PydanticForbiddenQualifier(PydanticUserError):
-    pass
+__all__ = [
+    "ASGITransport",
+    "AsyncBaseTransport",
+    "AsyncByteStream",
+    "AsyncClient",
+    "AsyncHTTPTransport",
+    "Auth",
+]
 ```
 
 ## 关键点
 
-class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔
-
-## 常见陷阱
-
-- `__init__` 不是构造器，是初始化方法（构造器是 `__new__`）
-- 实例方法的第一个参数必须显式写 `self`
-- `pass` 是一个空语句，占位用
+__all__ = ['Name1', 'Name2', ...] —— 字符串列表
 
 ## 你的任务
 
-定义以下异常类: PydanticUserError(PydanticErrorMixin, RuntimeError), PydanticSchemaGenerationError(PydanticUserError), PydanticInvalidForJsonSchema(PydanticUserError), PydanticForbiddenQualifier(PydanticUserError)
+定义 __all__ 列表，包含以下 6 个公开符号: ASGITransport, AsyncBaseTransport, AsyncByteStream, AsyncClient, AsyncHTTPTransport, Auth
 
 预期行为：参考上方代码示例的输出。

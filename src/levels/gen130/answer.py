@@ -1,8 +1,6 @@
-__all__ = [
-    "Size",
-    "Divider",
-    "SubplotDivider",
-    "make_axes_locatable",
-    "AxesGrid",
-    "Grid",
-]
+try:
+    result = int('not a number')
+    except OSError as e:
+        print(f'Caught OSError: {e}')
+finally:
+    print('Cleanup complete')

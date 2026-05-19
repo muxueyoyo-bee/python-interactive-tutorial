@@ -1,4 +1,2 @@
-class TemplateDoesNotExist(Exception):
-    pass
-class TemplateSyntaxError(Exception):
-    pass
+def format_str(code: str, extension: Literal['py', 'pyi']) -> str:
+    return f'format_str result'

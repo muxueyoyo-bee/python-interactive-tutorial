@@ -1,8 +1,8 @@
-class HTTPException(StarletteHTTPException):
+class CeleryWarning(UserWarning):
     pass
-class WebSocketException(StarletteWebSocketException):
+class AlwaysEagerIgnored(CeleryWarning):
     pass
-class FastAPIError(RuntimeError):
+class DuplicateNodenameWarning(CeleryWarning):
     pass
-class DependencyScopeError(FastAPIError):
+class FixupWarning(CeleryWarning):
     pass

@@ -2,31 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen133",
-  title: "定义异常类层级: ClickException",
+  title: "编写上下文管理器: Proxy",
   category: "进阶",
-  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
+  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • ClickException → Exception
-  • UsageError → ClickException
-  • FileError → ClickException
+源文件 local.py 定义了类 \`Proxy\`，实现了 __enter__ / __exit__。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
 
-定义以下异常类: ClickException(Exception), UsageError(ClickException), FileError(ClickException)
+编写类 Proxy，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
 
-来源：pallets/click — src\\click\\exceptions.py`,
+来源：celery/celery — celery\\local.py`,
   content: "",
-  defaultCode: `class ClickException(Exception):
-    pass
-
-# 定义 UsageError, FileError，继承自 ClickException`,
+  defaultCode: `# 编写上下文管理器 Proxy`,
   answer: "",
-  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
+  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["exception", "class", "inheritance"],
+  tags: ["context-manager", "class", "with-statement"],
 };
 
 export default level;

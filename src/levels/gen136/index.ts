@@ -2,27 +2,32 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen136",
-  title: "编写 Click CLI 命令: run_command",
-  category: "中级",
-  description: `Click 是 Python 生态中最流行的 CLI 框架之一。
+  title: "定义异常类层级: TaskException",
+  category: "进阶",
+  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
 
-源文件 cli.py 使用 @click.command() 定义 CLI 入口。
+源文件 exceptions.py 定义了如下继承层级：
+  • TaskException → Exception
+  • InvalidTask → TaskException
+  • TaskResultDoesNotExist → TaskException
+  • TaskResultMismatch → TaskException
 
-请仿照此模式编写一个简单的 Click 命令。
+请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
-编写一个 Click 命令 run_command，用 click.echo() 输出 'Hello, World!'。
+定义以下异常类: TaskException(Exception), InvalidTask(TaskException), TaskResultDoesNotExist(TaskException), TaskResultMismatch(TaskException)
 
-来源：pallets/flask — src\\flask\\cli.py`,
+来源：django/django — django\\tasks\\exceptions.py`,
   content: "",
-  defaultCode: `import click
+  defaultCode: `class TaskException(Exception):
+    pass
 
-# 编写 run_command 命令`,
+# 定义 InvalidTask, TaskResultDoesNotExist, TaskResultMismatch，继承自 TaskException`,
   answer: "",
-  hint: `用 @click.command() 装饰函数，用 click.echo() 输出`,
+  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["cli", "click"],
+  tags: ["exception", "class", "inheritance"],
 };
 
 export default level;

@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen119",
-  title: "编写上下文管理器: Proxy",
-  category: "进阶",
-  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
+  title: "编写带类型标注的函数: pack",
+  category: "中级",
+  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 local.py 定义了类 \`Proxy\`，实现了 __enter__ / __exit__。
+源文件 pack.py（anthropics/skills）中 \`pack\` 展示了完整的参数和返回值类型标注。
 
-请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
+请仿照此模式编写一个带类型标注的函数。
 
-编写类 Proxy，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
+编写函数 pack(input_directory: str, output_file: str, original_file: str | None, validate: bool, infer_author_func: Any) -> tuple[None, str]，返回格式化字符串。
 
-来源：celery/celery — celery\\local.py`,
+来源：anthropics/skills — skills\\xlsx\\scripts\\office\\pack.py`,
   content: "",
-  defaultCode: `# 编写上下文管理器 Proxy`,
+  defaultCode: `# 编写带类型标注的函数 pack`,
   answer: "",
-  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
+  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["context-manager", "class", "with-statement"],
+  tags: ["type-hints", "annotations"],
 };
 
 export default level;

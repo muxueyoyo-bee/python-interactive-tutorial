@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen126",
-  title: "编写上下文管理器: Client",
-  category: "进阶",
-  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
+  title: "编写 try/except 错误处理",
+  category: "中级",
+  description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 _client.py 定义了类 \`Client\`，实现了 __enter__ / __exit__。
+源文件 pipeclient.py 使用了 try/except 捕获多种异常类型。
 
-请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
+请仿照此模式编写错误处理代码。
 
-编写类 Client，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
+编写 try/except 块：尝试 int('not a number')，捕获 IOError，并在 finally 中打印 'Cleanup complete'。
 
-来源：encode/httpx — httpx\\_client.py`,
+来源：audacity/audacity — au3\\scripts\\piped-work\\pipeclient.py`,
   content: "",
-  defaultCode: `# 编写上下文管理器 Client`,
+  defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",
-  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
+  hint: `try: ... except SomeError as e: ... finally: ...`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["context-manager", "class", "with-statement"],
+  tags: ["error-handling", "try-except"],
 };
 
 export default level;

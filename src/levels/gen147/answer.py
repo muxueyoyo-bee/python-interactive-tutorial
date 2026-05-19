@@ -1,8 +1,2 @@
-__all__ = [
-    "dataclasses",
-    "field_validator",
-    "model_validator",
-    "AfterValidator",
-    "BeforeValidator",
-    "PlainValidator",
-]
+def request(method: str, url: URL | str) -> Response:
+    return f'request result'

@@ -2,30 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen122",
-  title: "定义异常类层级: TemplateDoesNotExist",
-  category: "进阶",
-  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
+  title: "编写带类型标注的函数: format_str",
+  category: "中级",
+  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • TemplateDoesNotExist → Exception
-  • TemplateSyntaxError → Exception
+源文件 check_docs_formatted.py（astral-sh/ruff）中 \`format_str\` 展示了完整的参数和返回值类型标注。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写一个带类型标注的函数。
 
-定义以下异常类: TemplateDoesNotExist(Exception), TemplateSyntaxError(Exception)
+编写函数 format_str(code: str, extension: Literal['py', 'pyi']) -> str，返回格式化字符串。
 
-来源：django/django — django\\template\\exceptions.py`,
+来源：astral-sh/ruff — scripts\\check_docs_formatted.py`,
   content: "",
-  defaultCode: `class TemplateDoesNotExist(Exception):
-    pass
-
-# 定义 TemplateSyntaxError，继承自 TemplateDoesNotExist`,
+  defaultCode: `# 编写带类型标注的函数 format_str`,
   answer: "",
-  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
+  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["exception", "class", "inheritance"],
+  tags: ["type-hints", "annotations"],
 };
 
 export default level;

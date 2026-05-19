@@ -1,34 +1,34 @@
-# 第160关: 定义模块的公共 API
+# 第160关: 编写带类型标注的函数: create_ssl_context
 
-> 真实案例：scikit-learn/scikit-learn 的 `sklearn\cluster\__init__.py` 中使用了这个模式。
+> 真实案例：encode/uvicorn 的 `uvicorn\config.py` 中使用了这个模式。
 
 ## 概念介绍
 
-__all__ 是 Python 模块的公共接口声明，控制 `from module import *` 的行为。
+类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 __init__.py 暴露了 27 个公开符号。
+源文件 config.py（encode/uvicorn）中 `create_ssl_context` 展示了完整的参数和返回值类型标注。
 
-请仿照此模式，为以下符号定义 __all__ 列表。
+请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-__all__ = [
-    "DBSCAN",
-    "HDBSCAN",
-    "OPTICS",
-    "AffinityPropagation",
-    "AgglomerativeClustering",
-    "Birch",
-]
+def create_ssl_context(certfile: str | os.PathLike[str], keyfile: str | os.PathLike[str] | None, password: str | None, ssl_version: int, cert_reqs: int, ca_certs: str | os.PathLike[str] | None, ciphers: str | None) -> ssl.SSLContext:
+    return f'create_ssl_context result'
 ```
 
 ## 关键点
 
-__all__ = ['Name1', 'Name2', ...] —— 字符串列表
+def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
+
+## 常见陷阱
+
+- 类型标注只是提示，Python 运行时不做类型检查
+- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
+- 返回值类型用 `->` 箭头
 
 ## 你的任务
 
-定义 __all__ 列表，包含以下 6 个公开符号: DBSCAN, HDBSCAN, OPTICS, AffinityPropagation, AgglomerativeClustering, Birch
+编写函数 create_ssl_context(certfile: str | os.PathLike[str], keyfile: str | os.PathLike[str] | None, password: str | None, ssl_version: int, cert_reqs: int, ca_certs: str | os.PathLike[str] | None, ciphers: str | None) -> ssl.SSLContext，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

@@ -1,6 +1,2 @@
-try:
-    result = int('not a number')
-    except IndexError as e:
-        print(f'Caught IndexError: {e}')
-finally:
-    print('Cleanup complete')
+def request(method: str, url: StrOrURL) -> _SessionRequestContextManager:
+    return f'request result'

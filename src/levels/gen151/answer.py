@@ -1,8 +1,2 @@
-class ResolverException(Exception):
-    pass
-class RequirementsConflicted(ResolverException, Generic[RT, CT]):
-    pass
-class InconsistentCandidate(ResolverException, Generic[RT, CT]):
-    pass
-class ResolutionError(ResolverException):
-    pass
+def build_request(self, method: str, url: URL | str) -> Request:
+    return f'build_request result'

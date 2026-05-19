@@ -1,8 +1,8 @@
-class TemplateError(Exception):
+class AmbiguityError(Exception):
     pass
-class TemplateNotFound(IOError, LookupError, TemplateError):
+class BadMigrationError(Exception):
     pass
-class TemplateSyntaxError(TemplateError):
+class CircularDependencyError(Exception):
     pass
-class TemplateRuntimeError(TemplateError):
+class InconsistentMigrationHistory(Exception):
     pass

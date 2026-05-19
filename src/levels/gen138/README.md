@@ -1,29 +1,29 @@
-# 第138关: 定义异常类层级: TemplateError
+# 第138关: 定义异常类层级: AmbiguityError
 
-> 真实案例：pallets/jinja 的 `src\jinja2\exceptions.py` 中使用了这个模式。
+> 真实案例：django/django 的 `django\db\migrations\exceptions.py` 中使用了这个模式。
 
 ## 概念介绍
 
 好的代码库用自定义异常类让调用方精确捕获不同错误。
 
 源文件 exceptions.py 定义了如下继承层级：
-  • TemplateError → Exception
-  • TemplateNotFound → IOError, LookupError, TemplateError
-  • TemplateSyntaxError → TemplateError
-  • TemplateRuntimeError → TemplateError
+  • AmbiguityError → Exception
+  • BadMigrationError → Exception
+  • CircularDependencyError → Exception
+  • InconsistentMigrationHistory → Exception
 
 请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
 ## 代码示例
 
 ```python
-class TemplateError(Exception):
+class AmbiguityError(Exception):
     pass
-class TemplateNotFound(IOError, LookupError, TemplateError):
+class BadMigrationError(Exception):
     pass
-class TemplateSyntaxError(TemplateError):
+class CircularDependencyError(Exception):
     pass
-class TemplateRuntimeError(TemplateError):
+class InconsistentMigrationHistory(Exception):
     pass
 ```
 
@@ -39,6 +39,6 @@ class 子类名(父类名): —— 父类写在括号里，多个父类用逗号
 
 ## 你的任务
 
-定义以下异常类: TemplateError(Exception), TemplateNotFound(IOError, LookupError, TemplateError), TemplateSyntaxError(TemplateError), TemplateRuntimeError(TemplateError)
+定义以下异常类: AmbiguityError(Exception), BadMigrationError(Exception), CircularDependencyError(Exception), InconsistentMigrationHistory(Exception)
 
 预期行为：参考上方代码示例的输出。

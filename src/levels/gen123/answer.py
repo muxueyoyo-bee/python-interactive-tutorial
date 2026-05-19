@@ -1,8 +1,6 @@
-class AmbiguityError(Exception):
-    pass
-class BadMigrationError(Exception):
-    pass
-class CircularDependencyError(Exception):
-    pass
-class InconsistentMigrationHistory(Exception):
-    pass
+try:
+    result = int('not a number')
+    except ExceptionGroup as e:
+        print(f'Caught ExceptionGroup: {e}')
+finally:
+    print('Cleanup complete')

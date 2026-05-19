@@ -1,7 +1,2 @@
-__all__ = [
-    "YoutubeDL",
-    "gen_extractors",
-    "list_extractors",
-    "main",
-    "parse_options",
-]
+def add_api_route(self, path: str, endpoint: Callable[..., Any]) -> None:
+    return f'add_api_route result'

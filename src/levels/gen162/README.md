@@ -1,44 +1,34 @@
-# 第162关: 定义异常类层级: SphinxError
+# 第162关: 编写带类型标注的函数: color_level_name
 
-> 真实案例：sphinx-doc/sphinx 的 `sphinx\errors.py` 中使用了这个模式。
+> 真实案例：encode/uvicorn 的 `uvicorn\logging.py` 中使用了这个模式。
 
 ## 概念介绍
 
-好的代码库用自定义异常类让调用方精确捕获不同错误。
+类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 errors.py 定义了如下继承层级：
-  • SphinxError → Exception
-  • SphinxWarning → SphinxError
-  • ApplicationError → SphinxError
-  • ExtensionError → SphinxError
+源文件 logging.py（encode/uvicorn）中 `color_level_name` 展示了完整的参数和返回值类型标注。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-class SphinxError(Exception):
-    pass
-class SphinxWarning(SphinxError):
-    pass
-class ApplicationError(SphinxError):
-    pass
-class ExtensionError(SphinxError):
-    pass
+def color_level_name(self, level_name: str, level_no: int) -> str:
+    return f'color_level_name result'
 ```
 
 ## 关键点
 
-class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔
+def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
 
 ## 常见陷阱
 
-- `__init__` 不是构造器，是初始化方法（构造器是 `__new__`）
-- 实例方法的第一个参数必须显式写 `self`
-- `pass` 是一个空语句，占位用
+- 类型标注只是提示，Python 运行时不做类型检查
+- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
+- 返回值类型用 `->` 箭头
 
 ## 你的任务
 
-定义以下异常类: SphinxError(Exception), SphinxWarning(SphinxError), ApplicationError(SphinxError), ExtensionError(SphinxError)
+编写函数 color_level_name(self, level_name: str, level_no: int) -> str，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

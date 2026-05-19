@@ -2,32 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen145",
-  title: "定义异常类层级: PydanticUserError",
+  title: "定义模块的公共 API",
   category: "进阶",
-  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
+  description: `__all__ 是 Python 模块的公共接口声明，控制 \`from module import *\` 的行为。
 
-源文件 errors.py 定义了如下继承层级：
-  • PydanticUserError → PydanticErrorMixin, RuntimeError
-  • PydanticSchemaGenerationError → PydanticUserError
-  • PydanticInvalidForJsonSchema → PydanticUserError
-  • PydanticForbiddenQualifier → PydanticUserError
+源文件 __init__.py 暴露了 67 个公开符号。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式，为以下符号定义 __all__ 列表。
 
-定义以下异常类: PydanticUserError(PydanticErrorMixin, RuntimeError), PydanticSchemaGenerationError(PydanticUserError), PydanticInvalidForJsonSchema(PydanticUserError), PydanticForbiddenQualifier(PydanticUserError)
+定义 __all__ 列表，包含以下 6 个公开符号: ASGITransport, AsyncBaseTransport, AsyncByteStream, AsyncClient, AsyncHTTPTransport, Auth
 
-来源：pydantic/pydantic — pydantic\\errors.py`,
+来源：encode/httpx — httpx\\__init__.py`,
   content: "",
-  defaultCode: `class PydanticUserError(PydanticErrorMixin, RuntimeError):
-    pass
-
-# 定义 PydanticSchemaGenerationError, PydanticInvalidForJsonSchema, PydanticForbiddenQualifier，继承自 PydanticUserError`,
+  defaultCode: `# 定义 __all__ 暴露以下公共 API: ASGITransport, AsyncBaseTransport, AsyncByteStream ...`,
   answer: "",
-  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
+  hint: `__all__ = ['Name1', 'Name2', ...] —— 字符串列表`,
   type: "main",
-  difficulty: 3,
+  difficulty: 1,
   compareMode: "return",
-  tags: ["exception", "class", "inheritance"],
+  tags: ["module", "api-design", "__all__"],
 };
 
 export default level;

@@ -1,34 +1,39 @@
-# 第132关: 定义模块的公共 API
+# 第132关: 编写装饰器: register_type
 
-> 真实案例：numpy/numpy 的 `numpy\core\__init__.py` 中使用了这个模式。
+> 真实案例：celery/celery 的 `celery\canvas.py` 中使用了这个模式。
 
 ## 概念介绍
 
-__all__ 是 Python 模块的公共接口声明，控制 `from module import *` 的行为。
+装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 __init__.py 暴露了 13 个公开符号。
+源文件 canvas.py（celery/celery）中 `register_type` 展示了装饰器模式。
 
-请仿照此模式，为以下符号定义 __all__ 列表。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
 ## 代码示例
 
 ```python
-__all__ = [
-    "arrayprint",
-    "defchararray",
-    "einsumfunc",
-    "fromnumeric",
-    "function_base",
-    "getlimits",
-]
+def register_type(func):
+    def _inner(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return _inner
 ```
 
 ## 关键点
 
-__all__ = ['Name1', 'Name2', ...] —— 字符串列表
+外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper
+
+## 常见陷阱
+
+- 装饰器本质是 `decorator(func)` 返回新函数
+- 内层 `wrapper` 用 `*args, **kwargs` 接收任意参数
+- `functools.wraps(func)` 保留原函数的 `__name__` 和 `__doc__`
 
 ## 你的任务
 
-定义 __all__ 列表，包含以下 6 个公开符号: arrayprint, defchararray, einsumfunc, fromnumeric, function_base, getlimits
+编写装饰器 register_type，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
 预期行为：参考上方代码示例的输出。

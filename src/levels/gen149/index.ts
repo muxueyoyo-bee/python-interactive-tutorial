@@ -2,32 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen149",
-  title: "定义异常类层级: UnpackException",
+  title: "编写上下文管理器: Client",
   category: "进阶",
-  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
+  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • UnpackException → Exception
-  • BufferFull → UnpackException
-  • OutOfData → UnpackException
-  • FormatError → ValueError, UnpackException
+源文件 _client.py 定义了类 \`Client\`，实现了 __enter__ / __exit__。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
 
-定义以下异常类: UnpackException(Exception), BufferFull(UnpackException), OutOfData(UnpackException), FormatError(ValueError, UnpackException)
+编写类 Client，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
 
-来源：pypa/pip — src\\pip\\_vendor\\msgpack\\exceptions.py`,
+来源：encode/httpx — httpx\\_client.py`,
   content: "",
-  defaultCode: `class UnpackException(Exception):
-    pass
-
-# 定义 BufferFull, OutOfData, FormatError，继承自 UnpackException`,
+  defaultCode: `# 编写上下文管理器 Client`,
   answer: "",
-  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
+  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["exception", "class", "inheritance"],
+  tags: ["context-manager", "class", "with-statement"],
 };
 
 export default level;
