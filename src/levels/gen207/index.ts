@@ -1,4 +1,4 @@
-﻿import answer from "./answer.py?raw";
+import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {

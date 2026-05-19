@@ -1,34 +1,19 @@
-# 第235关: 编写带类型标注的函数: patch_config
+# ?235?: 编写带类型标注的函数: patch_config
 
-> 真实案例：astral-sh/ruff 的 `python\ruff-ecosystem\ruff_ecosystem\projects.py` 中使用了这个模式。
-
-## 概念介绍
+## ????
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 projects.py（astral-sh/ruff）中 `patch_config` 展示了完整的参数和返回值类型标注。
+源文件 projects.py（astral-sh/ruff）中 \
 
-请仿照此模式编写一个带类型标注的函数。
-
-## 代码示例
-
-```python
-def patch_config(self, dirpath: Path, preview: bool) -> None:
-    return f'patch_config result'
-```
-
-## 关键点
+## ???
 
 def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
 
-## 常见陷阱
+## ????
 
-- 类型标注只是提示，Python 运行时不做类型检查
-- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
-- 返回值类型用 `->` 箭头
+- ?????????Python ?????????
+- `from typing import List, Dict, Optional` ? Python 3.9+ ???? `list`, `dict` ??
+- ?????? `->` ??
 
-## 你的任务
-
-编写函数 patch_config(self, dirpath: Path, preview: bool) -> None，返回格式化字符串。
-
-预期行为：参考上方代码示例的输出。
+??????????????
