@@ -1,6 +1,6 @@
 // Lazy-load README content via Vite glob import
 const readmeModules = import.meta.glob<{ default: string }>(
-  "./level*/README.md",
+  ["./level*/README.md", "./gen*/README.md"],
   { query: "?raw", import: "default" }
 );
 
