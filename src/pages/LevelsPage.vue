@@ -99,16 +99,27 @@ import { useGlobalStore } from "../core/globalStore";
 const router = useRouter();
 const store = useGlobalStore();
 
-const phases = [
-  { name: "基础语法", icon: "📖", start: 0, count: 15 },
-  { name: "中级", icon: "⚡", start: 15, count: 10 },
-  { name: "进阶", icon: "🔥", start: 25, count: 10 },
-  { name: "数据分析", icon: "📊", start: 35, count: 10 },
-  { name: "AI基础", icon: "🧠", start: 45, count: 10 },
-  { name: "Transformer", icon: "🔬", start: 55, count: 10 },
-  { name: "搭建模型", icon: "🏗️", start: 65, count: 10 },
-  { name: "AI进阶", icon: "🎓", start: 75, count: 17 },
-];
+const phases = computed(() => {
+  const builtin = [
+    { name: "基础语法", icon: "📖", start: 0, count: 15 },
+    { name: "中级", icon: "⚡", start: 15, count: 10 },
+    { name: "进阶", icon: "🔥", start: 25, count: 10 },
+    { name: "数据分析", icon: "📊", start: 35, count: 10 },
+    { name: "AI基础", icon: "🧠", start: 45, count: 10 },
+    { name: "Transformer", icon: "🔬", start: 55, count: 10 },
+    { name: "搭建模型", icon: "🏗️", start: 65, count: 10 },
+    { name: "AI进阶", icon: "🎓", start: 75, count: 17 },
+  ];
+  // Auto-generate phases for remaining levels beyond index 92
+  const auto = [];
+  let pos = 92;
+  while (pos < mainLevels.length) {
+    const chunk = Math.min(50, mainLevels.length - pos);
+    auto.push({ name: `扩展 ${Math.floor(pos / 50)}`, icon: "💎", start: pos, count: chunk });
+    pos += chunk;
+  }
+  return [...builtin, ...auto];
+});
 
 function getPhaseCount(start: number, count: number): number {
   return Math.min(count, mainLevels.length - start);
