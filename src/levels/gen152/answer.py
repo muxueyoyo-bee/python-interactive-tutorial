@@ -1,2 +1,8 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+class ConsoleError(Exception):
+    pass
+class StyleSyntaxError(ConsoleError):
+    pass
+class StyleStackError(ConsoleError):
+    pass
+class NotRenderableError(ConsoleError):
+    pass

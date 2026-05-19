@@ -1,10 +1,11 @@
-try:
-    result = int('not a number')
-    except (ClientOSError, ServerDisconnectedError) as e:
-        print(f'Caught (ClientOSError, ServerDisconnectedError): {e}')
-    except (ConnectionTimeoutError, ClientConnectorError, ClientConnectorCertificateError, ClientConnectorSSLError) as e:
-        print(f'Caught (ConnectionTimeoutError, ClientConnectorError, ClientConnectorCertificateError, ClientConnectorSSLError): {e}')
-    except BaseException as e:
-        print(f'Caught BaseException: {e}')
-finally:
-    print('Cleanup complete')
+class TimerNoop:
+    def __init__(self, name):
+        self.name = name
+
+    def __enter__(self):
+        print(f'Entering {self.name}')
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f'Exiting {self.name}')
+        return False

@@ -1,10 +1,11 @@
-try:
-    result = int('not a number')
-    except (asyncio.CancelledError, asyncio.TimeoutError) as e:
-        print(f'Caught (asyncio.CancelledError, asyncio.TimeoutError): {e}')
-    except ClientError as e:
-        print(f'Caught ClientError: {e}')
-    except EofStream as e:
-        print(f'Caught EofStream: {e}')
-finally:
-    print('Cleanup complete')
+class Proxy:
+    def __init__(self, name):
+        self.name = name
+
+    def __enter__(self):
+        print(f'Entering {self.name}')
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f'Exiting {self.name}')
+        return False

@@ -1,2 +1,8 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+class HTTPError(Exception):
+    pass
+class PoolError(HTTPError):
+    pass
+class SSLError(HTTPError):
+    pass
+class ProxyError(HTTPError):
+    pass

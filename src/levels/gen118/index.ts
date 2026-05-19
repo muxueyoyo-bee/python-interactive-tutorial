@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen118",
-  title: "编写 try/except 错误处理",
-  category: "中级",
-  description: `健壮的代码用 try/except 优雅地处理异常。
+  title: "编写一个 Python 装饰器",
+  category: "进阶",
+  description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 client_reqrep.py 使用了 try/except 捕获多种异常类型。
+源文件 canvas.py（celery/celery）展示了装饰器模式。
 
-请仿照此模式编写错误处理代码。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
-编写 try/except 块：尝试 int('not a number')，捕获 BaseException, Exception, HttpProcessingError，并在 finally 中打印 'Cleanup complete'。
+编写装饰器 my_decorator，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
-来源：aio-libs/aiohttp — aiohttp\\client_reqrep.py`,
+来源：celery/celery — celery\\canvas.py`,
   content: "",
-  defaultCode: `# 编写 try/except/finally 错误处理`,
+  defaultCode: `# 编写装饰器 my_decorator`,
   answer: "",
-  hint: `try: ... except SomeError as e: ... finally: ...`,
+  hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["error-handling", "try-except"],
+  tags: ["decorator", "functional"],
 };
 
 export default level;

@@ -1,6 +1,8 @@
-try:
-    result = int('not a number')
-    except ExceptionGroup as e:
-        print(f'Caught ExceptionGroup: {e}')
-finally:
-    print('Cleanup complete')
+class SphinxError(Exception):
+    pass
+class SphinxWarning(SphinxError):
+    pass
+class ApplicationError(SphinxError):
+    pass
+class ExtensionError(SphinxError):
+    pass

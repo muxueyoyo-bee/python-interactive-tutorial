@@ -1,2 +1,6 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+class PoetryConsoleError(CleoError):
+    pass
+class GroupNotFoundError(PoetryConsoleError):
+    pass
+class PoetryRuntimeError(PoetryConsoleError):
+    pass

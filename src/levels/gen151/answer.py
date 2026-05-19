@@ -1,2 +1,8 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+class ResolverException(Exception):
+    pass
+class RequirementsConflicted(ResolverException, Generic[RT, CT]):
+    pass
+class InconsistentCandidate(ResolverException, Generic[RT, CT]):
+    pass
+class ResolutionError(ResolverException):
+    pass

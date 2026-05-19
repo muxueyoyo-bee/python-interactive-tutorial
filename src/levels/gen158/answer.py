@@ -1,2 +1,8 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+class UnsetMetadataPassedError(ValueError):
+    pass
+class NotFittedError(ValueError, AttributeError):
+    pass
+class ConvergenceWarning(UserWarning):
+    pass
+class DataConversionWarning(UserWarning):
+    pass

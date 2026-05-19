@@ -1,2 +1,6 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+class ClickException(Exception):
+    pass
+class UsageError(ClickException):
+    pass
+class FileError(ClickException):
+    pass

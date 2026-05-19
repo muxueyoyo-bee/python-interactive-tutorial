@@ -1,2 +1,6 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+try:
+    result = int('not a number')
+    except IndexError as e:
+        print(f'Caught IndexError: {e}')
+finally:
+    print('Cleanup complete')

@@ -1,2 +1,8 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+__all__ = [
+    "Celery",
+    "bugreport",
+    "shared_task",
+    "Task",
+    "current_app",
+    "current_task",
+]

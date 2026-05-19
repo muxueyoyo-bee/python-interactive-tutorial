@@ -2,25 +2,27 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen134",
-  title: "编写 try/except 错误处理",
+  title: "编写 Click CLI 命令: cli",
   category: "中级",
-  description: `健壮的代码用 try/except 优雅地处理异常。
+  description: `Click 是 Python 生态中最流行的 CLI 框架之一。
 
-源文件 batch_results.py 使用了 try/except 捕获多种异常类型。
+源文件 cli.py 使用 @click.command() 定义 CLI 入口。
 
-请仿照此模式编写错误处理代码。
+请仿照此模式编写一个简单的 Click 命令。
 
-编写 try/except 块：尝试 int('not a number')，捕获 IndexError，并在 finally 中打印 'Cleanup complete'。
+编写一个 Click 命令 cli，用 click.echo() 输出 'Hello, World!'。
 
-来源：anthropics/anthropic-sdk-python — examples\\batch_results.py`,
+来源：pallets/click — examples\\complex\\complex\\cli.py`,
   content: "",
-  defaultCode: `# 编写 try/except/finally 错误处理`,
+  defaultCode: `import click
+
+# 编写 cli 命令`,
   answer: "",
-  hint: `try: ... except SomeError as e: ... finally: ...`,
+  hint: `用 @click.command() 装饰函数，用 click.echo() 输出`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["error-handling", "try-except"],
+  tags: ["cli", "click"],
 };
 
 export default level;

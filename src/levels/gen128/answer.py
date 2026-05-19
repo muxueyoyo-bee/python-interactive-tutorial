@@ -1,2 +1,8 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+class HTTPException(StarletteHTTPException):
+    pass
+class WebSocketException(StarletteWebSocketException):
+    pass
+class FastAPIError(RuntimeError):
+    pass
+class DependencyScopeError(FastAPIError):
+    pass

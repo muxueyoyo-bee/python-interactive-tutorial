@@ -1,2 +1,8 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+class RequestError(YoutubeDLError):
+    pass
+class UnsupportedRequest(RequestError):
+    pass
+class NoSupportingHandlers(RequestError):
+    pass
+class TransportError(RequestError):
+    pass

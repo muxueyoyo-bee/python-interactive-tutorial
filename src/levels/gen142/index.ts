@@ -2,25 +2,32 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen142",
-  title: "编写带类型标注的函数",
-  category: "中级",
-  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
+  title: "定义异常类层级: RequestException",
+  category: "进阶",
+  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
 
-源文件 unpack.py（anthropics/skills）展示了完整的参数和返回值类型标注。
+源文件 exceptions.py 定义了如下继承层级：
+  • RequestException → IOError
+  • InvalidJSONError → RequestException
+  • HTTPError → RequestException
+  • ConnectionError → RequestException
 
-请仿照此模式编写一个带类型标注的函数。
+请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
-编写函数 process_data(name: str, count: int) -> str，返回格式化字符串。
+定义以下异常类: RequestException(IOError), InvalidJSONError(RequestException), HTTPError(RequestException), ConnectionError(RequestException)
 
-来源：anthropics/skills — skills\\xlsx\\scripts\\office\\unpack.py`,
+来源：psf/requests — src\\requests\\exceptions.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 process_data`,
+  defaultCode: `class RequestException(IOError):
+    pass
+
+# 定义 InvalidJSONError, HTTPError, ConnectionError，继承自 RequestException`,
   answer: "",
-  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
+  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["type-hints", "annotations"],
+  tags: ["exception", "class", "inheritance"],
 };
 
 export default level;

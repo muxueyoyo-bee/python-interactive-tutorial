@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen119",
-  title: "编写 try/except 错误处理",
-  category: "中级",
-  description: `健壮的代码用 try/except 优雅地处理异常。
+  title: "编写上下文管理器: Proxy",
+  category: "进阶",
+  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
 
-源文件 client_ws.py 使用了 try/except 捕获多种异常类型。
+源文件 local.py 定义了类 \`Proxy\`，实现了 __enter__ / __exit__。
 
-请仿照此模式编写错误处理代码。
+请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
 
-编写 try/except 块：尝试 int('not a number')，捕获 (asyncio.CancelledError, asyncio.TimeoutError), ClientError, EofStream，并在 finally 中打印 'Cleanup complete'。
+编写类 Proxy，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
 
-来源：aio-libs/aiohttp — aiohttp\\client_ws.py`,
+来源：celery/celery — celery\\local.py`,
   content: "",
-  defaultCode: `# 编写 try/except/finally 错误处理`,
+  defaultCode: `# 编写上下文管理器 Proxy`,
   answer: "",
-  hint: `try: ... except SomeError as e: ... finally: ...`,
+  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["error-handling", "try-except"],
+  tags: ["context-manager", "class", "with-statement"],
 };
 
 export default level;

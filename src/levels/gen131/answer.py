@@ -1,2 +1,8 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+class ComplexWarning(RuntimeWarning):
+    pass
+class ModuleDeprecationWarning(DeprecationWarning):
+    pass
+class VisibleDeprecationWarning(UserWarning):
+    pass
+class RankWarning(RuntimeWarning):
+    pass

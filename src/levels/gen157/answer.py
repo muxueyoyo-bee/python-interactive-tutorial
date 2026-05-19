@@ -1,10 +1,11 @@
-try:
-    result = int('not a number')
-    except (json.JSONDecodeError, OSError) as e:
-        print(f'Caught (json.JSONDecodeError, OSError): {e}')
-    except ValueError as e:
-        print(f'Caught ValueError: {e}')
-    except json.JSONDecodeError as e:
-        print(f'Caught json.JSONDecodeError: {e}')
-finally:
-    print('Cleanup complete')
+class LazyFileOverHTTP:
+    def __init__(self, name):
+        self.name = name
+
+    def __enter__(self):
+        print(f'Entering {self.name}')
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f'Exiting {self.name}')
+        return False

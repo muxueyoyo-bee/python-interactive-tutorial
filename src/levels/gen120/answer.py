@@ -1,2 +1,8 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+class FieldDoesNotExist(Exception):
+    pass
+class AppRegistryNotReady(Exception):
+    pass
+class ObjectDoesNotExist(Exception):
+    pass
+class ObjectNotUpdated(Exception):
+    pass

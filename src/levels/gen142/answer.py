@@ -1,2 +1,8 @@
-def process_data(name: str, count: int) -> str:
-    return f'Processed {name} x {count}'
+class RequestException(IOError):
+    pass
+class InvalidJSONError(RequestException):
+    pass
+class HTTPError(RequestException):
+    pass
+class ConnectionError(RequestException):
+    pass
