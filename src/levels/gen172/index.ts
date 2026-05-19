@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen172",
-  title: "编写带类型标注的函数: include_file_in_rd_header",
-  category: "中级",
-  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
+  title: "编写上下文管理器: Client",
+  category: "进阶",
+  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
 
-源文件 glsl_builders.py（godotengine/godot）中 \`include_file_in_rd_header\` 展示了完整的参数和返回值类型标注。
+源文件 _client.py 定义了类 \`Client\`，实现了 __enter__ / __exit__。
 
-请仿照此模式编写一个带类型标注的函数。
+请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
 
-编写函数 include_file_in_rd_header(filename: str, header_data: RDHeaderStruct, depth: int) -> RDHeaderStruct，返回格式化字符串。
+编写类 Client，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
 
-来源：godotengine/godot — glsl_builders.py`,
+来源：encode/httpx — httpx\\_client.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 include_file_in_rd_header`,
+  defaultCode: `# 编写上下文管理器 Client`,
   answer: "",
-  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
+  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["type-hints", "annotations"],
+  tags: ["context-manager", "class", "with-statement"],
 };
 
 export default level;

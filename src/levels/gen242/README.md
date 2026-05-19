@@ -1,43 +1,44 @@
-# 第242关: 编写上下文管理器: Response
+# 第242关: 定义异常类层级: ComplexWarning
 
-> 真实案例：psf/requests 的 `src\requests\models.py` 中使用了这个模式。
+> 真实案例：numpy/numpy 的 `numpy\exceptions.py` 中使用了这个模式。
 
 ## 概念介绍
 
-上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
+好的代码库用自定义异常类让调用方精确捕获不同错误。
 
-源文件 models.py 定义了类 `Response`，实现了 __enter__ / __exit__。
+源文件 exceptions.py 定义了如下继承层级：
+  • ComplexWarning → RuntimeWarning
+  • ModuleDeprecationWarning → DeprecationWarning
+  • VisibleDeprecationWarning → UserWarning
+  • RankWarning → RuntimeWarning
 
-请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
+请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
 ## 代码示例
 
 ```python
-class Response:
-    def __init__(self, name):
-        self.name = name
-
-    def __enter__(self):
-        print(f'Entering {self.name}')
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print(f'Exiting {self.name}')
-        return False
+class ComplexWarning(RuntimeWarning):
+    pass
+class ModuleDeprecationWarning(DeprecationWarning):
+    pass
+class VisibleDeprecationWarning(UserWarning):
+    pass
+class RankWarning(RuntimeWarning):
+    pass
 ```
 
 ## 关键点
 
-实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理
+class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔
 
 ## 常见陷阱
 
-- `with` 语句块结束时自动调用 `__exit__`，即使发生异常
-- `__exit__` 返回 `True` 可以抑制异常（谨慎使用）
-- 也可以用 `contextlib.contextmanager` 装饰器 + `yield` 实现
+- `__init__` 不是构造器，是初始化方法（构造器是 `__new__`）
+- 实例方法的第一个参数必须显式写 `self`
+- `pass` 是一个空语句，占位用
 
 ## 你的任务
 
-编写类 Response，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
+定义以下异常类: ComplexWarning(RuntimeWarning), ModuleDeprecationWarning(DeprecationWarning), VisibleDeprecationWarning(UserWarning), RankWarning(RuntimeWarning)
 
 预期行为：参考上方代码示例的输出。

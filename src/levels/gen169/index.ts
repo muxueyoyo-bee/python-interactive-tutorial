@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen169",
-  title: "编写装饰器: make_encoded_write",
+  title: "定义模块的公共 API",
   category: "进阶",
-  description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
+  description: `__all__ 是 Python 模块的公共接口声明，控制 \`from module import *\` 的行为。
 
-源文件 git-p4.py（git/git）中 \`make_encoded_write\` 展示了装饰器模式。
+源文件 __init__.py 暴露了 7 个公开符号。
 
-请编写一个装饰器，在函数调用前后各打印一行信息。
+请仿照此模式，为以下符号定义 __all__ 列表。
 
-编写装饰器 make_encoded_write，包装目标函数并在调用前后打印 'before call' 和 'after call'。
+定义 __all__ 列表，包含以下 6 个公开符号: ASGITransport, AsyncBaseTransport, BaseTransport, AsyncHTTPTransport, HTTPTransport, MockTransport
 
-来源：git/git — git-p4.py`,
+来源：encode/httpx — httpx\\_transports\\__init__.py`,
   content: "",
-  defaultCode: `# 编写装饰器 make_encoded_write`,
+  defaultCode: `# 定义 __all__ 暴露以下公共 API: ASGITransport, AsyncBaseTransport, BaseTransport ...`,
   answer: "",
-  hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
+  hint: `__all__ = ['Name1', 'Name2', ...] —— 字符串列表`,
   type: "main",
-  difficulty: 3,
+  difficulty: 1,
   compareMode: "return",
-  tags: ["decorator", "functional"],
+  tags: ["module", "api-design", "__all__"],
 };
 
 export default level;

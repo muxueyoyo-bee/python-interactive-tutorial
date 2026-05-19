@@ -1,2 +1,8 @@
-def make_pass_decorator(object_type: type[T], ensure: bool) -> t.Callable[[t.Callable[te.Concatenate[T, P], R]], t.Callable[P, R]]:
-    return f'make_pass_decorator result'
+try:
+    result = int('not a number')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
+    except OSError as e:
+        print(f'Caught OSError: {e}')
+finally:
+    print('Cleanup complete')

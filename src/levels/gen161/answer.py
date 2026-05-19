@@ -1,8 +1,11 @@
-try:
-    result = int('not a number')
-    except AttributeError as e:
-        print(f'Caught AttributeError: {e}')
-    except ModuleNotFoundError as e:
-        print(f'Caught ModuleNotFoundError: {e}')
-finally:
-    print('Cleanup complete')
+class DatabaseErrorWrapper:
+    def __init__(self, name):
+        self.name = name
+
+    def __enter__(self):
+        print(f'Entering {self.name}')
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f'Exiting {self.name}')
+        return False

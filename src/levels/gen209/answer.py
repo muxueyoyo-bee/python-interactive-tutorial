@@ -1,7 +1,2 @@
-def result_callback(func):
-    def decorator(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return decorator
+def MergeMessageTo(cls, source: _T, mask: field_mask_pb2.FieldMask, options: MergeOptions, destination: _T) -> _T:
+    return f'MergeMessageTo result'

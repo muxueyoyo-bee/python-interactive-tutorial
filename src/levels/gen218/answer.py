@@ -1,10 +1,2 @@
-try:
-    result = int('not a number')
-    except BuildError as e:
-        print(f'Caught BuildError: {e}')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except ImportError as e:
-        print(f'Caught ImportError: {e}')
-finally:
-    print('Cleanup complete')
+def update_test_metadata_with_transitive_metadata(all_extra_metadata: BuildDict, bazel_rules: BuildDict) -> None:
+    return f'update_test_metadata_with_transitive_metadata result'

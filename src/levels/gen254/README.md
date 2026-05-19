@@ -1,29 +1,26 @@
-# 第254关: 定义异常类层级: ResolverException
+# 第254关: 定义异常类层级: ClickException
 
-> 真实案例：pypa/pip 的 `src\pip\_vendor\resolvelib\resolvers\exceptions.py` 中使用了这个模式。
+> 真实案例：pallets/click 的 `src\click\exceptions.py` 中使用了这个模式。
 
 ## 概念介绍
 
 好的代码库用自定义异常类让调用方精确捕获不同错误。
 
 源文件 exceptions.py 定义了如下继承层级：
-  • ResolverException → Exception
-  • RequirementsConflicted → ResolverException, Generic[RT, CT]
-  • InconsistentCandidate → ResolverException, Generic[RT, CT]
-  • ResolutionError → ResolverException
+  • ClickException → Exception
+  • UsageError → ClickException
+  • FileError → ClickException
 
 请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
 ## 代码示例
 
 ```python
-class ResolverException(Exception):
+class ClickException(Exception):
     pass
-class RequirementsConflicted(ResolverException, Generic[RT, CT]):
+class UsageError(ClickException):
     pass
-class InconsistentCandidate(ResolverException, Generic[RT, CT]):
-    pass
-class ResolutionError(ResolverException):
+class FileError(ClickException):
     pass
 ```
 
@@ -39,6 +36,6 @@ class 子类名(父类名): —— 父类写在括号里，多个父类用逗号
 
 ## 你的任务
 
-定义以下异常类: ResolverException(Exception), RequirementsConflicted(ResolverException, Generic[RT, CT]), InconsistentCandidate(ResolverException, Generic[RT, CT]), ResolutionError(ResolverException)
+定义以下异常类: ClickException(Exception), UsageError(ClickException), FileError(ClickException)
 
 预期行为：参考上方代码示例的输出。

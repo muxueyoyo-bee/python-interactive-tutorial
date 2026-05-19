@@ -1,6 +1,11 @@
-try:
-    result = int('not a number')
-    except IOError as e:
-        print(f'Caught IOError: {e}')
-finally:
-    print('Cleanup complete')
+class ResponseContextManager:
+    def __init__(self, name):
+        self.name = name
+
+    def __enter__(self):
+        print(f'Entering {self.name}')
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f'Exiting {self.name}')
+        return False

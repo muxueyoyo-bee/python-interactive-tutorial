@@ -1,8 +1,2 @@
-__all__ = [
-    "set_loglevel",
-    "ExecutableNotFoundError",
-    "get_configdir",
-    "get_cachedir",
-    "get_data_path",
-    "matplotlib_fname",
-]
+def color_level_name(self, level_name: str, level_no: int) -> str:
+    return f'color_level_name result'

@@ -1,10 +1,10 @@
 try:
     result = int('not a number')
-    except ConfigError as e:
-        print(f'Caught ConfigError: {e}')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except SyntaxError as e:
-        print(f'Caught SyntaxError: {e}')
+    except (nodes.Impossible, Exception) as e:
+        print(f'Caught (nodes.Impossible, Exception): {e}')
+    except CompilerExit as e:
+        print(f'Caught CompilerExit: {e}')
+    except IndexError as e:
+        print(f'Caught IndexError: {e}')
 finally:
     print('Cleanup complete')

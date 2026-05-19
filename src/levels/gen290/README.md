@@ -1,34 +1,34 @@
-# 第290关: 编写带类型标注的函数: format_file
+# 第290关: 定义模块的公共 API
 
-> 真实案例：sqlalchemy/sqlalchemy 的 `tools\format_docs_code.py` 中使用了这个模式。
+> 真实案例：pandas-dev/pandas 的 `pandas\compat\__init__.py` 中使用了这个模式。
 
 ## 概念介绍
 
-类型标注使代码更可读、IDE 能提供更好的自动补全。
+__all__ 是 Python 模块的公共接口声明，控制 `from module import *` 的行为。
 
-源文件 format_docs_code.py（sqlalchemy/sqlalchemy）中 `format_file` 展示了完整的参数和返回值类型标注。
+源文件 __init__.py 暴露了 21 个公开符号。
 
-请仿照此模式编写一个带类型标注的函数。
+请仿照此模式，为以下符号定义 __all__ 列表。
 
 ## 代码示例
 
 ```python
-def format_file(file: Path, exit_on_error: bool, check: bool) -> tuple[bool, int]:
-    return f'format_file result'
+__all__ = [
+    "CHAINED_WARNING_DISABLED",
+    "HAS_PYARROW",
+    "IS64",
+    "ISMUSL",
+    "PY312",
+    "PY314",
+]
 ```
 
 ## 关键点
 
-def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
-
-## 常见陷阱
-
-- 类型标注只是提示，Python 运行时不做类型检查
-- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
-- 返回值类型用 `->` 箭头
+__all__ = ['Name1', 'Name2', ...] —— 字符串列表
 
 ## 你的任务
 
-编写函数 format_file(file: Path, exit_on_error: bool, check: bool) -> tuple[bool, int]，返回格式化字符串。
+定义 __all__ 列表，包含以下 6 个公开符号: CHAINED_WARNING_DISABLED, HAS_PYARROW, IS64, ISMUSL, PY312, PY314
 
 预期行为：参考上方代码示例的输出。

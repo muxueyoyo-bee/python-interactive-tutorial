@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen225",
-  title: "编写装饰器: async_variant",
-  category: "进阶",
-  description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
+  title: "编写 try/except 错误处理",
+  category: "中级",
+  description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 async_utils.py（pallets/jinja）中 \`async_variant\` 展示了装饰器模式。
+源文件 security_reminder_hook.py 使用了 try/except 捕获多种异常类型。
 
-请编写一个装饰器，在函数调用前后各打印一行信息。
+请仿照此模式编写错误处理代码。
 
-编写装饰器 async_variant，包装目标函数并在调用前后打印 'before call' 和 'after call'。
+编写 try/except 块：尝试 int('not a number')，捕获 (OSError, IOError), (json.JSONDecodeError, IOError), Exception，并在 finally 中打印 'Cleanup complete'。
 
-来源：pallets/jinja — src\\jinja2\\async_utils.py`,
+来源：LING71671/Open-ClaudeCode — plugins\\security-guidance\\hooks\\security_reminder_hook.py`,
   content: "",
-  defaultCode: `# 编写装饰器 async_variant`,
+  defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",
-  hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
+  hint: `try: ... except SomeError as e: ... finally: ...`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["decorator", "functional"],
+  tags: ["error-handling", "try-except"],
 };
 
 export default level;

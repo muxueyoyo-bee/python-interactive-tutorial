@@ -1,39 +1,42 @@
-# 第223关: 编写装饰器: as_view
+# 第223关: 编写 try/except 错误处理
 
-> 真实案例：pallets/flask 的 `src\flask\views.py` 中使用了这个模式。
+> 真实案例：libgit2/libgit2 的 `script\release.py` 中使用了这个模式。
 
 ## 概念介绍
 
-装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
+健壮的代码用 try/except 优雅地处理异常。
 
-源文件 views.py（pallets/flask）中 `as_view` 展示了装饰器模式。
+源文件 release.py 使用了 try/except 捕获多种异常类型。
 
-请编写一个装饰器，在函数调用前后各打印一行信息。
+请仿照此模式编写错误处理代码。
 
 ## 代码示例
 
 ```python
-def as_view(func):
-    def view(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return view
+try:
+    result = int('not a number')
+    except Error as e:
+        print(f'Caught Error: {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except KeyError as e:
+        print(f'Caught KeyError: {e}')
+finally:
+    print('Cleanup complete')
 ```
 
 ## 关键点
 
-外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper
+try: ... except SomeError as e: ... finally: ...
 
 ## 常见陷阱
 
-- 装饰器本质是 `decorator(func)` 返回新函数
-- 内层 `wrapper` 用 `*args, **kwargs` 接收任意参数
-- `functools.wraps(func)` 保留原函数的 `__name__` 和 `__doc__`
+- `except:` 不加异常类型会捕获所有异常(包括 KeyboardInterrupt)，通常不推荐
+- `except Exception as e:` 中的 `as e` 可以获取异常对象
+- `finally` 无论是否发生异常都会执行
 
 ## 你的任务
 
-编写装饰器 as_view，包装目标函数并在调用前后打印 'before call' 和 'after call'。
+编写 try/except 块：尝试 int('not a number')，捕获 Error, Exception, KeyError，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

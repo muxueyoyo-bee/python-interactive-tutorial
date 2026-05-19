@@ -1,2 +1,2 @@
-def unpack(input_file: str, output_directory: str, merge_runs: bool, simplify_redlines: bool) -> tuple[None, str]:
-    return f'unpack result'
+def get_weather(location: str, units: Literal['c', 'f']) -> str:
+    return f'get_weather result'

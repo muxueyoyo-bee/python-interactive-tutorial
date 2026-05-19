@@ -1,6 +1,8 @@
-try:
-    result = int('not a number')
-    except URLError as e:
-        print(f'Caught URLError: {e}')
-finally:
-    print('Cleanup complete')
+class HTTPException(StarletteHTTPException):
+    pass
+class WebSocketException(StarletteWebSocketException):
+    pass
+class FastAPIError(RuntimeError):
+    pass
+class DependencyScopeError(FastAPIError):
+    pass

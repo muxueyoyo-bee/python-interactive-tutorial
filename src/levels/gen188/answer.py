@@ -1,2 +1,8 @@
-def from_dict(cls, frontmatter: Dict[str, Any], message: str) -> 'Rule':
-    return f'from_dict result'
+try:
+    result = int('not a number')
+    except AttributeError as e:
+        print(f'Caught AttributeError: {e}')
+    except ModuleNotFoundError as e:
+        print(f'Caught ModuleNotFoundError: {e}')
+finally:
+    print('Cleanup complete')

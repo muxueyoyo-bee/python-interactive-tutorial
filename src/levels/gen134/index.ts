@@ -2,19 +2,19 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen134",
-  title: "编写带类型标注的函数: maybe_schedule",
+  title: "编写带类型标注的函数: infer_author",
   category: "中级",
   description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 schedules.py（celery/celery）中 \`maybe_schedule\` 展示了完整的参数和返回值类型标注。
+源文件 simplify_redlines.py（anthropics/skills）中 \`infer_author\` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
-编写函数 maybe_schedule(s: int | float | timedelta | BaseSchedule, relative: bool, app: Celery | None) -> float | timedelta | BaseSchedule，返回格式化字符串。
+编写函数 infer_author(modified_dir: Path, original_docx: Path, default: str) -> str，返回格式化字符串。
 
-来源：celery/celery — celery\\schedules.py`,
+来源：anthropics/skills — skills\\xlsx\\scripts\\office\\helpers\\simplify_redlines.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 maybe_schedule`,
+  defaultCode: `# 编写带类型标注的函数 infer_author`,
   answer: "",
   hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",

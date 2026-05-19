@@ -1,43 +1,42 @@
-# 第258关: 编写上下文管理器: BuildEnvironment
+# 第258关: 编写 try/except 错误处理
 
-> 真实案例：pypa/pip 的 `src\pip\_internal\build_env.py` 中使用了这个模式。
+> 真实案例：pallets/click 的 `src\click\core.py` 中使用了这个模式。
 
 ## 概念介绍
 
-上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
+健壮的代码用 try/except 优雅地处理异常。
 
-源文件 build_env.py 定义了类 `BuildEnvironment`，实现了 __enter__ / __exit__。
+源文件 core.py 使用了 try/except 捕获多种异常类型。
 
-请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
+请仿照此模式编写错误处理代码。
 
 ## 代码示例
 
 ```python
-class BuildEnvironment:
-    def __init__(self, name):
-        self.name = name
-
-    def __enter__(self):
-        print(f'Entering {self.name}')
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print(f'Exiting {self.name}')
-        return False
+try:
+    result = int('not a number')
+    except (EOFError, KeyboardInterrupt) as e:
+        print(f'Caught (EOFError, KeyboardInterrupt): {e}')
+    except Abort as e:
+        print(f'Caught Abort: {e}')
+    except BadParameter as e:
+        print(f'Caught BadParameter: {e}')
+finally:
+    print('Cleanup complete')
 ```
 
 ## 关键点
 
-实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理
+try: ... except SomeError as e: ... finally: ...
 
 ## 常见陷阱
 
-- `with` 语句块结束时自动调用 `__exit__`，即使发生异常
-- `__exit__` 返回 `True` 可以抑制异常（谨慎使用）
-- 也可以用 `contextlib.contextmanager` 装饰器 + `yield` 实现
+- `except:` 不加异常类型会捕获所有异常(包括 KeyboardInterrupt)，通常不推荐
+- `except Exception as e:` 中的 `as e` 可以获取异常对象
+- `finally` 无论是否发生异常都会执行
 
 ## 你的任务
 
-编写类 BuildEnvironment，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
+编写 try/except 块：尝试 int('not a number')，捕获 (EOFError, KeyboardInterrupt), Abort, BadParameter，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

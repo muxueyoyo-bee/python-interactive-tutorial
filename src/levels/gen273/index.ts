@@ -2,19 +2,19 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen273",
-  title: "编写带类型标注的函数: cli",
+  title: "编写带类型标注的函数: find_app_by_string",
   category: "中级",
   description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 array-bench.py（redis/redis）中 \`cli\` 展示了完整的参数和返回值类型标注。
+源文件 cli.py（pallets/flask）中 \`find_app_by_string\` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
-编写函数 cli(self, command: list[str], raw: bool) -> str，返回格式化字符串。
+编写函数 find_app_by_string(module: ModuleType, app_name: str) -> Flask，返回格式化字符串。
 
-来源：redis/redis — tools\\array-bench.py`,
+来源：pallets/flask — src\\flask\\cli.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 cli`,
+  defaultCode: `# 编写带类型标注的函数 find_app_by_string`,
   answer: "",
   hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",

@@ -6,13 +6,13 @@ const level: LevelType = {
   category: "中级",
   description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 compat.py 使用了 try/except 捕获多种异常类型。
+源文件 serve_header.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
-编写 try/except 块：尝试 int('not a number')，捕获 (TypeError, AttributeError), ImportError，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 ConnectionResetError, Exception, FileNotFoundError，并在 finally 中打印 'Cleanup complete'。
 
-来源：psf/requests — src\\requests\\compat.py`,
+来源：nlohmann/json — tools\\serve_header\\serve_header.py`,
   content: "",
   defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",

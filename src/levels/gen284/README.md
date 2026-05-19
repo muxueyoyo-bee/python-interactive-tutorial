@@ -1,20 +1,20 @@
-# 第284关: 编写带类型标注的函数: filter_sqla
+# 第284关: 编写带类型标注的函数: fake_traceback
 
-> 真实案例：sqlalchemy/alembic 的 `noxfile.py` 中使用了这个模式。
+> 真实案例：pallets/jinja 的 `src\jinja2\debug.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 noxfile.py（sqlalchemy/alembic）中 `filter_sqla` 展示了完整的参数和返回值类型标注。
+源文件 debug.py（pallets/jinja）中 `fake_traceback` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def filter_sqla(python: str, sqlalchemy: str, database: str | None, backendonly: str | None) -> bool:
-    return f'filter_sqla result'
+def fake_traceback(exc_value: BaseException, tb: TracebackType | None, filename: str, lineno: int) -> TracebackType:
+    return f'fake_traceback result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 filter_sqla(python: str, sqlalchemy: str, database: str | None, backendonly: str | None) -> bool，返回格式化字符串。
+编写函数 fake_traceback(exc_value: BaseException, tb: TracebackType | None, filename: str, lineno: int) -> TracebackType，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

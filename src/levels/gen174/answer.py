@@ -1,8 +1,2 @@
-try:
-    result = int('not a number')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except message.DecodeError as e:
-        print(f'Caught message.DecodeError: {e}')
-finally:
-    print('Cleanup complete')
+def build_request(self, method: str, url: URL | str) -> Request:
+    return f'build_request result'

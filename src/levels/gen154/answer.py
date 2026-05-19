@@ -1,2 +1,8 @@
-def mount(self, path: str, app: ASGIApp, name: str | None) -> None:
-    return f'mount result'
+class TaskException(Exception):
+    pass
+class InvalidTask(TaskException):
+    pass
+class TaskResultDoesNotExist(TaskException):
+    pass
+class TaskResultMismatch(TaskException):
+    pass

@@ -1,6 +1,2 @@
-try:
-    result = int('not a number')
-    except subprocess.CalledProcessError as e:
-        print(f'Caught subprocess.CalledProcessError: {e}')
-finally:
-    print('Cleanup complete')
+def mount(self, path: str, app: ASGIApp, name: str | None) -> None:
+    return f'mount result'

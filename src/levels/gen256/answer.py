@@ -1,6 +1,7 @@
-try:
-    result = int('not a number')
-    except InvalidVersion as e:
-        print(f'Caught InvalidVersion: {e}')
-finally:
-    print('Cleanup complete')
+def result_callback(func):
+    def decorator(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return decorator

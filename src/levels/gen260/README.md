@@ -1,41 +1,39 @@
-# 第260关: 定义异常类层级: PoetryConsoleError
+# 第260关: 编写装饰器: make_pass_decorator
 
-> 真实案例：python-poetry/poetry 的 `src\poetry\console\exceptions.py` 中使用了这个模式。
+> 真实案例：pallets/click 的 `src\click\decorators.py` 中使用了这个模式。
 
 ## 概念介绍
 
-好的代码库用自定义异常类让调用方精确捕获不同错误。
+装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • PoetryConsoleError → CleoError
-  • GroupNotFoundError → PoetryConsoleError
-  • PoetryRuntimeError → PoetryConsoleError
+源文件 decorators.py（pallets/click）中 `make_pass_decorator` 展示了装饰器模式。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
 ## 代码示例
 
 ```python
-class PoetryConsoleError(CleoError):
-    pass
-class GroupNotFoundError(PoetryConsoleError):
-    pass
-class PoetryRuntimeError(PoetryConsoleError):
-    pass
+def make_pass_decorator(func):
+    def decorator(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return decorator
 ```
 
 ## 关键点
 
-class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔
+外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper
 
 ## 常见陷阱
 
-- `__init__` 不是构造器，是初始化方法（构造器是 `__new__`）
-- 实例方法的第一个参数必须显式写 `self`
-- `pass` 是一个空语句，占位用
+- 装饰器本质是 `decorator(func)` 返回新函数
+- 内层 `wrapper` 用 `*args, **kwargs` 接收任意参数
+- `functools.wraps(func)` 保留原函数的 `__name__` 和 `__doc__`
 
 ## 你的任务
 
-定义以下异常类: PoetryConsoleError(CleoError), GroupNotFoundError(PoetryConsoleError), PoetryRuntimeError(PoetryConsoleError)
+编写装饰器 make_pass_decorator，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
 预期行为：参考上方代码示例的输出。

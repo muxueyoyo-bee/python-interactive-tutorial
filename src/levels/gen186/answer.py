@@ -1,10 +1,10 @@
 try:
     result = int('not a number')
-    except (OSError, IOError) as e:
-        print(f'Caught (OSError, IOError): {e}')
-    except (json.JSONDecodeError, IOError) as e:
-        print(f'Caught (json.JSONDecodeError, IOError): {e}')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
+    except ImportFromStringError as e:
+        print(f'Caught ImportFromStringError: {e}')
+    except OSError as e:
+        print(f'Caught OSError: {e}')
 finally:
     print('Cleanup complete')

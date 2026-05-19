@@ -1,2 +1,2 @@
-def filter_sqla(python: str, sqlalchemy: str, database: str | None, backendonly: str | None) -> bool:
-    return f'filter_sqla result'
+def fake_traceback(exc_value: BaseException, tb: TracebackType | None, filename: str, lineno: int) -> TracebackType:
+    return f'fake_traceback result'

@@ -1,2 +1,6 @@
-def evaluate_rules(self, rules: List[Rule], input_data: Dict[str, Any]) -> Dict[str, Any]:
-    return f'evaluate_rules result'
+try:
+    result = int('not a number')
+    except ValueError as e:
+        print(f'Caught ValueError: {e}')
+finally:
+    print('Cleanup complete')

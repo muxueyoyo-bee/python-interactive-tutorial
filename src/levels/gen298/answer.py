@@ -1,2 +1,7 @@
-def write_prototypes(out_path: Path, headers: List[str], src_name: str) -> None:
-    return f'write_prototypes result'
+def wrap_function(func):
+    def wrapper(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return wrapper

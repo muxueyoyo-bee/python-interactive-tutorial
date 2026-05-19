@@ -1,8 +1,6 @@
 try:
     result = int('not a number')
-    except BaseException as e:
-        print(f'Caught BaseException: {e}')
-    except ImportError as e:
-        print(f'Caught ImportError: {e}')
+    except IOError as e:
+        print(f'Caught IOError: {e}')
 finally:
     print('Cleanup complete')

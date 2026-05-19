@@ -1,34 +1,39 @@
-# 第234关: 编写带类型标注的函数: replace_inconsistent_pandas_namespace
+# 第234关: 编写装饰器: register
 
-> 真实案例：pandas-dev/pandas 的 `scripts\check_for_inconsistent_pandas_namespace.py` 中使用了这个模式。
+> 真实案例：matplotlib/matplotlib 的 `lib\matplotlib\animation.py` 中使用了这个模式。
 
 ## 概念介绍
 
-类型标注使代码更可读、IDE 能提供更好的自动补全。
+装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 check_for_inconsistent_pandas_namespace.py（pandas-dev/pandas）中 `replace_inconsistent_pandas_namespace` 展示了完整的参数和返回值类型标注。
+源文件 animation.py（matplotlib/matplotlib）中 `register` 展示了装饰器模式。
 
-请仿照此模式编写一个带类型标注的函数。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
 ## 代码示例
 
 ```python
-def replace_inconsistent_pandas_namespace(visitor: Visitor, content: str) -> str:
-    return f'replace_inconsistent_pandas_namespace result'
+def register(func):
+    def wrapper(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return wrapper
 ```
 
 ## 关键点
 
-def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
+外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper
 
 ## 常见陷阱
 
-- 类型标注只是提示，Python 运行时不做类型检查
-- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
-- 返回值类型用 `->` 箭头
+- 装饰器本质是 `decorator(func)` 返回新函数
+- 内层 `wrapper` 用 `*args, **kwargs` 接收任意参数
+- `functools.wraps(func)` 保留原函数的 `__name__` 和 `__doc__`
 
 ## 你的任务
 
-编写函数 replace_inconsistent_pandas_namespace(visitor: Visitor, content: str) -> str，返回格式化字符串。
+编写装饰器 register，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
 预期行为：参考上方代码示例的输出。

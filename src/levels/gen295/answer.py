@@ -1,2 +1,2 @@
-def install_callback(ctx: click.Context, param: click.Parameter, value: Any) -> Any:
-    return f'install_callback result'
+def generate_pip_from_conda(conda_path: pathlib.Path, pip_path: pathlib.Path, compare: bool) -> bool:
+    return f'generate_pip_from_conda result'

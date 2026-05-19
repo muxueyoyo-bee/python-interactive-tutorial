@@ -1,2 +1,7 @@
-def replace_inconsistent_pandas_namespace(visitor: Visitor, content: str) -> str:
-    return f'replace_inconsistent_pandas_namespace result'
+def register(func):
+    def wrapper(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return wrapper

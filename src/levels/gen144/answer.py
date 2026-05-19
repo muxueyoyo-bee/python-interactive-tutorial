@@ -1,2 +1,8 @@
-def result_processor(self, dialect: typing.Any, coltype: typing.Any) -> typing.Union[float, None]:
-    return f'result_processor result'
+class CeleryWarning(UserWarning):
+    pass
+class AlwaysEagerIgnored(CeleryWarning):
+    pass
+class DuplicateNodenameWarning(CeleryWarning):
+    pass
+class FixupWarning(CeleryWarning):
+    pass

@@ -1,8 +1,7 @@
-class RequestException(IOError):
-    pass
-class InvalidJSONError(RequestException):
-    pass
-class HTTPError(RequestException):
-    pass
-class ConnectionError(RequestException):
-    pass
+def inside_circle(func):
+    def _f(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return _f

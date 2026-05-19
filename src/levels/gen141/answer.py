@@ -1,7 +1,8 @@
-def crypto_adapter(func):
-    def continuation(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return continuation
+try:
+    result = int('not a number')
+    except IOError as e:
+        print(f'Caught IOError: {e}')
+    except getopt.error as e:
+        print(f'Caught getopt.error: {e}')
+finally:
+    print('Cleanup complete')

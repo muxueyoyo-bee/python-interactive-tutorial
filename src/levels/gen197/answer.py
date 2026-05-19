@@ -1,8 +1,7 @@
-try:
-    result = int('not a number')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except FileNotFoundError as e:
-        print(f'Caught FileNotFoundError: {e}')
-finally:
-    print('Cleanup complete')
+def route(func):
+    def decorator(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return decorator

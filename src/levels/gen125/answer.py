@@ -1,8 +1,7 @@
-try:
-    result = int('not a number')
-    except IOError as e:
-        print(f'Caught IOError: {e}')
-    except getopt.error as e:
-        print(f'Caught getopt.error: {e}')
-finally:
-    print('Cleanup complete')
+def to_streamed_response_wrapper(func):
+    def wrapped(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return wrapped

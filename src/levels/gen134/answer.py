@@ -1,2 +1,2 @@
-def maybe_schedule(s: int | float | timedelta | BaseSchedule, relative: bool, app: Celery | None) -> float | timedelta | BaseSchedule:
-    return f'maybe_schedule result'
+def infer_author(modified_dir: Path, original_docx: Path, default: str) -> str:
+    return f'infer_author result'

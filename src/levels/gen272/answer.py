@@ -1,10 +1,10 @@
 try:
     result = int('not a number')
-    except BenchError as e:
-        print(f'Caught BenchError: {e}')
+    except AttributeError as e:
+        print(f'Caught AttributeError: {e}')
     except Exception as e:
         print(f'Caught Exception: {e}')
-    except subprocess.CalledProcessError as e:
-        print(f'Caught subprocess.CalledProcessError: {e}')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
 finally:
     print('Cleanup complete')

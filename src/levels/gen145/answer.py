@@ -1,8 +1,8 @@
 __all__ = [
-    "ASGITransport",
-    "AsyncBaseTransport",
-    "AsyncByteStream",
-    "AsyncClient",
-    "AsyncHTTPTransport",
-    "Auth",
+    "Celery",
+    "bugreport",
+    "shared_task",
+    "Task",
+    "current_app",
+    "current_task",
 ]

@@ -1,6 +1,11 @@
-try:
-    result = int('not a number')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-finally:
-    print('Cleanup complete')
+class MultipartWriter:
+    def __init__(self, name):
+        self.name = name
+
+    def __enter__(self):
+        print(f'Entering {self.name}')
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f'Exiting {self.name}')
+        return False

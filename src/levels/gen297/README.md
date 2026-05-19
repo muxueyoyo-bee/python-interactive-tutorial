@@ -1,25 +1,25 @@
-# 第297关: 编写装饰器: generate_list_convertor
+# 第297关: 编写装饰器: delegate_names
 
-> 真实案例：tiangolo/typer 的 `typer\main.py` 中使用了这个模式。
+> 真实案例：pandas-dev/pandas 的 `pandas\core\accessor.py` 中使用了这个模式。
 
 ## 概念介绍
 
 装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 main.py（tiangolo/typer）中 `generate_list_convertor` 展示了装饰器模式。
+源文件 accessor.py（pandas-dev/pandas）中 `delegate_names` 展示了装饰器模式。
 
 请编写一个装饰器，在函数调用前后各打印一行信息。
 
 ## 代码示例
 
 ```python
-def generate_list_convertor(func):
-    def internal_convertor(*args, **kwargs):
+def delegate_names(func):
+    def add_delegate_accessors(*args, **kwargs):
         print('before call')
         result = func(*args, **kwargs)
         print('after call')
         return result
-    return internal_convertor
+    return add_delegate_accessors
 ```
 
 ## 关键点
@@ -34,6 +34,6 @@ def generate_list_convertor(func):
 
 ## 你的任务
 
-编写装饰器 generate_list_convertor，包装目标函数并在调用前后打印 'before call' 和 'after call'。
+编写装饰器 delegate_names，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
 预期行为：参考上方代码示例的输出。

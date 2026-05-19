@@ -1,8 +1,10 @@
 try:
     result = int('not a number')
-    except (TypeError, AttributeError) as e:
-        print(f'Caught (TypeError, AttributeError): {e}')
-    except ImportError as e:
-        print(f'Caught ImportError: {e}')
+    except ConnectionResetError as e:
+        print(f'Caught ConnectionResetError: {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except FileNotFoundError as e:
+        print(f'Caught FileNotFoundError: {e}')
 finally:
     print('Cleanup complete')

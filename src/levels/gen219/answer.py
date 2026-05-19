@@ -1,2 +1,8 @@
-def open_resource(self, resource: str, mode: str, encoding: str | None) -> t.IO[t.AnyStr]:
-    return f'open_resource result'
+try:
+    result = int('not a number')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except getopt.GetoptError as e:
+        print(f'Caught getopt.GetoptError: {e}')
+finally:
+    print('Cleanup complete')

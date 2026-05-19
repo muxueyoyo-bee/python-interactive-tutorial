@@ -1,2 +1,10 @@
-def MergeMessageTo(cls, source: _T, mask: field_mask_pb2.FieldMask, options: MergeOptions, destination: _T) -> _T:
-    return f'MergeMessageTo result'
+try:
+    result = int('not a number')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
+    except brotli.error as e:
+        print(f'Caught brotli.error: {e}')
+    except zlib.error as e:
+        print(f'Caught zlib.error: {e}')
+finally:
+    print('Cleanup complete')

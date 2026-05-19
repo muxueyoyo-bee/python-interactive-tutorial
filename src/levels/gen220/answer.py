@@ -1,7 +1,2 @@
-def command(func):
-    def decorator(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return decorator
+def render_template(template: Template, context: Context) -> None:
+    return f'render_template result'

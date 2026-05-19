@@ -1,6 +1,2 @@
-try:
-    result = int('not a number')
-    except IndexError as e:
-        print(f'Caught IndexError: {e}')
-finally:
-    print('Cleanup complete')
+def build_client_middlewares(handler: ClientHandlerType, middlewares: Sequence[ClientMiddlewareType]) -> ClientHandlerType:
+    return f'build_client_middlewares result'

@@ -1,8 +1,7 @@
-class SphinxError(Exception):
-    pass
-class SphinxWarning(SphinxError):
-    pass
-class ApplicationError(SphinxError):
-    pass
-class ExtensionError(SphinxError):
-    pass
+def async_variant(func):
+    def decorator(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return decorator

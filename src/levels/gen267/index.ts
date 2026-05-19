@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen267",
-  title: "编写上下文管理器: LazyFileOverHTTP",
+  title: "编写装饰器: processor",
   category: "进阶",
-  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
+  description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 lazy_wheel.py 定义了类 \`LazyFileOverHTTP\`，实现了 __enter__ / __exit__。
+源文件 imagepipe.py（pallets/click）中 \`processor\` 展示了装饰器模式。
 
-请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
-编写类 LazyFileOverHTTP，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
+编写装饰器 processor，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
-来源：python-poetry/poetry — src\\poetry\\inspection\\lazy_wheel.py`,
+来源：pallets/click — examples\\imagepipe\\imagepipe.py`,
   content: "",
-  defaultCode: `# 编写上下文管理器 LazyFileOverHTTP`,
+  defaultCode: `# 编写装饰器 processor`,
   answer: "",
-  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
+  hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["context-manager", "class", "with-statement"],
+  tags: ["decorator", "functional"],
 };
 
 export default level;

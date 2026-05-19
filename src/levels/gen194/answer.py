@@ -1,7 +1,2 @@
-def register(func):
-    def wrapper(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return wrapper
+def add_api_route(self, path: str, endpoint: Callable[..., Any]) -> None:
+    return f'add_api_route result'

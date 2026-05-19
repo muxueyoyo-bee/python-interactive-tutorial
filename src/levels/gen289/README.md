@@ -1,34 +1,34 @@
-# 第289关: 编写带类型标注的函数: tests
+# 第289关: 定义模块的公共 API
 
-> 真实案例：sqlalchemy/sqlalchemy 的 `noxfile.py` 中使用了这个模式。
+> 真实案例：pandas-dev/pandas 的 `pandas\arrays\__init__.py` 中使用了这个模式。
 
 ## 概念介绍
 
-类型标注使代码更可读、IDE 能提供更好的自动补全。
+__all__ 是 Python 模块的公共接口声明，控制 `from module import *` 的行为。
 
-源文件 noxfile.py（sqlalchemy/sqlalchemy）中 `tests` 展示了完整的参数和返回值类型标注。
+源文件 __init__.py 暴露了 13 个公开符号。
 
-请仿照此模式编写一个带类型标注的函数。
+请仿照此模式，为以下符号定义 __all__ 列表。
 
 ## 代码示例
 
 ```python
-def tests(session: nox.Session, database: str, greenlet: str, backendonly: str, cext: str) -> None:
-    return f'tests result'
+__all__ = [
+    "ArrowExtensionArray",
+    "ArrowStringArray",
+    "BooleanArray",
+    "Categorical",
+    "DatetimeArray",
+    "FloatingArray",
+]
 ```
 
 ## 关键点
 
-def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
-
-## 常见陷阱
-
-- 类型标注只是提示，Python 运行时不做类型检查
-- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
-- 返回值类型用 `->` 箭头
+__all__ = ['Name1', 'Name2', ...] —— 字符串列表
 
 ## 你的任务
 
-编写函数 tests(session: nox.Session, database: str, greenlet: str, backendonly: str, cext: str) -> None，返回格式化字符串。
+定义 __all__ 列表，包含以下 6 个公开符号: ArrowExtensionArray, ArrowStringArray, BooleanArray, Categorical, DatetimeArray, FloatingArray
 
 预期行为：参考上方代码示例的输出。

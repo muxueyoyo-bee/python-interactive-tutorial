@@ -1,10 +1,2 @@
-try:
-    result = int('not a number')
-    except ConnectionResetError as e:
-        print(f'Caught ConnectionResetError: {e}')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except FileNotFoundError as e:
-        print(f'Caught FileNotFoundError: {e}')
-finally:
-    print('Cleanup complete')
+def get_request_handler(dependant: Dependant, body_field: ModelField | None, status_code: int | None, response_class: type[Response] | DefaultPlaceholder, response_field: ModelField | None, response_model_include: IncEx | None, response_model_exclude: IncEx | None, response_model_by_alias: bool, response_model_exclude_unset: bool, response_model_exclude_defaults: bool, response_model_exclude_none: bool, dependency_overrides_provider: Any | None, embed_body_fields: bool, strict_content_type: bool | DefaultPlaceholder, stream_item_field: ModelField | None, is_json_stream: bool) -> Callable[[Request], Coroutine[Any, Any, Response]]:
+    return f'get_request_handler result'

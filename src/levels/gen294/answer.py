@@ -1,2 +1,2 @@
-def print_version(ctx: click.Context, param: Option, value: bool) -> None:
-    return f'print_version result'
+def replace_inconsistent_pandas_namespace(visitor: Visitor, content: str) -> str:
+    return f'replace_inconsistent_pandas_namespace result'

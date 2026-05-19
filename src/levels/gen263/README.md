@@ -1,20 +1,20 @@
-# 第263关: 编写带类型标注的函数: create_poetry
+# 第263关: 编写带类型标注的函数: iter_rows
 
-> 真实案例：python-poetry/poetry 的 `src\poetry\factory.py` 中使用了这个模式。
+> 真实案例：pallets/click 的 `src\click\formatting.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 factory.py（python-poetry/poetry）中 `create_poetry` 展示了完整的参数和返回值类型标注。
+源文件 formatting.py（pallets/click）中 `iter_rows` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def create_poetry(self, cwd: Path | None, with_groups: bool, io: IO | None, disable_plugins: bool, disable_cache: bool) -> Poetry:
-    return f'create_poetry result'
+def iter_rows(rows: cabc.Iterable[tuple[str, str]], col_count: int) -> cabc.Iterator[tuple[str, ...]]:
+    return f'iter_rows result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 create_poetry(self, cwd: Path | None, with_groups: bool, io: IO | None, disable_plugins: bool, disable_cache: bool) -> Poetry，返回格式化字符串。
+编写函数 iter_rows(rows: cabc.Iterable[tuple[str, str]], col_count: int) -> cabc.Iterator[tuple[str, ...]]，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

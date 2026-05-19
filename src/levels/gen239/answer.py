@@ -1,2 +1,8 @@
-def send(self, request: PreparedRequest, stream: bool, timeout: _t.TimeoutType, verify: _t.VerifyType, cert: _t.CertType, proxies: dict[str, str] | None) -> Response:
-    return f'send result'
+try:
+    result = int('not a number')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except FileNotFoundError as e:
+        print(f'Caught FileNotFoundError: {e}')
+finally:
+    print('Cleanup complete')

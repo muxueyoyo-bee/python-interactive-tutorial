@@ -1,6 +1,7 @@
-try:
-    result = int('not a number')
-    except CompileError as e:
-        print(f'Caught CompileError: {e}')
-finally:
-    print('Cleanup complete')
+def command(func):
+    def decorator(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return decorator

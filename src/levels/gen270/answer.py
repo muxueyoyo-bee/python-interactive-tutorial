@@ -1,6 +1,2 @@
-try:
-    result = int('not a number')
-    except FileNotFoundError as e:
-        print(f'Caught FileNotFoundError: {e}')
-finally:
-    print('Cleanup complete')
+def open_resource(self, resource: str, mode: str, encoding: str | None) -> t.IO[t.AnyStr]:
+    return f'open_resource result'

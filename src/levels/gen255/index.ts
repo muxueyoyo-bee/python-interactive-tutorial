@@ -2,32 +2,27 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen255",
-  title: "定义异常类层级: ConsoleError",
-  category: "进阶",
-  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
+  title: "编写 Click CLI 命令: cli",
+  category: "中级",
+  description: `Click 是 Python 生态中最流行的 CLI 框架之一。
 
-源文件 errors.py 定义了如下继承层级：
-  • ConsoleError → Exception
-  • StyleSyntaxError → ConsoleError
-  • StyleStackError → ConsoleError
-  • NotRenderableError → ConsoleError
+源文件 cli.py 使用 @click.command() 定义 CLI 入口。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写一个简单的 Click 命令。
 
-定义以下异常类: ConsoleError(Exception), StyleSyntaxError(ConsoleError), StyleStackError(ConsoleError), NotRenderableError(ConsoleError)
+编写一个 Click 命令 cli，用 click.echo() 输出 'Hello, World!'。
 
-来源：pypa/pip — src\\pip\\_vendor\\rich\\errors.py`,
+来源：pallets/click — examples\\complex\\complex\\cli.py`,
   content: "",
-  defaultCode: `class ConsoleError(Exception):
-    pass
+  defaultCode: `import click
 
-# 定义 StyleSyntaxError, StyleStackError, NotRenderableError，继承自 ConsoleError`,
+# 编写 cli 命令`,
   answer: "",
-  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
+  hint: `用 @click.command() 装饰函数，用 click.echo() 输出`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["exception", "class", "inheritance"],
+  tags: ["cli", "click"],
 };
 
 export default level;

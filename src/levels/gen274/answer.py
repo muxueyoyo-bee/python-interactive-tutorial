@@ -1,6 +1,8 @@
 try:
     result = int('not a number')
-    except json.decoder.JSONDecodeError as e:
-        print(f'Caught json.decoder.JSONDecodeError: {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except OSError as e:
+        print(f'Caught OSError: {e}')
 finally:
     print('Cleanup complete')

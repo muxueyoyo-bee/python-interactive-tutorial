@@ -2,31 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen260",
-  title: "定义异常类层级: PoetryConsoleError",
+  title: "编写装饰器: make_pass_decorator",
   category: "进阶",
-  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
+  description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • PoetryConsoleError → CleoError
-  • GroupNotFoundError → PoetryConsoleError
-  • PoetryRuntimeError → PoetryConsoleError
+源文件 decorators.py（pallets/click）中 \`make_pass_decorator\` 展示了装饰器模式。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
-定义以下异常类: PoetryConsoleError(CleoError), GroupNotFoundError(PoetryConsoleError), PoetryRuntimeError(PoetryConsoleError)
+编写装饰器 make_pass_decorator，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
-来源：python-poetry/poetry — src\\poetry\\console\\exceptions.py`,
+来源：pallets/click — src\\click\\decorators.py`,
   content: "",
-  defaultCode: `class PoetryConsoleError(CleoError):
-    pass
-
-# 定义 GroupNotFoundError, PoetryRuntimeError，继承自 PoetryConsoleError`,
+  defaultCode: `# 编写装饰器 make_pass_decorator`,
   answer: "",
-  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
+  hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["exception", "class", "inheritance"],
+  tags: ["decorator", "functional"],
 };
 
 export default level;

@@ -1,10 +1,2 @@
-try:
-    result = int('not a number')
-    except Error as e:
-        print(f'Caught Error: {e}')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except FileNotFoundError as e:
-        print(f'Caught FileNotFoundError: {e}')
-finally:
-    print('Cleanup complete')
+def has_required_scope(conn: HTTPConnection, scopes: Sequence[str]) -> bool:
+    return f'has_required_scope result'

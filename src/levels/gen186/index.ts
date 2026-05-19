@@ -6,13 +6,13 @@ const level: LevelType = {
   category: "中级",
   description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 security_reminder_hook.py 使用了 try/except 捕获多种异常类型。
+源文件 config.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
-编写 try/except 块：尝试 int('not a number')，捕获 (OSError, IOError), (json.JSONDecodeError, IOError), Exception，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 ImportError, ImportFromStringError, OSError，并在 finally 中打印 'Cleanup complete'。
 
-来源：LING71671/Open-ClaudeCode — plugins\\security-guidance\\hooks\\security_reminder_hook.py`,
+来源：encode/uvicorn — uvicorn\\config.py`,
   content: "",
   defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",

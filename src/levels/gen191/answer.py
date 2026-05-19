@@ -1,8 +1,2 @@
-__all__ = [
-    "Size",
-    "Divider",
-    "SubplotDivider",
-    "make_axes_locatable",
-    "AxesGrid",
-    "Grid",
-]
+def print_version(ctx: click.Context, param: click.Parameter, value: bool) -> None:
+    return f'print_version result'

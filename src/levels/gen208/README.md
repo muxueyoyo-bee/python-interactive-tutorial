@@ -1,39 +1,40 @@
-# 第208关: 编写 Click CLI 命令: cli
+# 第208关: 编写 try/except 错误处理
 
-> 真实案例：pallets/click 的 `examples\complex\complex\cli.py` 中使用了这个模式。
+> 真实案例：google/protobuf 的 `examples\add_person.py` 中使用了这个模式。
 
 ## 概念介绍
 
-Click 是 Python 生态中最流行的 CLI 框架之一。
+健壮的代码用 try/except 优雅地处理异常。
 
-源文件 cli.py 使用 @click.command() 定义 CLI 入口。
+源文件 add_person.py 使用了 try/except 捕获多种异常类型。
 
-请仿照此模式编写一个简单的 Click 命令。
+请仿照此模式编写错误处理代码。
 
 ## 代码示例
 
 ```python
-import click
-
-@click.command()
-click.option('--home', type=click.Path(exists=True, file_okay=False, resolve_path=True), help='Changes the folder to operate on.')
-click.option('-v', '--verbose', is_flag=True, help='Enables verbose mode.')
-def cli():
-    click.echo('Hello, World!')
+try:
+    result = int('not a number')
+    except IOError as e:
+        print(f'Caught IOError: {e}')
+    except NameError as e:
+        print(f'Caught NameError: {e}')
+finally:
+    print('Cleanup complete')
 ```
 
 ## 关键点
 
-用 @click.command() 装饰函数，用 click.echo() 输出
+try: ... except SomeError as e: ... finally: ...
 
 ## 常见陷阱
 
-- `if __name__ == '__main__':` 保证脚本既能导入又能直接运行
-- Click 的 `@click.option('--name')` 自动生成 `--help` 文档
-- argparse 的 `add_argument` 支持 `type=int` 自动类型转换
+- `except:` 不加异常类型会捕获所有异常(包括 KeyboardInterrupt)，通常不推荐
+- `except Exception as e:` 中的 `as e` 可以获取异常对象
+- `finally` 无论是否发生异常都会执行
 
 ## 你的任务
 
-编写一个 Click 命令 cli，用 click.echo() 输出 'Hello, World!'。
+编写 try/except 块：尝试 int('not a number')，捕获 IOError, NameError，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

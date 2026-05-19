@@ -6,13 +6,13 @@ const level: LevelType = {
   category: "中级",
   description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 config.py 使用了 try/except 捕获多种异常类型。
+源文件 compiler.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
-编写 try/except 块：尝试 int('not a number')，捕获 ConfigError, Exception, SyntaxError，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 (nodes.Impossible, Exception), CompilerExit, IndexError，并在 finally 中打印 'Cleanup complete'。
 
-来源：sphinx-doc/sphinx — sphinx\\config.py`,
+来源：pallets/jinja — src\\jinja2\\compiler.py`,
   content: "",
   defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",

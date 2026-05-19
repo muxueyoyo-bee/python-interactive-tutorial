@@ -1,2 +1,2 @@
-def create_poetry(self, cwd: Path | None, with_groups: bool, io: IO | None, disable_plugins: bool, disable_cache: bool) -> Poetry:
-    return f'create_poetry result'
+def iter_rows(rows: cabc.Iterable[tuple[str, str]], col_count: int) -> cabc.Iterator[tuple[str, ...]]:
+    return f'iter_rows result'

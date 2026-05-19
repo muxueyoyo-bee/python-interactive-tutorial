@@ -1,8 +1,7 @@
-try:
-    result = int('not a number')
-    except KeyError as e:
-        print(f'Caught KeyError: {e}')
-    except StopIteration as e:
-        print(f'Caught StopIteration: {e}')
-finally:
-    print('Cleanup complete')
+def register_type(func):
+    def _inner(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return _inner

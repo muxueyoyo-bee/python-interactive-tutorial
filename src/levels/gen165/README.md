@@ -1,34 +1,40 @@
-# 第165关: 编写带类型标注的函数: add_api_route
+# 第165关: 编写 try/except 错误处理
 
-> 真实案例：fastapi/fastapi 的 `fastapi\applications.py` 中使用了这个模式。
+> 真实案例：encode/databases 的 `databases\importer.py` 中使用了这个模式。
 
 ## 概念介绍
 
-类型标注使代码更可读、IDE 能提供更好的自动补全。
+健壮的代码用 try/except 优雅地处理异常。
 
-源文件 applications.py（fastapi/fastapi）中 `add_api_route` 展示了完整的参数和返回值类型标注。
+源文件 importer.py 使用了 try/except 捕获多种异常类型。
 
-请仿照此模式编写一个带类型标注的函数。
+请仿照此模式编写错误处理代码。
 
 ## 代码示例
 
 ```python
-def add_api_route(self, path: str, endpoint: Callable[..., Any]) -> None:
-    return f'add_api_route result'
+try:
+    result = int('not a number')
+    except AttributeError as e:
+        print(f'Caught AttributeError: {e}')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
+finally:
+    print('Cleanup complete')
 ```
 
 ## 关键点
 
-def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
+try: ... except SomeError as e: ... finally: ...
 
 ## 常见陷阱
 
-- 类型标注只是提示，Python 运行时不做类型检查
-- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
-- 返回值类型用 `->` 箭头
+- `except:` 不加异常类型会捕获所有异常(包括 KeyboardInterrupt)，通常不推荐
+- `except Exception as e:` 中的 `as e` 可以获取异常对象
+- `finally` 无论是否发生异常都会执行
 
 ## 你的任务
 
-编写函数 add_api_route(self, path: str, endpoint: Callable[..., Any]) -> None，返回格式化字符串。
+编写 try/except 块：尝试 int('not a number')，捕获 AttributeError, ImportError，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

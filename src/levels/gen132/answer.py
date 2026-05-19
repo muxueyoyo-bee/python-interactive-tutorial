@@ -1,7 +1,6 @@
-def register_type(func):
-    def _inner(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return _inner
+try:
+    result = int('not a number')
+    except OSError as e:
+        print(f'Caught OSError: {e}')
+finally:
+    print('Cleanup complete')

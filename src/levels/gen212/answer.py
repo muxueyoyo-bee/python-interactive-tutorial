@@ -1,2 +1,2 @@
-def batch(iterable: cabc.Iterable[V], batch_size: int) -> list[tuple[V, ...]]:
-    return f'batch result'
+def FindFileContainingExtension(self, extendee_name: str, extension_number: int) -> Optional['descriptor_pb2.FileDescriptorProto']:
+    return f'FindFileContainingExtension result'

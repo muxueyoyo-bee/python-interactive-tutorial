@@ -1,7 +1,10 @@
-def as_view(func):
-    def view(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return view
+try:
+    result = int('not a number')
+    except Error as e:
+        print(f'Caught Error: {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except KeyError as e:
+        print(f'Caught KeyError: {e}')
+finally:
+    print('Cleanup complete')

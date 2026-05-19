@@ -1,44 +1,39 @@
-# 第163关: 定义异常类层级: HTTPException
+# 第163关: 编写装饰器: crypto_adapter
 
-> 真实案例：fastapi/fastapi 的 `fastapi\exceptions.py` 中使用了这个模式。
+> 真实案例：dolphin-emu/dolphin 的 `Externals\mbedtls\scripts\config.py` 中使用了这个模式。
 
 ## 概念介绍
 
-好的代码库用自定义异常类让调用方精确捕获不同错误。
+装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • HTTPException → StarletteHTTPException
-  • WebSocketException → StarletteWebSocketException
-  • FastAPIError → RuntimeError
-  • DependencyScopeError → FastAPIError
+源文件 config.py（dolphin-emu/dolphin）中 `crypto_adapter` 展示了装饰器模式。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
 ## 代码示例
 
 ```python
-class HTTPException(StarletteHTTPException):
-    pass
-class WebSocketException(StarletteWebSocketException):
-    pass
-class FastAPIError(RuntimeError):
-    pass
-class DependencyScopeError(FastAPIError):
-    pass
+def crypto_adapter(func):
+    def continuation(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return continuation
 ```
 
 ## 关键点
 
-class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔
+外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper
 
 ## 常见陷阱
 
-- `__init__` 不是构造器，是初始化方法（构造器是 `__new__`）
-- 实例方法的第一个参数必须显式写 `self`
-- `pass` 是一个空语句，占位用
+- 装饰器本质是 `decorator(func)` 返回新函数
+- 内层 `wrapper` 用 `*args, **kwargs` 接收任意参数
+- `functools.wraps(func)` 保留原函数的 `__name__` 和 `__doc__`
 
 ## 你的任务
 
-定义以下异常类: HTTPException(StarletteHTTPException), WebSocketException(StarletteWebSocketException), FastAPIError(RuntimeError), DependencyScopeError(FastAPIError)
+编写装饰器 crypto_adapter，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
 预期行为：参考上方代码示例的输出。

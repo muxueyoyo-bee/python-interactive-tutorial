@@ -1,7 +1,2 @@
-def prepare_map(func):
-    def func(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return func
+def evaluate_rules(self, rules: List[Rule], input_data: Dict[str, Any]) -> Dict[str, Any]:
+    return f'evaluate_rules result'

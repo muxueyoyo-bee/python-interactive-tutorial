@@ -1,2 +1,2 @@
-def get_cache_key(self, name: str, filename: str | None) -> str:
-    return f'get_cache_key result'
+def from_dict(cls, frontmatter: Dict[str, Any], message: str) -> 'Rule':
+    return f'from_dict result'

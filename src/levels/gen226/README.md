@@ -1,12 +1,12 @@
 # 第226关: 编写 try/except 错误处理
 
-> 真实案例：pallets/jinja 的 `src\jinja2\bccache.py` 中使用了这个模式。
+> 真实案例：LING71671/Open-ClaudeCode 的 `plugins\hookify\core\config_loader.py` 中使用了这个模式。
 
 ## 概念介绍
 
 健壮的代码用 try/except 优雅地处理异常。
 
-源文件 bccache.py 使用了 try/except 捕获多种异常类型。
+源文件 config_loader.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
@@ -15,12 +15,12 @@
 ```python
 try:
     result = int('not a number')
-    except (EOFError, ValueError, TypeError) as e:
-        print(f'Caught (EOFError, ValueError, TypeError): {e}')
-    except (FileNotFoundError, IsADirectoryError, PermissionError) as e:
-        print(f'Caught (FileNotFoundError, IsADirectoryError, PermissionError): {e}')
-    except BaseException as e:
-        print(f'Caught BaseException: {e}')
+    except (IOError, OSError, PermissionError) as e:
+        print(f'Caught (IOError, OSError, PermissionError): {e}')
+    except (ValueError, KeyError, AttributeError, TypeError) as e:
+        print(f'Caught (ValueError, KeyError, AttributeError, TypeError): {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
 finally:
     print('Cleanup complete')
 ```
@@ -37,6 +37,6 @@ try: ... except SomeError as e: ... finally: ...
 
 ## 你的任务
 
-编写 try/except 块：尝试 int('not a number')，捕获 (EOFError, ValueError, TypeError), (FileNotFoundError, IsADirectoryError, PermissionError), BaseException，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 (IOError, OSError, PermissionError), (ValueError, KeyError, AttributeError, TypeError), Exception，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

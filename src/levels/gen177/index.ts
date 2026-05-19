@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen177",
-  title: "编写带类型标注的函数: pack",
-  category: "中级",
-  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
+  title: "编写上下文管理器: BaseTransport",
+  category: "进阶",
+  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
 
-源文件 any.py（google/protobuf）中 \`pack\` 展示了完整的参数和返回值类型标注。
+源文件 base.py 定义了类 \`BaseTransport\`，实现了 __enter__ / __exit__。
 
-请仿照此模式编写一个带类型标注的函数。
+请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
 
-编写函数 pack(msg: Message, type_url_prefix: Optional[str], deterministic: Optional[bool]) -> Any，返回格式化字符串。
+编写类 BaseTransport，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
 
-来源：google/protobuf — python\\google\\protobuf\\any.py`,
+来源：encode/httpx — httpx\\_transports\\base.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 pack`,
+  defaultCode: `# 编写上下文管理器 BaseTransport`,
   answer: "",
-  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
+  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["type-hints", "annotations"],
+  tags: ["context-manager", "class", "with-statement"],
 };
 
 export default level;

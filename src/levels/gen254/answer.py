@@ -1,8 +1,6 @@
-class ResolverException(Exception):
+class ClickException(Exception):
     pass
-class RequirementsConflicted(ResolverException, Generic[RT, CT]):
+class UsageError(ClickException):
     pass
-class InconsistentCandidate(ResolverException, Generic[RT, CT]):
-    pass
-class ResolutionError(ResolverException):
+class FileError(ClickException):
     pass

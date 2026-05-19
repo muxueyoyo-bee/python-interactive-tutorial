@@ -1,20 +1,20 @@
-# 第295关: 编写带类型标注的函数: install_callback
+# 第295关: 编写带类型标注的函数: generate_pip_from_conda
 
-> 真实案例：tiangolo/typer 的 `typer\completion.py` 中使用了这个模式。
+> 真实案例：pandas-dev/pandas 的 `scripts\generate_pip_deps_from_conda.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 completion.py（tiangolo/typer）中 `install_callback` 展示了完整的参数和返回值类型标注。
+源文件 generate_pip_deps_from_conda.py（pandas-dev/pandas）中 `generate_pip_from_conda` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def install_callback(ctx: click.Context, param: click.Parameter, value: Any) -> Any:
-    return f'install_callback result'
+def generate_pip_from_conda(conda_path: pathlib.Path, pip_path: pathlib.Path, compare: bool) -> bool:
+    return f'generate_pip_from_conda result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 install_callback(ctx: click.Context, param: click.Parameter, value: Any) -> Any，返回格式化字符串。
+编写函数 generate_pip_from_conda(conda_path: pathlib.Path, pip_path: pathlib.Path, compare: bool) -> bool，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

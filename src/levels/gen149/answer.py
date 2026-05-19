@@ -1,4 +1,4 @@
-class Client:
+class Proxy:
     def __init__(self, name):
         self.name = name
 

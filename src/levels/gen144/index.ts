@@ -2,25 +2,32 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen144",
-  title: "编写带类型标注的函数: result_processor",
-  category: "中级",
-  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
+  title: "定义异常类层级: CeleryWarning",
+  category: "进阶",
+  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
 
-源文件 psycopg.py（encode/databases）中 \`result_processor\` 展示了完整的参数和返回值类型标注。
+源文件 exceptions.py 定义了如下继承层级：
+  • CeleryWarning → UserWarning
+  • AlwaysEagerIgnored → CeleryWarning
+  • DuplicateNodenameWarning → CeleryWarning
+  • FixupWarning → CeleryWarning
 
-请仿照此模式编写一个带类型标注的函数。
+请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
-编写函数 result_processor(self, dialect: typing.Any, coltype: typing.Any) -> typing.Union[float, None]，返回格式化字符串。
+定义以下异常类: CeleryWarning(UserWarning), AlwaysEagerIgnored(CeleryWarning), DuplicateNodenameWarning(CeleryWarning), FixupWarning(CeleryWarning)
 
-来源：encode/databases — databases\\backends\\dialects\\psycopg.py`,
+来源：celery/celery — celery\\exceptions.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 result_processor`,
+  defaultCode: `class CeleryWarning(UserWarning):
+    pass
+
+# 定义 AlwaysEagerIgnored, DuplicateNodenameWarning, FixupWarning，继承自 CeleryWarning`,
   answer: "",
-  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
+  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["type-hints", "annotations"],
+  tags: ["exception", "class", "inheritance"],
 };
 
 export default level;

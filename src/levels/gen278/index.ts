@@ -2,25 +2,32 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen278",
-  title: "定义模块的公共 API",
+  title: "定义异常类层级: TemplateError",
   category: "进阶",
-  description: `__all__ 是 Python 模块的公共接口声明，控制 \`from module import *\` 的行为。
+  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
 
-源文件 __init__.py 暴露了 16 个公开符号。
+源文件 exceptions.py 定义了如下继承层级：
+  • TemplateError → Exception
+  • TemplateNotFound → IOError, LookupError, TemplateError
+  • TemplateSyntaxError → TemplateError
+  • TemplateRuntimeError → TemplateError
 
-请仿照此模式，为以下符号定义 __all__ 列表。
+请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
-定义 __all__ 列表，包含以下 6 个公开符号: OAS, EllipticEnvelope, EmpiricalCovariance, GraphicalLasso, GraphicalLassoCV, LedoitWolf
+定义以下异常类: TemplateError(Exception), TemplateNotFound(IOError, LookupError, TemplateError), TemplateSyntaxError(TemplateError), TemplateRuntimeError(TemplateError)
 
-来源：scikit-learn/scikit-learn — sklearn\\covariance\\__init__.py`,
+来源：pallets/jinja — src\\jinja2\\exceptions.py`,
   content: "",
-  defaultCode: `# 定义 __all__ 暴露以下公共 API: OAS, EllipticEnvelope, EmpiricalCovariance ...`,
+  defaultCode: `class TemplateError(Exception):
+    pass
+
+# 定义 TemplateNotFound, TemplateSyntaxError, TemplateRuntimeError，继承自 TemplateError`,
   answer: "",
-  hint: `__all__ = ['Name1', 'Name2', ...] —— 字符串列表`,
+  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
   type: "main",
-  difficulty: 1,
+  difficulty: 3,
   compareMode: "return",
-  tags: ["module", "api-design", "__all__"],
+  tags: ["exception", "class", "inheritance"],
 };
 
 export default level;

@@ -1,8 +1,2 @@
-class PipError(Exception):
-    pass
-class DiagnosticPipError(PipError):
-    pass
-class ConfigurationError(PipError):
-    pass
-class InstallationError(PipError):
-    pass
+def find_people_to_blame(raw_services: str, servers: list[tuple[str, str]]) -> dict:
+    return f'find_people_to_blame result'

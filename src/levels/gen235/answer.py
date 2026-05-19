@@ -1,2 +1,7 @@
-def generate_pip_from_conda(conda_path: pathlib.Path, pip_path: pathlib.Path, compare: bool) -> bool:
-    return f'generate_pip_from_conda result'
+def allow_rasterization(func):
+    def draw_wrapper(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return draw_wrapper

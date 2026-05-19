@@ -1,39 +1,42 @@
-# 第225关: 编写装饰器: async_variant
+# 第225关: 编写 try/except 错误处理
 
-> 真实案例：pallets/jinja 的 `src\jinja2\async_utils.py` 中使用了这个模式。
+> 真实案例：LING71671/Open-ClaudeCode 的 `plugins\security-guidance\hooks\security_reminder_hook.py` 中使用了这个模式。
 
 ## 概念介绍
 
-装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
+健壮的代码用 try/except 优雅地处理异常。
 
-源文件 async_utils.py（pallets/jinja）中 `async_variant` 展示了装饰器模式。
+源文件 security_reminder_hook.py 使用了 try/except 捕获多种异常类型。
 
-请编写一个装饰器，在函数调用前后各打印一行信息。
+请仿照此模式编写错误处理代码。
 
 ## 代码示例
 
 ```python
-def async_variant(func):
-    def decorator(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return decorator
+try:
+    result = int('not a number')
+    except (OSError, IOError) as e:
+        print(f'Caught (OSError, IOError): {e}')
+    except (json.JSONDecodeError, IOError) as e:
+        print(f'Caught (json.JSONDecodeError, IOError): {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+finally:
+    print('Cleanup complete')
 ```
 
 ## 关键点
 
-外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper
+try: ... except SomeError as e: ... finally: ...
 
 ## 常见陷阱
 
-- 装饰器本质是 `decorator(func)` 返回新函数
-- 内层 `wrapper` 用 `*args, **kwargs` 接收任意参数
-- `functools.wraps(func)` 保留原函数的 `__name__` 和 `__doc__`
+- `except:` 不加异常类型会捕获所有异常(包括 KeyboardInterrupt)，通常不推荐
+- `except Exception as e:` 中的 `as e` 可以获取异常对象
+- `finally` 无论是否发生异常都会执行
 
 ## 你的任务
 
-编写装饰器 async_variant，包装目标函数并在调用前后打印 'before call' 和 'after call'。
+编写 try/except 块：尝试 int('not a number')，捕获 (OSError, IOError), (json.JSONDecodeError, IOError), Exception，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

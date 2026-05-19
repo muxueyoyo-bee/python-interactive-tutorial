@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen296",
-  title: "编写 try/except 错误处理",
+  title: "编写带类型标注的函数: validate_exception_and_warning_placement",
   category: "中级",
-  description: `健壮的代码用 try/except 优雅地处理异常。
+  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 core.py 使用了 try/except 捕获多种异常类型。
+源文件 validate_exception_location.py（pandas-dev/pandas）中 \`validate_exception_and_warning_placement\` 展示了完整的参数和返回值类型标注。
 
-请仿照此模式编写错误处理代码。
+请仿照此模式编写一个带类型标注的函数。
 
-编写 try/except 块：尝试 int('not a number')，捕获 EOFError, KeyboardInterrupt, OSError，并在 finally 中打印 'Cleanup complete'。
+编写函数 validate_exception_and_warning_placement(file_path: str, file_content: str, errors: set[str]) -> None，返回格式化字符串。
 
-来源：tiangolo/typer — typer\\core.py`,
+来源：pandas-dev/pandas — scripts\\validate_exception_location.py`,
   content: "",
-  defaultCode: `# 编写 try/except/finally 错误处理`,
+  defaultCode: `# 编写带类型标注的函数 validate_exception_and_warning_placement`,
   answer: "",
-  hint: `try: ... except SomeError as e: ... finally: ...`,
+  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["error-handling", "try-except"],
+  tags: ["type-hints", "annotations"],
 };
 
 export default level;

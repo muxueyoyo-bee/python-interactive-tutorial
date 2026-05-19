@@ -1,2 +1,2 @@
-def from_annotated_attribute(annotation: type[Any], default: Any) -> FieldInfo:
-    return f'from_annotated_attribute result'
+def validate_json_files(schema_data: dict[Any, Any], json_file_name: str) -> list[dict[str, str]]:
+    return f'validate_json_files result'

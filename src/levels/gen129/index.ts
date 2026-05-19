@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen129",
-  title: "定义模块的公共 API",
-  category: "进阶",
-  description: `__all__ 是 Python 模块的公共接口声明，控制 \`from module import *\` 的行为。
+  title: "编写 try/except 错误处理",
+  category: "中级",
+  description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 __init__.py 暴露了 15 个公开符号。
+源文件 recalc.py 使用了 try/except 捕获多种异常类型。
 
-请仿照此模式，为以下符号定义 __all__ 列表。
+请仿照此模式编写错误处理代码。
 
-定义 __all__ 列表，包含以下 6 个公开符号: Celery, bugreport, shared_task, Task, current_app, current_task
+编写 try/except 块：尝试 int('not a number')，捕获 (FileNotFoundError, subprocess.TimeoutExpired), Exception，并在 finally 中打印 'Cleanup complete'。
 
-来源：celery/celery — celery\\__init__.py`,
+来源：anthropics/skills — skills\\xlsx\\scripts\\recalc.py`,
   content: "",
-  defaultCode: `# 定义 __all__ 暴露以下公共 API: Celery, bugreport, shared_task ...`,
+  defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",
-  hint: `__all__ = ['Name1', 'Name2', ...] —— 字符串列表`,
+  hint: `try: ... except SomeError as e: ... finally: ...`,
   type: "main",
-  difficulty: 1,
+  difficulty: 3,
   compareMode: "return",
-  tags: ["module", "api-design", "__all__"],
+  tags: ["error-handling", "try-except"],
 };
 
 export default level;

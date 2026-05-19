@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen124",
-  title: "编写带类型标注的函数: url_for",
-  category: "中级",
-  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
+  title: "编写装饰器: to_raw_response_wrapper",
+  category: "进阶",
+  description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 check_ecosystem.py（astral-sh/ruff）中 \`url_for\` 展示了完整的参数和返回值类型标注。
+源文件 _legacy_response.py（anthropics/anthropic-sdk-python）中 \`to_raw_response_wrapper\` 展示了装饰器模式。
 
-请仿照此模式编写一个带类型标注的函数。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
-编写函数 url_for(self, commit_sha: str, path: str, lnum: int | None) -> str，返回格式化字符串。
+编写装饰器 to_raw_response_wrapper，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
-来源：astral-sh/ruff — scripts\\check_ecosystem.py`,
+来源：anthropics/anthropic-sdk-python — src\\anthropic\\_legacy_response.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 url_for`,
+  defaultCode: `# 编写装饰器 to_raw_response_wrapper`,
   answer: "",
-  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
+  hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["type-hints", "annotations"],
+  tags: ["decorator", "functional"],
 };
 
 export default level;

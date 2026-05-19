@@ -1,2 +1,8 @@
-def ints_to_rgba(r: int | str, g: int | str, b: int | str, alpha: float | None) -> RGBA:
-    return f'ints_to_rgba result'
+try:
+    result = int('not a number')
+    except (InvalidInputError, OSError) as e:
+        print(f'Caught (InvalidInputError, OSError): {e}')
+    except OSError as e:
+        print(f'Caught OSError: {e}')
+finally:
+    print('Cleanup complete')

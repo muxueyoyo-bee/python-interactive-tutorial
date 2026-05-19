@@ -2,32 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen138",
-  title: "定义异常类层级: AmbiguityError",
-  category: "进阶",
-  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
+  title: "编写带类型标注的函数: url_for",
+  category: "中级",
+  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • AmbiguityError → Exception
-  • BadMigrationError → Exception
-  • CircularDependencyError → Exception
-  • InconsistentMigrationHistory → Exception
+源文件 check_ecosystem.py（astral-sh/ruff）中 \`url_for\` 展示了完整的参数和返回值类型标注。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写一个带类型标注的函数。
 
-定义以下异常类: AmbiguityError(Exception), BadMigrationError(Exception), CircularDependencyError(Exception), InconsistentMigrationHistory(Exception)
+编写函数 url_for(self, commit_sha: str, path: str, lnum: int | None) -> str，返回格式化字符串。
 
-来源：django/django — django\\db\\migrations\\exceptions.py`,
+来源：astral-sh/ruff — scripts\\check_ecosystem.py`,
   content: "",
-  defaultCode: `class AmbiguityError(Exception):
-    pass
-
-# 定义 BadMigrationError, CircularDependencyError, InconsistentMigrationHistory，继承自 AmbiguityError`,
+  defaultCode: `# 编写带类型标注的函数 url_for`,
   answer: "",
-  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
+  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["exception", "class", "inheritance"],
+  tags: ["type-hints", "annotations"],
 };
 
 export default level;

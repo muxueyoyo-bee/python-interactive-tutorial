@@ -1,2 +1,7 @@
-def init(config: Config, directory: str, template: str, package: bool) -> None:
-    return f'init result'
+def prepare_map(func):
+    def func(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return func

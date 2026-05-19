@@ -1,2 +1,11 @@
-def concatenate_file(out: Any, filename: str, expand_headers: bool) -> int:
-    return f'concatenate_file result'
+class Stream:
+    def __init__(self, name):
+        self.name = name
+
+    def __enter__(self):
+        print(f'Entering {self.name}')
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f'Exiting {self.name}')
+        return False

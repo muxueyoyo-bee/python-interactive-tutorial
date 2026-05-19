@@ -1,7 +1,2 @@
-__all__ = [
-    "AbstractOperations",
-    "Operations",
-    "BatchOperations",
-    "MigrateOperation",
-    "MigrationScript",
-]
+def generate(node: nodes.Template, environment: 'Environment', name: str | None, filename: str | None, stream: t.TextIO | None, defer_init: bool, optimized: bool) -> str | None:
+    return f'generate result'

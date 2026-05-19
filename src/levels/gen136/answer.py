@@ -1,8 +1,2 @@
-class TaskException(Exception):
-    pass
-class InvalidTask(TaskException):
-    pass
-class TaskResultDoesNotExist(TaskException):
-    pass
-class TaskResultMismatch(TaskException):
-    pass
+def format_str(code: str, extension: Literal['py', 'pyi']) -> str:
+    return f'format_str result'

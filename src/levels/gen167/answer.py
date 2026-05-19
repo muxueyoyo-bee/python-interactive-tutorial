@@ -1,7 +1,2 @@
-def route(func):
-    def decorator(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return decorator
+def result_processor(self, dialect: typing.Any, coltype: typing.Any) -> typing.Union[float, None]:
+    return f'result_processor result'

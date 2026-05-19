@@ -1,2 +1,2 @@
-def install(self, requirements: Iterable[str], prefix: _Prefix) -> None:
-    return f'install result'
+def batch(iterable: cabc.Iterable[V], batch_size: int) -> list[tuple[V, ...]]:
+    return f'batch result'

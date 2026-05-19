@@ -1,44 +1,39 @@
-# 第255关: 定义异常类层级: ConsoleError
+# 第255关: 编写 Click CLI 命令: cli
 
-> 真实案例：pypa/pip 的 `src\pip\_vendor\rich\errors.py` 中使用了这个模式。
+> 真实案例：pallets/click 的 `examples\complex\complex\cli.py` 中使用了这个模式。
 
 ## 概念介绍
 
-好的代码库用自定义异常类让调用方精确捕获不同错误。
+Click 是 Python 生态中最流行的 CLI 框架之一。
 
-源文件 errors.py 定义了如下继承层级：
-  • ConsoleError → Exception
-  • StyleSyntaxError → ConsoleError
-  • StyleStackError → ConsoleError
-  • NotRenderableError → ConsoleError
+源文件 cli.py 使用 @click.command() 定义 CLI 入口。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写一个简单的 Click 命令。
 
 ## 代码示例
 
 ```python
-class ConsoleError(Exception):
-    pass
-class StyleSyntaxError(ConsoleError):
-    pass
-class StyleStackError(ConsoleError):
-    pass
-class NotRenderableError(ConsoleError):
-    pass
+import click
+
+@click.command()
+click.option('--home', type=click.Path(exists=True, file_okay=False, resolve_path=True), help='Changes the folder to operate on.')
+click.option('-v', '--verbose', is_flag=True, help='Enables verbose mode.')
+def cli():
+    click.echo('Hello, World!')
 ```
 
 ## 关键点
 
-class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔
+用 @click.command() 装饰函数，用 click.echo() 输出
 
 ## 常见陷阱
 
-- `__init__` 不是构造器，是初始化方法（构造器是 `__new__`）
-- 实例方法的第一个参数必须显式写 `self`
-- `pass` 是一个空语句，占位用
+- `if __name__ == '__main__':` 保证脚本既能导入又能直接运行
+- Click 的 `@click.option('--name')` 自动生成 `--help` 文档
+- argparse 的 `add_argument` 支持 `type=int` 自动类型转换
 
 ## 你的任务
 
-定义以下异常类: ConsoleError(Exception), StyleSyntaxError(ConsoleError), StyleStackError(ConsoleError), NotRenderableError(ConsoleError)
+编写一个 Click 命令 cli，用 click.echo() 输出 'Hello, World!'。
 
 预期行为：参考上方代码示例的输出。

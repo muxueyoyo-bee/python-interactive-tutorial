@@ -2,32 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen275",
-  title: "定义异常类层级: UnsetMetadataPassedError",
+  title: "编写上下文管理器: AppContext",
   category: "进阶",
-  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
+  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • UnsetMetadataPassedError → ValueError
-  • NotFittedError → ValueError, AttributeError
-  • ConvergenceWarning → UserWarning
-  • DataConversionWarning → UserWarning
+源文件 ctx.py 定义了类 \`AppContext\`，实现了 __enter__ / __exit__。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
 
-定义以下异常类: UnsetMetadataPassedError(ValueError), NotFittedError(ValueError, AttributeError), ConvergenceWarning(UserWarning), DataConversionWarning(UserWarning)
+编写类 AppContext，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
 
-来源：scikit-learn/scikit-learn — sklearn\\exceptions.py`,
+来源：pallets/flask — src\\flask\\ctx.py`,
   content: "",
-  defaultCode: `class UnsetMetadataPassedError(ValueError):
-    pass
-
-# 定义 NotFittedError, ConvergenceWarning, DataConversionWarning，继承自 UnsetMetadataPassedError`,
+  defaultCode: `# 编写上下文管理器 AppContext`,
   answer: "",
-  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
+  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["exception", "class", "inheritance"],
+  tags: ["context-manager", "class", "with-statement"],
 };
 
 export default level;

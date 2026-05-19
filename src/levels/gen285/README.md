@@ -1,34 +1,39 @@
-# 第285关: 编写带类型标注的函数: init
+# 第285关: 编写装饰器: prepare_map
 
-> 真实案例：sqlalchemy/alembic 的 `alembic\command.py` 中使用了这个模式。
+> 真实案例：pallets/jinja 的 `src\jinja2\filters.py` 中使用了这个模式。
 
 ## 概念介绍
 
-类型标注使代码更可读、IDE 能提供更好的自动补全。
+装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 command.py（sqlalchemy/alembic）中 `init` 展示了完整的参数和返回值类型标注。
+源文件 filters.py（pallets/jinja）中 `prepare_map` 展示了装饰器模式。
 
-请仿照此模式编写一个带类型标注的函数。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
 ## 代码示例
 
 ```python
-def init(config: Config, directory: str, template: str, package: bool) -> None:
-    return f'init result'
+def prepare_map(func):
+    def func(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return func
 ```
 
 ## 关键点
 
-def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
+外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper
 
 ## 常见陷阱
 
-- 类型标注只是提示，Python 运行时不做类型检查
-- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
-- 返回值类型用 `->` 箭头
+- 装饰器本质是 `decorator(func)` 返回新函数
+- 内层 `wrapper` 用 `*args, **kwargs` 接收任意参数
+- `functools.wraps(func)` 保留原函数的 `__name__` 和 `__doc__`
 
 ## 你的任务
 
-编写函数 init(config: Config, directory: str, template: str, package: bool) -> None，返回格式化字符串。
+编写装饰器 prepare_map，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
 预期行为：参考上方代码示例的输出。

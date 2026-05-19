@@ -1,2 +1,7 @@
-def url_for(self, commit_sha: str, path: str, lnum: int | None) -> str:
-    return f'url_for result'
+def to_raw_response_wrapper(func):
+    def wrapped(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return wrapped

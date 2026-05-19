@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen257",
-  title: "编写带类型标注的函数: commit_file",
-  category: "中级",
-  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
+  title: "编写上下文管理器: Context",
+  category: "进阶",
+  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
 
-源文件 __init__.py（pypa/pip）中 \`commit_file\` 展示了完整的参数和返回值类型标注。
+源文件 core.py 定义了类 \`Context\`，实现了 __enter__ / __exit__。
 
-请仿照此模式编写一个带类型标注的函数。
+请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
 
-编写函数 commit_file(session: Session, filename: str) -> None，返回格式化字符串。
+编写类 Context，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
 
-来源：pypa/pip — tools\\release\\__init__.py`,
+来源：pallets/click — src\\click\\core.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 commit_file`,
+  defaultCode: `# 编写上下文管理器 Context`,
   answer: "",
-  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
+  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["type-hints", "annotations"],
+  tags: ["context-manager", "class", "with-statement"],
 };
 
 export default level;

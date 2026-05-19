@@ -1,8 +1,7 @@
-class HTTPException(StarletteHTTPException):
-    pass
-class WebSocketException(StarletteWebSocketException):
-    pass
-class FastAPIError(RuntimeError):
-    pass
-class DependencyScopeError(FastAPIError):
-    pass
+def crypto_adapter(func):
+    def continuation(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return continuation

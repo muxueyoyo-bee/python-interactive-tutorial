@@ -1,8 +1,8 @@
 __all__ = [
-    "executors",
-    "extensions",
-    "indexers",
-    "interchange",
-    "types",
-    "typing",
+    "Size",
+    "Divider",
+    "SubplotDivider",
+    "make_axes_locatable",
+    "AxesGrid",
+    "Grid",
 ]

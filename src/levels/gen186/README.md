@@ -1,12 +1,12 @@
 # 第186关: 编写 try/except 错误处理
 
-> 真实案例：LING71671/Open-ClaudeCode 的 `plugins\security-guidance\hooks\security_reminder_hook.py` 中使用了这个模式。
+> 真实案例：encode/uvicorn 的 `uvicorn\config.py` 中使用了这个模式。
 
 ## 概念介绍
 
 健壮的代码用 try/except 优雅地处理异常。
 
-源文件 security_reminder_hook.py 使用了 try/except 捕获多种异常类型。
+源文件 config.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
@@ -15,12 +15,12 @@
 ```python
 try:
     result = int('not a number')
-    except (OSError, IOError) as e:
-        print(f'Caught (OSError, IOError): {e}')
-    except (json.JSONDecodeError, IOError) as e:
-        print(f'Caught (json.JSONDecodeError, IOError): {e}')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
+    except ImportFromStringError as e:
+        print(f'Caught ImportFromStringError: {e}')
+    except OSError as e:
+        print(f'Caught OSError: {e}')
 finally:
     print('Cleanup complete')
 ```
@@ -37,6 +37,6 @@ try: ... except SomeError as e: ... finally: ...
 
 ## 你的任务
 
-编写 try/except 块：尝试 int('not a number')，捕获 (OSError, IOError), (json.JSONDecodeError, IOError), Exception，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 ImportError, ImportFromStringError, OSError，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

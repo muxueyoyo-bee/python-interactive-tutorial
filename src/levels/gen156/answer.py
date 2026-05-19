@@ -1,2 +1,8 @@
-def has_required_scope(conn: HTTPConnection, scopes: Sequence[str]) -> bool:
-    return f'has_required_scope result'
+class AmbiguityError(Exception):
+    pass
+class BadMigrationError(Exception):
+    pass
+class CircularDependencyError(Exception):
+    pass
+class InconsistentMigrationHistory(Exception):
+    pass

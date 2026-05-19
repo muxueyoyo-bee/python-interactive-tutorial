@@ -1,34 +1,39 @@
-# 第268关: 编写带类型标注的函数: find_package_data
+# 第268关: 编写 Click CLI 命令: run_command
 
-> 真实案例：python/mypy 的 `setup.py` 中使用了这个模式。
+> 真实案例：pallets/flask 的 `src\flask\cli.py` 中使用了这个模式。
 
 ## 概念介绍
 
-类型标注使代码更可读、IDE 能提供更好的自动补全。
+Click 是 Python 生态中最流行的 CLI 框架之一。
 
-源文件 setup.py（python/mypy）中 `find_package_data` 展示了完整的参数和返回值类型标注。
+源文件 cli.py 使用 @click.command() 定义 CLI 入口。
 
-请仿照此模式编写一个带类型标注的函数。
+请仿照此模式编写一个简单的 Click 命令。
 
 ## 代码示例
 
 ```python
-def find_package_data(base: str, globs: list[str], root: str) -> list[str]:
-    return f'find_package_data result'
+import click
+
+@click.command()
+click.option('--host', '-h', default='127.0.0.1', help='The interface to bind to.')
+click.option('--port', '-p', default=5000, help='The port to bind to.')
+def run_command():
+    click.echo('Hello, World!')
 ```
 
 ## 关键点
 
-def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
+用 @click.command() 装饰函数，用 click.echo() 输出
 
 ## 常见陷阱
 
-- 类型标注只是提示，Python 运行时不做类型检查
-- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
-- 返回值类型用 `->` 箭头
+- `if __name__ == '__main__':` 保证脚本既能导入又能直接运行
+- Click 的 `@click.option('--name')` 自动生成 `--help` 文档
+- argparse 的 `add_argument` 支持 `type=int` 自动类型转换
 
 ## 你的任务
 
-编写函数 find_package_data(base: str, globs: list[str], root: str) -> list[str]，返回格式化字符串。
+编写一个 Click 命令 run_command，用 click.echo() 输出 'Hello, World!'。
 
 预期行为：参考上方代码示例的输出。

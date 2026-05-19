@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen266",
-  title: "编写装饰器: load_command",
+  title: "编写上下文管理器: ProgressBar",
   category: "进阶",
-  description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
+  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
 
-源文件 application.py（python-poetry/poetry）中 \`load_command\` 展示了装饰器模式。
+源文件 _termui_impl.py 定义了类 \`ProgressBar\`，实现了 __enter__ / __exit__。
 
-请编写一个装饰器，在函数调用前后各打印一行信息。
+请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
 
-编写装饰器 load_command，包装目标函数并在调用前后打印 'before call' 和 'after call'。
+编写类 ProgressBar，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
 
-来源：python-poetry/poetry — src\\poetry\\console\\application.py`,
+来源：pallets/click — src\\click\\_termui_impl.py`,
   content: "",
-  defaultCode: `# 编写装饰器 load_command`,
+  defaultCode: `# 编写上下文管理器 ProgressBar`,
   answer: "",
-  hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
+  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["decorator", "functional"],
+  tags: ["context-manager", "class", "with-statement"],
 };
 
 export default level;

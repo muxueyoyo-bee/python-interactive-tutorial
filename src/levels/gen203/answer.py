@@ -1,2 +1,2 @@
-def validate_json_files(schema_data: dict[Any, Any], json_file_name: str) -> list[dict[str, str]]:
-    return f'validate_json_files result'
+def build_gles3_header(filename: str, shader: str) -> None:
+    return f'build_gles3_header result'

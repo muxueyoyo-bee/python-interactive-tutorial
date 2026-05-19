@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen175",
-  title: "编写 try/except 错误处理",
+  title: "编写带类型标注的函数: create_ssl_context",
   category: "中级",
-  description: `健壮的代码用 try/except 优雅地处理异常。
+  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 add_person.py 使用了 try/except 捕获多种异常类型。
+源文件 _config.py（encode/httpx）中 \`create_ssl_context\` 展示了完整的参数和返回值类型标注。
 
-请仿照此模式编写错误处理代码。
+请仿照此模式编写一个带类型标注的函数。
 
-编写 try/except 块：尝试 int('not a number')，捕获 IOError, NameError，并在 finally 中打印 'Cleanup complete'。
+编写函数 create_ssl_context(verify: ssl.SSLContext | str | bool, cert: CertTypes | None, trust_env: bool) -> ssl.SSLContext，返回格式化字符串。
 
-来源：google/protobuf — examples\\add_person.py`,
+来源：encode/httpx — httpx\\_config.py`,
   content: "",
-  defaultCode: `# 编写 try/except/finally 错误处理`,
+  defaultCode: `# 编写带类型标注的函数 create_ssl_context`,
   answer: "",
-  hint: `try: ... except SomeError as e: ... finally: ...`,
+  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["error-handling", "try-except"],
+  tags: ["type-hints", "annotations"],
 };
 
 export default level;

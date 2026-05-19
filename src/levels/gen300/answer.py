@@ -1,8 +1,8 @@
-class RequestError(YoutubeDLError):
+class RequestException(IOError):
     pass
-class UnsupportedRequest(RequestError):
+class InvalidJSONError(RequestException):
     pass
-class NoSupportingHandlers(RequestError):
+class HTTPError(RequestException):
     pass
-class TransportError(RequestError):
+class ConnectionError(RequestException):
     pass
