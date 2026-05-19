@@ -1,0 +1,19 @@
+{
+  "id": 111,
+  "title": "编写 pytest fixture",
+  "difficulty": "intermediate",
+  "tags": ["testing", "pytest", "fixture"],
+  "source_repo": "pallets/flask",
+  "source_file": "examples/tutorial/tests/conftest.py",
+  "judge_mode": "return",
+  "judge_options": {
+    "normalizePunctuation": true,
+    "trimWhitespace": true,
+    "ignoreTrailingNewline": true
+  },
+  "description": "pytest 用 fixture 管理测试的共享资源。\n\n请写一个 fixture 函数 `sample_data`，用 @pytest.fixture 装饰：\n1. 创建一个字典 {'name': 'test', 'value': 42}\n2. 用 yield 返回它\n3. yield 之后打印 'cleanup done'",
+  "hint": "用 @pytest.fixture 装饰器，函数体内 yield 那个字典",
+  "task": "编写一个名为 sample_data 的 pytest fixture，返回字典 {'name': 'test', 'value': 42}，并在 cleanup 阶段打印 'cleanup done'。",
+  "expected_code": "@pytest.fixture\ndef sample_data():\n    data = {'name': 'test', 'value': 42}\n    yield data\n    print('cleanup done')",
+  "template": "import pytest\n\n# 在这里定义 sample_data fixture"
+}

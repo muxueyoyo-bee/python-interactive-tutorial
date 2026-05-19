@@ -47,7 +47,6 @@ import QuestionBoard from "../components/QuestionBoard.vue";
 import PythonEditor from "../components/PythonEditor.vue";
 import { getLevelByKey, type LevelType } from "../levels";
 import { useGlobalStore } from "../core/globalStore";
-import { isPyodideLoaded } from "../core/pyodideExecutor";
 import { loadContent } from "../levels/contentLoader";
 
 const props = defineProps<{ levelKey?: string }>();

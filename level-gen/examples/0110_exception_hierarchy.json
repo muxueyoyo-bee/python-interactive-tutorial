@@ -1,0 +1,19 @@
+{
+  "id": 110,
+  "title": "定义自定义异常类",
+  "difficulty": "intermediate",
+  "tags": ["exception", "class", "inheritance"],
+  "source_repo": "psf/requests",
+  "source_file": "src/requests/exceptions.py",
+  "judge_mode": "return",
+  "judge_options": {
+    "normalizePunctuation": true,
+    "trimWhitespace": true,
+    "ignoreTrailingNewline": true
+  },
+  "description": "一个设计良好的库会定义一套异常类，便于调用方精确捕获不同的错误。\n\nRequests 库定义了 IOError → HTTPError / ConnectionError / Timeout 这样一棵继承树。\n\n请仿照这个模式：\n1. 定义一个基类 AppError，继承自 Exception\n2. 定义 ConfigError 和 NetworkError，都继承 AppError",
+  "hint": "class 子类名(父类名):  —— 父类写在括号里",
+  "task": "定义三个异常类：AppError(Exception)、ConfigError(AppError)、NetworkError(AppError)。每个类只需要一个 pass 语句体。",
+  "expected_code": "class AppError(Exception):\n    pass\n\nclass ConfigError(AppError):\n    pass\n\nclass NetworkError(AppError):\n    pass",
+  "template": "class AppError(Exception):\n    pass\n\n# 请定义 ConfigError 和 NetworkError"
+}

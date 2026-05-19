@@ -67,7 +67,12 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { STATUS_TEXT } from "../core/result";
+
+const STATUS_TEXT: Record<number, string> = {
+  [-1]: "",
+  [0]: "答案错误",
+  [1]: "回答正确",
+};
 
 const props = withDefaults(
   defineProps<{

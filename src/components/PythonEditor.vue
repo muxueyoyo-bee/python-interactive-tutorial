@@ -73,18 +73,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, computed, nextTick } from "vue";
+import { ref, watch } from "vue";
 import { PlayCircleOutlined, UndoOutlined } from "@ant-design/icons-vue";
 import CodeEditor from "./CodeEditor.vue";
 import PythonResult from "./PythonResult.vue";
 import { useGlobalStore } from "../core/globalStore";
-import {
-  executePython,
-  getPlotBase64,
-  stripPlotMarkers,
-} from "../core/pyodideExecutor";
-import { usePython } from "../core/usePython";
-import { judge, JudgeStatus } from "../core/result";
+import { execute } from "../engine/executor";
+import { extractPlots, stripPlotMarkers } from "../engine/pyodide/plot-capture";
+import { judge } from "../judge";
 import type { LevelType } from "../levels";
 
 const props = defineProps<{
@@ -96,12 +92,11 @@ const emit = defineEmits<{
 }>();
 
 const store = useGlobalStore();
-const { ensurePyodide } = usePython();
 const codeEditorRef = ref<InstanceType<typeof CodeEditor> | null>(null);
 
 const currentCode = ref(props.level.defaultCode);
 const isExecuting = ref(false);
-const resultStatus = ref<number>(JudgeStatus.DEFAULT);
+const resultStatus = ref<number>(-1);
 const displayStdout = ref("");
 const expectedStdout = ref("");
 const returnValue = ref<unknown>(undefined);
@@ -115,10 +110,9 @@ function onCollapseChange(keys: string[] | string) {
   activeCollapseKeys.value = Array.isArray(keys) ? keys : [keys];
 }
 
-// 编辑代码时自动清除错误状态
 watch(currentCode, () => {
-  if (resultStatus.value === JudgeStatus.ERROR) {
-    resultStatus.value = JudgeStatus.DEFAULT;
+  if (resultStatus.value === 0) {
+    resultStatus.value = -1;
     errorMsg.value = null;
     judgeMessage.value = null;
   }
@@ -129,7 +123,7 @@ watch(
   () => {
     const savedCode = store.getSavedCode(props.level.key);
     currentCode.value = savedCode || props.level.defaultCode;
-    resultStatus.value = JudgeStatus.DEFAULT;
+    resultStatus.value = -1;
     displayStdout.value = "";
     expectedStdout.value = "";
     errorMsg.value = null;
@@ -149,57 +143,51 @@ async function runCode() {
   executionTime.value = 0;
 
   try {
-    await ensurePyodide();
-
-    // Execute user code
     const setupCode = props.level.setupCode || "";
-    const fullUserCode = setupCode + "\n" + currentCode.value;
-    const userResult = await executePython(fullUserCode);
 
-    // Execute answer code
-    const fullAnswerCode = setupCode + "\n" + props.level.answer;
-    const answerResult = await executePython(fullAnswerCode);
+    const userResult = await execute({
+      code: setupCode + "\n" + currentCode.value,
+      timeoutMs: 5000,
+    });
 
-    // Extract plots from stdout
-    plots.value = getPlotBase64(userResult.stdout);
-    const cleanUserStdout = stripPlotMarkers(userResult.stdout);
-    const cleanAnswerStdout = stripPlotMarkers(answerResult.stdout);
+    const answerResult = await execute({
+      code: setupCode + "\n" + props.level.answer,
+      timeoutMs: 5000,
+    });
 
-    // Judge
-    const result = judge(
-      cleanUserStdout,
-      cleanAnswerStdout,
-      userResult.returnValue,
-      answerResult.returnValue,
-      props.level.compareMode
-    );
+    plots.value = extractPlots(userResult.stdout);
+    const cleanUser = stripPlotMarkers(userResult.stdout);
+    const cleanAnswer = stripPlotMarkers(answerResult.stdout);
 
-    resultStatus.value = result.status;
+    const result = judge(props.level.compareMode, cleanUser, cleanAnswer, {
+      trimWhitespace: true,
+      ignoreTrailingNewline: true,
+    });
+
+    resultStatus.value = result.status === "pass" ? 1 : 0;
     displayStdout.value = userResult.error
       ? userResult.error
-      : cleanUserStdout + (userResult.stderr ? "\n" + userResult.stderr : "");
-    expectedStdout.value = cleanAnswerStdout;
+      : cleanUser + (userResult.stderr ? "\n" + userResult.stderr : "");
+    expectedStdout.value = cleanAnswer;
     returnValue.value = userResult.returnValue;
     errorMsg.value = userResult.error;
     judgeMessage.value = result.detail;
     executionTime.value = userResult.executionTimeMs;
 
-    // Record attempt
     store.recordAttempt(props.level.key, currentCode.value);
 
-    // Mark completed if succeeded
-    if (result.status === JudgeStatus.SUCCEED) {
+    if (result.status === "pass") {
       store.completeLevel(props.level.key, currentCode.value);
     }
 
-    emit("resultChange", result.status, displayStdout.value);
+    emit("resultChange", resultStatus.value, displayStdout.value);
   } catch (e: unknown) {
     const err = e as Error;
-    resultStatus.value = JudgeStatus.ERROR;
+    resultStatus.value = 0;
     errorMsg.value = err.message || String(e);
     judgeMessage.value = null;
     displayStdout.value = "";
-    emit("resultChange", JudgeStatus.ERROR, "");
+    emit("resultChange", 0, "");
   } finally {
     isExecuting.value = false;
   }
@@ -207,7 +195,7 @@ async function runCode() {
 
 function resetCode() {
   currentCode.value = props.level.defaultCode;
-  resultStatus.value = JudgeStatus.DEFAULT;
+  resultStatus.value = -1;
   displayStdout.value = "";
   errorMsg.value = null;
   judgeMessage.value = null;

@@ -49,15 +49,10 @@
 import { ref } from "vue";
 import CodeEditor from "../components/CodeEditor.vue";
 import PythonResult from "../components/PythonResult.vue";
-import {
-  executePython,
-  getPlotBase64,
-  stripPlotMarkers,
-} from "../core/pyodideExecutor";
-import { usePython } from "../core/usePython";
-import { JudgeStatus } from "../core/result";
+import { execute } from "../engine/executor";
+import { extractPlots, stripPlotMarkers } from "../engine/pyodide/plot-capture";
 
-const { ensurePyodide, isExecuting } = usePython();
+const isExecuting = ref(false);
 const codeEditorRef = ref<InstanceType<typeof CodeEditor> | null>(null);
 
 const DEFAULT_CODE = `# Python 练习广场
@@ -73,7 +68,7 @@ print("Hello, Python!")
 `;
 
 const code = ref(DEFAULT_CODE);
-const resultStatus = ref(JudgeStatus.DEFAULT);
+const resultStatus = ref(-1);
 const displayStdout = ref("");
 const returnValue = ref<unknown>(undefined);
 const errorMsg = ref<string | null>(null);
@@ -89,16 +84,12 @@ async function runCode() {
   plots.value = [];
 
   try {
-    await ensurePyodide();
-
-    const result = await executePython(code.value);
-    plots.value = getPlotBase64(result.stdout);
+    const result = await execute({ code: code.value, timeoutMs: 5000 });
+    plots.value = extractPlots(result.stdout);
     displayStdout.value = stripPlotMarkers(result.stdout);
     returnValue.value = result.returnValue;
     errorMsg.value = result.error;
-    resultStatus.value = result.error
-      ? JudgeStatus.ERROR
-      : JudgeStatus.SUCCEED;
+    resultStatus.value = result.error ? 0 : 1;
 
     history.value.unshift({
       code: code.value,
@@ -111,7 +102,7 @@ async function runCode() {
   } catch (e: unknown) {
     const err = e as Error;
     errorMsg.value = err.message || String(e);
-    resultStatus.value = JudgeStatus.ERROR;
+    resultStatus.value = 0;
   } finally {
     isExecuting.value = false;
   }
@@ -119,7 +110,7 @@ async function runCode() {
 
 function clearAll() {
   code.value = DEFAULT_CODE;
-  resultStatus.value = JudgeStatus.DEFAULT;
+  resultStatus.value = -1;
   displayStdout.value = "";
   errorMsg.value = null;
   plots.value = [];
