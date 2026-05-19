@@ -1,7 +1,10 @@
-def str_to_datetime_processor_factory(func):
-    def process(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return process
+try:
+    result = int('not a number')
+    except (TypeError, ValueError) as e:
+        print(f'Caught (TypeError, ValueError): {e}')
+    except (subprocess.CalledProcessError, OSError) as e:
+        print(f'Caught (subprocess.CalledProcessError, OSError): {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+finally:
+    print('Cleanup complete')

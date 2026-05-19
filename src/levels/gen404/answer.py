@@ -1,8 +1,2 @@
-class RequestError(YoutubeDLError):
-    pass
-class UnsupportedRequest(RequestError):
-    pass
-class NoSupportingHandlers(RequestError):
-    pass
-class TransportError(RequestError):
-    pass
+def serialize(message: Message, as_utf8: bool, as_one_line: bool, use_short_repeated_primitives: bool, pointy_brackets: bool, use_index_order: bool, use_field_number: bool, descriptor_pool: Optional[DescriptorPool], indent: int, message_formatter: Optional[_MsgFormatter], print_unknown_fields: bool, force_colon: bool) -> str:
+    return f'serialize result'

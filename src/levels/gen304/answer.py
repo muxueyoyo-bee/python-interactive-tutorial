@@ -1,2 +1,6 @@
-def request(method: str, url: _t.UriType) -> Response:
-    return f'request result'
+try:
+    result = int('not a number')
+    except io.UnsupportedOperation as e:
+        print(f'Caught io.UnsupportedOperation: {e}')
+finally:
+    print('Cleanup complete')

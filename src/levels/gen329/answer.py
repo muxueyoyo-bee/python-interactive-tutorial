@@ -1,8 +1,8 @@
 try:
     result = int('not a number')
-    except DiagnosticPipError as e:
-        print(f'Caught DiagnosticPipError: {e}')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
+    except BaseException as e:
+        print(f'Caught BaseException: {e}')
+    except NoMatchFound as e:
+        print(f'Caught NoMatchFound: {e}')
 finally:
     print('Cleanup complete')

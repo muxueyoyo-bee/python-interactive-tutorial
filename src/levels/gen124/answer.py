@@ -1,7 +1,10 @@
-def to_raw_response_wrapper(func):
-    def wrapped(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return wrapped
+try:
+    result = int('not a number')
+    except OSError as e:
+        print(f'Caught OSError: {e}')
+    except OverflowError as e:
+        print(f'Caught OverflowError: {e}')
+    except ValueError as e:
+        print(f'Caught ValueError: {e}')
+finally:
+    print('Cleanup complete')

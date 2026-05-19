@@ -1,0 +1,2 @@
+def is_disconnect(self, e: Exception, connection: Optional[Union[pool.PoolProxiedConnection, interfaces.DBAPIConnection]], cursor: Optional[interfaces.DBAPICursor]) -> bool:
+    return f'is_disconnect result'

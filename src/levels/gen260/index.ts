@@ -2,25 +2,32 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen260",
-  title: "编写装饰器: make_pass_decorator",
+  title: "定义异常类层级: AmbiguityError",
   category: "进阶",
-  description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
+  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
 
-源文件 decorators.py（pallets/click）中 \`make_pass_decorator\` 展示了装饰器模式。
+源文件 exceptions.py 定义了如下继承层级：
+  • AmbiguityError → Exception
+  • BadMigrationError → Exception
+  • CircularDependencyError → Exception
+  • InconsistentMigrationHistory → Exception
 
-请编写一个装饰器，在函数调用前后各打印一行信息。
+请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
-编写装饰器 make_pass_decorator，包装目标函数并在调用前后打印 'before call' 和 'after call'。
+定义以下异常类: AmbiguityError(Exception), BadMigrationError(Exception), CircularDependencyError(Exception), InconsistentMigrationHistory(Exception)
 
-来源：pallets/click — src\\click\\decorators.py`,
+来源：django/django — django\\db\\migrations\\exceptions.py`,
   content: "",
-  defaultCode: `# 编写装饰器 make_pass_decorator`,
+  defaultCode: `class AmbiguityError(Exception):
+    pass
+
+# 定义 BadMigrationError, CircularDependencyError, InconsistentMigrationHistory，继承自 AmbiguityError`,
   answer: "",
-  hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
+  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["decorator", "functional"],
+  tags: ["exception", "class", "inheritance"],
 };
 
 export default level;

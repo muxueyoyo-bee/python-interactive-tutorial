@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen194",
-  title: "编写带类型标注的函数: add_api_route",
+  title: "编写 try/except 错误处理",
   category: "中级",
-  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
+  description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 applications.py（fastapi/fastapi）中 \`add_api_route\` 展示了完整的参数和返回值类型标注。
+源文件 base.py 使用了 try/except 捕获多种异常类型。
 
-请仿照此模式编写一个带类型标注的函数。
+请仿照此模式编写错误处理代码。
 
-编写函数 add_api_route(self, path: str, endpoint: Callable[..., Any]) -> None，返回格式化字符串。
+编写 try/except 块：尝试 int('not a number')，捕获 (OSError, ValueError), (lxml.etree.XMLSyntaxError, Exception), Exception，并在 finally 中打印 'Cleanup complete'。
 
-来源：fastapi/fastapi — fastapi\\applications.py`,
+来源：anthropics/skills — skills\\xlsx\\scripts\\office\\validators\\base.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 add_api_route`,
+  defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",
-  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
+  hint: `try: ... except SomeError as e: ... finally: ...`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["type-hints", "annotations"],
+  tags: ["error-handling", "try-except"],
 };
 
 export default level;

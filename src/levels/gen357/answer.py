@@ -1,2 +1,6 @@
-def cli(self, command: list[str], raw: bool) -> str:
-    return f'cli result'
+try:
+    result = int('not a number')
+    except BaseException as e:
+        print(f'Caught BaseException: {e}')
+finally:
+    print('Cleanup complete')

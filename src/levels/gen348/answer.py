@@ -1,2 +1,2 @@
-def load_json(data_path: str, meta_path: str) -> CacheData:
-    return f'load_json result'
+def create_ssl_context(certfile: str | os.PathLike[str], keyfile: str | os.PathLike[str] | None, password: str | None, ssl_version: int, cert_reqs: int, ca_certs: str | os.PathLike[str] | None, ciphers: str | None) -> ssl.SSLContext:
+    return f'create_ssl_context result'

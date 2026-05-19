@@ -1,0 +1,2 @@
+def map_actuals_to_formals(actual_kinds: list[nodes.ArgKind], actual_names: Sequence[str | None] | None, formal_kinds: list[nodes.ArgKind], formal_names: Sequence[str | None], actual_arg_type: Callable[[int], Type]) -> list[list[int]]:
+    return f'map_actuals_to_formals result'

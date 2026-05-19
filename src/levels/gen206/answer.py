@@ -1,2 +1,2 @@
-def clean_cache(cache_path: str, cache_limit: int, verbose: bool) -> None:
-    return f'clean_cache result'
+def generate_benchmark(benchmark_dir: Path, skill_name: str, skill_path: str) -> dict:
+    return f'generate_benchmark result'

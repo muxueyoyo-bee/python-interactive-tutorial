@@ -1,0 +1,2 @@
+def send(self, request: PreparedRequest, stream: bool, timeout: None | float | tuple[float, float] | tuple[float, None], verify: bool | str, cert: None | bytes | str | tuple[bytes | str, bytes | str], proxies: Mapping[str, str] | None, cacheable_methods: Collection[str] | None) -> Response:
+    return f'send result'

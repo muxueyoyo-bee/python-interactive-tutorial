@@ -1,8 +1,2 @@
-__all__ = [
-    "set_loglevel",
-    "ExecutableNotFoundError",
-    "get_configdir",
-    "get_cachedir",
-    "get_data_path",
-    "matplotlib_fname",
-]
+def fuzz_code(seed: Seed, args: ResolvedCliArgs) -> FuzzResult:
+    return f'fuzz_code result'

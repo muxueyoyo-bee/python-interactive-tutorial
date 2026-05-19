@@ -1,7 +1,6 @@
-def as_view(func):
-    def view(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return view
+try:
+    result = int('not a number')
+    except ValidationError as e:
+        print(f'Caught ValidationError: {e}')
+finally:
+    print('Cleanup complete')

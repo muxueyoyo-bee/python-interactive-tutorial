@@ -1,2 +1,6 @@
-def compile_protos(proto_root: str, sub_dir: str) -> None:
-    return f'compile_protos result'
+try:
+    result = int('not a number')
+    except KeyError as e:
+        print(f'Caught KeyError: {e}')
+finally:
+    print('Cleanup complete')

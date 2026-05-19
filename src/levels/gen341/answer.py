@@ -1,8 +1,2 @@
-try:
-    result = int('not a number')
-    except JSONDecodeError as e:
-        print(f'Caught JSONDecodeError: {e}')
-    except NotImplementedError as e:
-        print(f'Caught NotImplementedError: {e}')
-finally:
-    print('Cleanup complete')
+def allow_explicit_origin(headers: MutableHeaders, origin: str) -> None:
+    return f'allow_explicit_origin result'

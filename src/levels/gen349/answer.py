@@ -1,2 +1,8 @@
-def make_cache(input_dir: str, sqlite: bool, num_shards: int) -> MetadataStore:
-    return f'make_cache result'
+try:
+    result = int('not a number')
+    except AttributeError as e:
+        print(f'Caught AttributeError: {e}')
+    except ModuleNotFoundError as e:
+        print(f'Caught ModuleNotFoundError: {e}')
+finally:
+    print('Cleanup complete')

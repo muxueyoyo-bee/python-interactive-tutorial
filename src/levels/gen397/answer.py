@@ -1,2 +1,2 @@
-def print_version(ctx: click.Context, param: Option, value: bool) -> None:
-    return f'print_version result'
+def pack(msg: Message, type_url_prefix: Optional[str], deterministic: Optional[bool]) -> Any:
+    return f'pack result'

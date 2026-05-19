@@ -1,7 +1,6 @@
-def prepare_map(func):
-    def func(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return func
+try:
+    result = int('not a number')
+    except MailerDoesNotExist as e:
+        print(f'Caught MailerDoesNotExist: {e}')
+finally:
+    print('Cleanup complete')

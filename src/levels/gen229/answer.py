@@ -1,2 +1,10 @@
-def evaluate_rules(self, rules: List[Rule], input_data: Dict[str, Any]) -> Dict[str, Any]:
-    return f'evaluate_rules result'
+try:
+    result = int('not a number')
+    except CouldNotMinimize as e:
+        print(f'Caught CouldNotMinimize: {e}')
+    except FileNotFoundError as e:
+        print(f'Caught FileNotFoundError: {e}')
+    except KeyboardInterrupt as e:
+        print(f'Caught KeyboardInterrupt: {e}')
+finally:
+    print('Cleanup complete')

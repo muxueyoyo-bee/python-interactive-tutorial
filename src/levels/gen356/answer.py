@@ -1,10 +1,2 @@
-try:
-    result = int('not a number')
-    except BenchError as e:
-        print(f'Caught BenchError: {e}')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except subprocess.CalledProcessError as e:
-        print(f'Caught subprocess.CalledProcessError: {e}')
-finally:
-    print('Cleanup complete')
+def get_subprocess(config: Config, target: Callable[..., None], sockets: list[socket]) -> SpawnProcess:
+    return f'get_subprocess result'

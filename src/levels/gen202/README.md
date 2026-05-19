@@ -1,42 +1,34 @@
-# 第202关: 编写 try/except 错误处理
+# 第202关: 编写带类型标注的函数: validate_gif
 
-> 真实案例：git/git 的 `git-p4.py` 中使用了这个模式。
+> 真实案例：anthropics/skills 的 `skills\slack-gif-creator\core\validators.py` 中使用了这个模式。
 
 ## 概念介绍
 
-健壮的代码用 try/except 优雅地处理异常。
+类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 git-p4.py 使用了 try/except 捕获多种异常类型。
+源文件 validators.py（anthropics/skills）中 `validate_gif` 展示了完整的参数和返回值类型标注。
 
-请仿照此模式编写错误处理代码。
+请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-try:
-    result = int('not a number')
-    except EOFError as e:
-        print(f'Caught EOFError: {e}')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except IOError as e:
-        print(f'Caught IOError: {e}')
-finally:
-    print('Cleanup complete')
+def validate_gif(gif_path: str | Path, is_emoji: bool, verbose: bool) -> tuple[bool, dict]:
+    return f'validate_gif result'
 ```
 
 ## 关键点
 
-try: ... except SomeError as e: ... finally: ...
+def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
 
 ## 常见陷阱
 
-- `except:` 不加异常类型会捕获所有异常(包括 KeyboardInterrupt)，通常不推荐
-- `except Exception as e:` 中的 `as e` 可以获取异常对象
-- `finally` 无论是否发生异常都会执行
+- 类型标注只是提示，Python 运行时不做类型检查
+- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
+- 返回值类型用 `->` 箭头
 
 ## 你的任务
 
-编写 try/except 块：尝试 int('not a number')，捕获 EOFError, Exception, IOError，并在 finally 中打印 'Cleanup complete'。
+编写函数 validate_gif(gif_path: str | Path, is_emoji: bool, verbose: bool) -> tuple[bool, dict]，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

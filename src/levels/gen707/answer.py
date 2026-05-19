@@ -1,0 +1,2 @@
+def cache_response(self, request: PreparedRequest, response_or_ref: HTTPResponse | weakref.ReferenceType[HTTPResponse], body: bytes | None, status_codes: Collection[int] | None) -> None:
+    return f'cache_response result'

@@ -1,6 +1,2 @@
-try:
-    result = int('not a number')
-    except KeyError as e:
-        print(f'Caught KeyError: {e}')
-finally:
-    print('Cleanup complete')
+def get_weather(location: str, units: Literal['c', 'f']) -> str:
+    return f'get_weather result'

@@ -1,2 +1,6 @@
-def add_property(self, key: str | Sequence[str], value: Any) -> None:
-    return f'add_property result'
+try:
+    result = int('not a number')
+    except BadSignature as e:
+        print(f'Caught BadSignature: {e}')
+finally:
+    print('Cleanup complete')

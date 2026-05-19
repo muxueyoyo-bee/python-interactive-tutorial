@@ -1,2 +1,2 @@
-def include_file_in_rd_header(filename: str, header_data: RDHeaderStruct, depth: int) -> RDHeaderStruct:
-    return f'include_file_in_rd_header result'
+def build_run(root: Path, run_dir: Path) -> dict | None:
+    return f'build_run result'

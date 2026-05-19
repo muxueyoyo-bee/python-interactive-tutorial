@@ -1,7 +1,6 @@
-__all__ = [
-    "YoutubeDL",
-    "gen_extractors",
-    "list_extractors",
-    "main",
-    "parse_options",
-]
+try:
+    result = int('not a number')
+    except UnicodeDecodeError as e:
+        print(f'Caught UnicodeDecodeError: {e}')
+finally:
+    print('Cleanup complete')

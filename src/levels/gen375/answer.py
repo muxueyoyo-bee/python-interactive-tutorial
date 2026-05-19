@@ -1,2 +1,6 @@
-def filter_sqla(python: str, sqlalchemy: str, database: str | None, backendonly: str | None) -> bool:
-    return f'filter_sqla result'
+try:
+    result = int('not a number')
+    except PydanticSchemaGenerationError as e:
+        print(f'Caught PydanticSchemaGenerationError: {e}')
+finally:
+    print('Cleanup complete')

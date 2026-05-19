@@ -1,0 +1,2 @@
+def generate_arguments_schema(func: Callable[..., Any], schema_type: Literal['arguments', 'arguments-v3'], parameters_callback: Callable[[int, str, Any], Literal['skip'] | None] | None, config: ConfigDict | None) -> CoreSchema:
+    return f'generate_arguments_schema result'

@@ -1,6 +1,2 @@
-class RepositoryError(Exception):
-    pass
-class PackageNotFoundError(Exception):
-    pass
-class InvalidSourceError(Exception):
-    pass
+def wrap_app_handling_exceptions(app: ASGIApp, conn: Request | WebSocket) -> ASGIApp:
+    return f'wrap_app_handling_exceptions result'

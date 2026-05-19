@@ -6,13 +6,13 @@ const level: LevelType = {
   category: "中级",
   description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 generate_docs.py 使用了 try/except 捕获多种异常类型。
+源文件 run_eval.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
-编写 try/except 块：尝试 int('not a number')，捕获 FileExistsError，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 Exception, json.JSONDecodeError，并在 finally 中打印 'Cleanup complete'。
 
-来源：google/protobuf — python\\docs\\generate_docs.py`,
+来源：anthropics/skills — skills\\skill-creator\\scripts\\run_eval.py`,
   content: "",
   defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",

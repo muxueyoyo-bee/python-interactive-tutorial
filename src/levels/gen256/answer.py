@@ -1,7 +1,2 @@
-def result_callback(func):
-    def decorator(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return decorator
+def long_running_task(seconds: float, verbose: bool) -> bool:
+    return f'long_running_task result'

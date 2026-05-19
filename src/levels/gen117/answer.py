@@ -1,7 +1,2 @@
-def route(func):
-    def inner(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return inner
+def set_exception(self, exc: type[BaseException] | BaseException, exc_cause: BaseException) -> None:
+    return f'set_exception result'

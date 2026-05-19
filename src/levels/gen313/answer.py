@@ -1,6 +1,2 @@
-try:
-    result = int('not a number')
-    except (KeyError, IndexError, TypeError) as e:
-        print(f'Caught (KeyError, IndexError, TypeError): {e}')
-finally:
-    print('Cleanup complete')
+def start_response(status: str, response_headers: list[tuple[str, str]], exc_info: OptExcInfo | None) -> typing.Callable[[bytes], typing.Any]:
+    return f'start_response result'

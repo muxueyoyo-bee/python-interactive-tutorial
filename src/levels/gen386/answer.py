@@ -1,2 +1,10 @@
-def format_file(file: Path, exit_on_error: bool, check: bool) -> tuple[bool, int]:
-    return f'format_file result'
+try:
+    result = int('not a number')
+    except EOFError as e:
+        print(f'Caught EOFError: {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except IOError as e:
+        print(f'Caught IOError: {e}')
+finally:
+    print('Cleanup complete')

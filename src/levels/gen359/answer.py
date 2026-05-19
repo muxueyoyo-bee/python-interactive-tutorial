@@ -1,6 +1,2 @@
-try:
-    result = int('not a number')
-    except BrokenPipeError as e:
-        print(f'Caught BrokenPipeError: {e}')
-finally:
-    print('Cleanup complete')
+def signal_handler(self, sig: int, frame: FrameType | None) -> None:
+    return f'signal_handler result'

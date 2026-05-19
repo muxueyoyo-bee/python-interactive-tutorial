@@ -1,8 +1,2 @@
-class FieldDoesNotExist(Exception):
-    pass
-class AppRegistryNotReady(Exception):
-    pass
-class ObjectDoesNotExist(Exception):
-    pass
-class ObjectNotUpdated(Exception):
-    pass
+def route(method: str, path: str, handler: _HandlerType) -> RouteDef:
+    return f'route result'

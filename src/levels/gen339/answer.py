@@ -1,8 +1,2 @@
-class PythonVersionError(Exception):
-    pass
-class PythonVersionNotFoundError(PythonVersionError):
-    pass
-class NoCompatiblePythonVersionFoundError(PythonVersionError):
-    pass
-class InvalidCurrentPythonVersionError(PythonVersionError):
-    pass
+def default_on_error(conn: HTTPConnection, exc: Exception) -> Response:
+    return f'default_on_error result'

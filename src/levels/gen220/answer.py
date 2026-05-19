@@ -1,2 +1,2 @@
-def render_template(template: Template, context: Context) -> None:
-    return f'render_template result'
+def url_for(self, commit_sha: str, path: str, lnum: int | None) -> str:
+    return f'url_for result'

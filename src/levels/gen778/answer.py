@@ -1,0 +1,2 @@
+def get_target_type(tvar: TypeVarLikeType, type: Type, callable: CallableType, report_incompatible_typevar_value: Callable[[CallableType, Type, str, Context], None], context: Context, skip_unsatisfied: bool) -> Type | None:
+    return f'get_target_type result'

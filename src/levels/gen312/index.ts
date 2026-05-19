@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen312",
-  title: "定义模块的公共 API",
+  title: "编写上下文管理器: HTTPTransport",
   category: "进阶",
-  description: `__all__ 是 Python 模块的公共接口声明，控制 \`from module import *\` 的行为。
+  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
 
-源文件 __init__.py 暴露了 150 个公开符号。
+源文件 default.py 定义了类 \`HTTPTransport\`，实现了 __enter__ / __exit__。
 
-请仿照此模式，为以下符号定义 __all__ 列表。
+请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
 
-定义 __all__ 列表，包含以下 6 个公开符号: dataclasses, field_validator, model_validator, AfterValidator, BeforeValidator, PlainValidator
+编写类 HTTPTransport，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
 
-来源：pydantic/pydantic — pydantic\\__init__.py`,
+来源：encode/httpx — httpx\\_transports\\default.py`,
   content: "",
-  defaultCode: `# 定义 __all__ 暴露以下公共 API: dataclasses, field_validator, model_validator ...`,
+  defaultCode: `# 编写上下文管理器 HTTPTransport`,
   answer: "",
-  hint: `__all__ = ['Name1', 'Name2', ...] —— 字符串列表`,
+  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
   type: "main",
-  difficulty: 1,
+  difficulty: 3,
   compareMode: "return",
-  tags: ["module", "api-design", "__all__"],
+  tags: ["context-manager", "class", "with-statement"],
 };
 
 export default level;

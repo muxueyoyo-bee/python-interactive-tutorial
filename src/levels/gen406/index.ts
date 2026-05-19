@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen406",
-  title: "编写带类型标注的函数: generate_table_lines",
+  title: "编写 try/except 错误处理",
   category: "中级",
-  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
+  description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 update_requirements.py（yt-dlp/yt-dlp）中 \`generate_table_lines\` 展示了完整的参数和返回值类型标注。
+源文件 text_format.py 使用了 try/except 捕获多种异常类型。
 
-请仿照此模式编写一个带类型标注的函数。
+请仿照此模式编写错误处理代码。
 
-编写函数 generate_table_lines(table_name: str, table: dict[str, str | bool | int | float | list[str | dict[str, str]]]) -> collections.abc.Iterator[str]，返回格式化字符串。
+编写 try/except 块：尝试 int('not a number')，捕获 Exception, KeyError, ParseError，并在 finally 中打印 'Cleanup complete'。
 
-来源：yt-dlp/yt-dlp — devscripts\\update_requirements.py`,
+来源：google/protobuf — python\\google\\protobuf\\text_format.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 generate_table_lines`,
+  defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",
-  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
+  hint: `try: ... except SomeError as e: ... finally: ...`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["type-hints", "annotations"],
+  tags: ["error-handling", "try-except"],
 };
 
 export default level;

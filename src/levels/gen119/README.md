@@ -1,12 +1,12 @@
 # 第119关: 编写 try/except 错误处理
 
-> 真实案例：anthropics/anthropic-sdk-python 的 `examples\text_completions_streaming.py` 中使用了这个模式。
+> 真实案例：aio-libs/aiohttp 的 `aiohttp\client_ws.py` 中使用了这个模式。
 
 ## 概念介绍
 
 健壮的代码用 try/except 优雅地处理异常。
 
-源文件 text_completions_streaming.py 使用了 try/except 捕获多种异常类型。
+源文件 client_ws.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
@@ -15,8 +15,12 @@
 ```python
 try:
     result = int('not a number')
-    except APIStatusError as e:
-        print(f'Caught APIStatusError: {e}')
+    except (asyncio.CancelledError, asyncio.TimeoutError) as e:
+        print(f'Caught (asyncio.CancelledError, asyncio.TimeoutError): {e}')
+    except ClientError as e:
+        print(f'Caught ClientError: {e}')
+    except EofStream as e:
+        print(f'Caught EofStream: {e}')
 finally:
     print('Cleanup complete')
 ```
@@ -33,6 +37,6 @@ try: ... except SomeError as e: ... finally: ...
 
 ## 你的任务
 
-编写 try/except 块：尝试 int('not a number')，捕获 APIStatusError，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 (asyncio.CancelledError, asyncio.TimeoutError), ClientError, EofStream，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

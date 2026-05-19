@@ -1,2 +1,7 @@
-def parse_event(_env: BuildEnvironment, sig: str, signode: Element) -> str:
-    return f'parse_event result'
+def api_route(func):
+    def decorator(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return decorator

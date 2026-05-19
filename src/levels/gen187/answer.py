@@ -1,2 +1,8 @@
-def create_ssl_context(certfile: str | os.PathLike[str], keyfile: str | os.PathLike[str] | None, password: str | None, ssl_version: int, cert_reqs: int, ca_certs: str | os.PathLike[str] | None, ciphers: str | None) -> ssl.SSLContext:
-    return f'create_ssl_context result'
+try:
+    result = int('not a number')
+    except (FileNotFoundError, subprocess.TimeoutExpired) as e:
+        print(f'Caught (FileNotFoundError, subprocess.TimeoutExpired): {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+finally:
+    print('Cleanup complete')

@@ -2,25 +2,32 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen257",
-  title: "编写上下文管理器: Context",
+  title: "定义异常类层级: FieldDoesNotExist",
   category: "进阶",
-  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
+  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
 
-源文件 core.py 定义了类 \`Context\`，实现了 __enter__ / __exit__。
+源文件 exceptions.py 定义了如下继承层级：
+  • FieldDoesNotExist → Exception
+  • AppRegistryNotReady → Exception
+  • ObjectDoesNotExist → Exception
+  • ObjectNotUpdated → Exception
 
-请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
+请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
-编写类 Context，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
+定义以下异常类: FieldDoesNotExist(Exception), AppRegistryNotReady(Exception), ObjectDoesNotExist(Exception), ObjectNotUpdated(Exception)
 
-来源：pallets/click — src\\click\\core.py`,
+来源：django/django — django\\core\\exceptions.py`,
   content: "",
-  defaultCode: `# 编写上下文管理器 Context`,
+  defaultCode: `class FieldDoesNotExist(Exception):
+    pass
+
+# 定义 AppRegistryNotReady, ObjectDoesNotExist, ObjectNotUpdated，继承自 FieldDoesNotExist`,
   answer: "",
-  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
+  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["context-manager", "class", "with-statement"],
+  tags: ["exception", "class", "inheritance"],
 };
 
 export default level;

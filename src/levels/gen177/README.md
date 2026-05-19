@@ -1,43 +1,39 @@
-# 第177关: 编写上下文管理器: BaseTransport
+# 第177关: 编写装饰器: to_streamed_response_wrapper
 
-> 真实案例：encode/httpx 的 `httpx\_transports\base.py` 中使用了这个模式。
+> 真实案例：anthropics/anthropic-sdk-python 的 `src\anthropic\_response.py` 中使用了这个模式。
 
 ## 概念介绍
 
-上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
+装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 base.py 定义了类 `BaseTransport`，实现了 __enter__ / __exit__。
+源文件 _response.py（anthropics/anthropic-sdk-python）中 `to_streamed_response_wrapper` 展示了装饰器模式。
 
-请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
 ## 代码示例
 
 ```python
-class BaseTransport:
-    def __init__(self, name):
-        self.name = name
-
-    def __enter__(self):
-        print(f'Entering {self.name}')
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print(f'Exiting {self.name}')
-        return False
+def to_streamed_response_wrapper(func):
+    def wrapped(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return wrapped
 ```
 
 ## 关键点
 
-实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理
+外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper
 
 ## 常见陷阱
 
-- `with` 语句块结束时自动调用 `__exit__`，即使发生异常
-- `__exit__` 返回 `True` 可以抑制异常（谨慎使用）
-- 也可以用 `contextlib.contextmanager` 装饰器 + `yield` 实现
+- 装饰器本质是 `decorator(func)` 返回新函数
+- 内层 `wrapper` 用 `*args, **kwargs` 接收任意参数
+- `functools.wraps(func)` 保留原函数的 `__name__` 和 `__doc__`
 
 ## 你的任务
 
-编写类 BaseTransport，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
+编写装饰器 to_streamed_response_wrapper，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
 预期行为：参考上方代码示例的输出。

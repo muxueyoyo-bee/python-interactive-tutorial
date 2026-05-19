@@ -1,7 +1,8 @@
-def make_pass_decorator(func):
-    def decorator(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return decorator
+class AmbiguityError(Exception):
+    pass
+class BadMigrationError(Exception):
+    pass
+class CircularDependencyError(Exception):
+    pass
+class InconsistentMigrationHistory(Exception):
+    pass

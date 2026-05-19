@@ -2,27 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen268",
-  title: "编写 Click CLI 命令: run_command",
+  title: "编写 try/except 错误处理",
   category: "中级",
-  description: `Click 是 Python 生态中最流行的 CLI 框架之一。
+  description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 cli.py 使用 @click.command() 定义 CLI 入口。
+源文件 paginator.py 使用了 try/except 捕获多种异常类型。
 
-请仿照此模式编写一个简单的 Click 命令。
+请仿照此模式编写错误处理代码。
 
-编写一个 Click 命令 run_command，用 click.echo() 输出 'Hello, World!'。
+编写 try/except 块：尝试 int('not a number')，捕获 (TypeError, ValueError), EmptyPage, PageNotAnInteger，并在 finally 中打印 'Cleanup complete'。
 
-来源：pallets/flask — src\\flask\\cli.py`,
+来源：django/django — django\\core\\paginator.py`,
   content: "",
-  defaultCode: `import click
-
-# 编写 run_command 命令`,
+  defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",
-  hint: `用 @click.command() 装饰函数，用 click.echo() 输出`,
+  hint: `try: ... except SomeError as e: ... finally: ...`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["cli", "click"],
+  tags: ["error-handling", "try-except"],
 };
 
 export default level;

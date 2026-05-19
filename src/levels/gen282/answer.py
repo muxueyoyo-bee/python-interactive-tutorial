@@ -1,10 +1,10 @@
 try:
     result = int('not a number')
-    except (nodes.Impossible, Exception) as e:
-        print(f'Caught (nodes.Impossible, Exception): {e}')
-    except CompilerExit as e:
-        print(f'Caught CompilerExit: {e}')
-    except IndexError as e:
-        print(f'Caught IndexError: {e}')
+    except (IndexError, TypeError, ValueError) as e:
+        print(f'Caught (IndexError, TypeError, ValueError): {e}')
+    except (KeyError, IndexError, AttributeError) as e:
+        print(f'Caught (KeyError, IndexError, AttributeError): {e}')
+    except (ValueError, LookupError) as e:
+        print(f'Caught (ValueError, LookupError): {e}')
 finally:
     print('Cleanup complete')

@@ -1,2 +1,2 @@
-def from_dict(cls, frontmatter: Dict[str, Any], message: str) -> 'Rule':
-    return f'from_dict result'
+def normalize_output(output: str, cwd: Path) -> str:
+    return f'normalize_output result'

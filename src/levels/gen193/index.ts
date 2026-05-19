@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen193",
-  title: "编写装饰器: api_route",
-  category: "进阶",
-  description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
+  title: "编写带类型标注的函数: infer_author",
+  category: "中级",
+  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 applications.py（fastapi/fastapi）中 \`api_route\` 展示了装饰器模式。
+源文件 simplify_redlines.py（anthropics/skills）中 \`infer_author\` 展示了完整的参数和返回值类型标注。
 
-请编写一个装饰器，在函数调用前后各打印一行信息。
+请仿照此模式编写一个带类型标注的函数。
 
-编写装饰器 api_route，包装目标函数并在调用前后打印 'before call' 和 'after call'。
+编写函数 infer_author(modified_dir: Path, original_docx: Path, default: str) -> str，返回格式化字符串。
 
-来源：fastapi/fastapi — fastapi\\applications.py`,
+来源：anthropics/skills — skills\\xlsx\\scripts\\office\\helpers\\simplify_redlines.py`,
   content: "",
-  defaultCode: `# 编写装饰器 api_route`,
+  defaultCode: `# 编写带类型标注的函数 infer_author`,
   answer: "",
-  hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
+  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["decorator", "functional"],
+  tags: ["type-hints", "annotations"],
 };
 
 export default level;

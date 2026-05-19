@@ -1,6 +1,8 @@
 try:
     result = int('not a number')
-    except InvalidVersion as e:
-        print(f'Caught InvalidVersion: {e}')
+    except ModuleNotFoundError as e:
+        print(f'Caught ModuleNotFoundError: {e}')
+    except MultiPartException as e:
+        print(f'Caught MultiPartException: {e}')
 finally:
     print('Cleanup complete')

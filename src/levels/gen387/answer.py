@@ -1,7 +1,2 @@
-def create_proxy_methods(func):
-    def decorate(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return decorate
+def build_gles3_header(filename: str, shader: str) -> None:
+    return f'build_gles3_header result'

@@ -1,2 +1,2 @@
-def mount(self, path: str, app: ASGIApp, name: str | None) -> None:
-    return f'mount result'
+def to_custom_streamed_response_wrapper(func: Callable[P, object], response_cls: type[_APIResponseT]) -> Callable[P, ResponseContextManager[_APIResponseT]]:
+    return f'to_custom_streamed_response_wrapper result'

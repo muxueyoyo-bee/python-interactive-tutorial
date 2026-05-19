@@ -1,0 +1,2 @@
+def primary_key_constraint(self, name: Optional[sqla_compat._ConstraintNameDefined], table_name: str, cols: Sequence[str], schema: Optional[str]) -> PrimaryKeyConstraint:
+    return f'primary_key_constraint result'

@@ -1,8 +1,2 @@
-class AmbiguityError(Exception):
-    pass
-class BadMigrationError(Exception):
-    pass
-class CircularDependencyError(Exception):
-    pass
-class InconsistentMigrationHistory(Exception):
-    pass
+def connection_made(self, handler: RequestHandler[_Request], transport: asyncio.Transport) -> None:
+    return f'connection_made result'

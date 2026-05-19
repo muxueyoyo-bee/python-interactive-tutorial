@@ -1,2 +1,2 @@
-def generate_pip_from_conda(conda_path: pathlib.Path, pip_path: pathlib.Path, compare: bool) -> bool:
-    return f'generate_pip_from_conda result'
+def build_request(self, method: str, url: URL | str) -> Request:
+    return f'build_request result'

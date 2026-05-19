@@ -1,7 +1,2 @@
-def SpecificEncoder(func):
-    def EncodePackedField(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return EncodePackedField
+def remove_orphaned_files(unpacked_dir: Path, referenced: set) -> list[str]:
+    return f'remove_orphaned_files result'

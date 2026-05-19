@@ -1,7 +1,2 @@
-def SpecificDecoder(func):
-    def DecodePackedField(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return DecodePackedField
+def create_slide_from_layout(unpacked_dir: Path, layout_file: str) -> None:
+    return f'create_slide_from_layout result'

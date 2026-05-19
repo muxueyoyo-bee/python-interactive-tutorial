@@ -1,2 +1,11 @@
-def run_pyright_with_coverage(pyright_args: list[str], exclude_like: Sequence[str]) -> int:
-    return f'run_pyright_with_coverage result'
+class Proxy:
+    def __init__(self, name):
+        self.name = name
+
+    def __enter__(self):
+        print(f'Entering {self.name}')
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f'Exiting {self.name}')
+        return False

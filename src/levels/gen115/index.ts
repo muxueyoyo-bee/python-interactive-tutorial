@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen115",
-  title: "编写上下文管理器: TimerNoop",
-  category: "进阶",
-  description: `上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
+  title: "编写带类型标注的函数: KD",
+  category: "中级",
+  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 helpers.py 定义了类 \`TimerNoop\`，实现了 __enter__ / __exit__。
+源文件 client_middleware_digest_auth.py（aio-libs/aiohttp）中 \`KD\` 展示了完整的参数和返回值类型标注。
 
-请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
+请仿照此模式编写一个带类型标注的函数。
 
-编写类 TimerNoop，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
+编写函数 KD(s: bytes, d: bytes) -> bytes，返回格式化字符串。
 
-来源：aio-libs/aiohttp — aiohttp\\helpers.py`,
+来源：aio-libs/aiohttp — aiohttp\\client_middleware_digest_auth.py`,
   content: "",
-  defaultCode: `# 编写上下文管理器 TimerNoop`,
+  defaultCode: `# 编写带类型标注的函数 KD`,
   answer: "",
-  hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
+  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["context-manager", "class", "with-statement"],
+  tags: ["type-hints", "annotations"],
 };
 
 export default level;

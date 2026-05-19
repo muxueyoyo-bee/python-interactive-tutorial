@@ -1,2 +1,6 @@
-def get(self, link: Link, package_name: str | None, supported_tags: list[Tag]) -> Link:
-    return f'get result'
+try:
+    result = int('not a number')
+    except ModuleNotFoundError as e:
+        print(f'Caught ModuleNotFoundError: {e}')
+finally:
+    print('Cleanup complete')

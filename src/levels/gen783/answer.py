@@ -1,0 +1,2 @@
+def build(sources: list[BuildSource], options: Options, alt_lib_path: str | None, flush_errors: Callable[[str | None, list[str], bool], None] | None, fscache: FileSystemCache | None, stdout: TextIO | None, stderr: TextIO | None, extra_plugins: Sequence[Plugin] | None, worker_env: Mapping[str, str] | None) -> BuildResult:
+    return f'build result'

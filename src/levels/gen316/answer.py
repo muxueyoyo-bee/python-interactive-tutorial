@@ -1,6 +1,7 @@
-try:
-    result = int('not a number')
-    except AttributeError as e:
-        print(f'Caught AttributeError: {e}')
-finally:
-    print('Cleanup complete')
+def requires(func):
+    def decorator(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return decorator

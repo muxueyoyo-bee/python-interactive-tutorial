@@ -1,2 +1,10 @@
-def get_cache_key(self, name: str, filename: str | None) -> str:
-    return f'get_cache_key result'
+try:
+    result = int('not a number')
+    except AttributeError as e:
+        print(f'Caught AttributeError: {e}')
+    except CycleError as e:
+        print(f'Caught CycleError: {e}')
+    except IndexError as e:
+        print(f'Caught IndexError: {e}')
+finally:
+    print('Cleanup complete')

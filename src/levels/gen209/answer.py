@@ -1,2 +1,6 @@
-def MergeMessageTo(cls, source: _T, mask: field_mask_pb2.FieldMask, options: MergeOptions, destination: _T) -> _T:
-    return f'MergeMessageTo result'
+try:
+    result = int('not a number')
+    except yaml.YAMLError as e:
+        print(f'Caught yaml.YAMLError: {e}')
+finally:
+    print('Cleanup complete')

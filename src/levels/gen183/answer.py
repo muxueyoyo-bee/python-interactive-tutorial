@@ -1,6 +1,6 @@
 try:
     result = int('not a number')
-    except StopIteration as e:
-        print(f'Caught StopIteration: {e}')
+    except (TypeError, AttributeError) as e:
+        print(f'Caught (TypeError, AttributeError): {e}')
 finally:
     print('Cleanup complete')

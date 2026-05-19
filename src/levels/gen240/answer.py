@@ -1,6 +1,8 @@
-try:
-    result = int('not a number')
-    except urllib.error.HTTPError as e:
-        print(f'Caught urllib.error.HTTPError: {e}')
-finally:
-    print('Cleanup complete')
+class CeleryWarning(UserWarning):
+    pass
+class AlwaysEagerIgnored(CeleryWarning):
+    pass
+class DuplicateNodenameWarning(CeleryWarning):
+    pass
+class FixupWarning(CeleryWarning):
+    pass

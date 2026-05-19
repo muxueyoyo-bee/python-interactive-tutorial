@@ -1,0 +1,2 @@
+def alter_column(self, table_name: str, column_name: str, nullable: Optional[bool], server_default: Union[_ServerDefaultType, None, Literal[False]], name: Optional[str], type_: Optional[TypeEngine], autoincrement: Optional[Union[bool, Literal['auto']]], comment: Union[str, Literal[False]]) -> None:
+    return f'alter_column result'

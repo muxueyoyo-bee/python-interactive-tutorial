@@ -1,10 +1,10 @@
 try:
     result = int('not a number')
-    except BuildError as e:
-        print(f'Caught BuildError: {e}')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
     except ImportError as e:
         print(f'Caught ImportError: {e}')
+    except KeyError as e:
+        print(f'Caught KeyError: {e}')
+    except ValidationError as e:
+        print(f'Caught ValidationError: {e}')
 finally:
     print('Cleanup complete')

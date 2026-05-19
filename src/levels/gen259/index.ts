@@ -2,25 +2,30 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen259",
-  title: "编写带类型标注的函数: batch",
-  category: "中级",
-  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
+  title: "定义异常类层级: TemplateDoesNotExist",
+  category: "进阶",
+  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
 
-源文件 core.py（pallets/click）中 \`batch\` 展示了完整的参数和返回值类型标注。
+源文件 exceptions.py 定义了如下继承层级：
+  • TemplateDoesNotExist → Exception
+  • TemplateSyntaxError → Exception
 
-请仿照此模式编写一个带类型标注的函数。
+请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
-编写函数 batch(iterable: cabc.Iterable[V], batch_size: int) -> list[tuple[V, ...]]，返回格式化字符串。
+定义以下异常类: TemplateDoesNotExist(Exception), TemplateSyntaxError(Exception)
 
-来源：pallets/click — src\\click\\core.py`,
+来源：django/django — django\\template\\exceptions.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 batch`,
+  defaultCode: `class TemplateDoesNotExist(Exception):
+    pass
+
+# 定义 TemplateSyntaxError，继承自 TemplateDoesNotExist`,
   answer: "",
-  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
+  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["type-hints", "annotations"],
+  tags: ["exception", "class", "inheritance"],
 };
 
 export default level;

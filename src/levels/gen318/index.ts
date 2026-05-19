@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen318",
-  title: "编写带类型标注的函数: model_json_schema",
+  title: "编写 try/except 错误处理",
   category: "中级",
-  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
+  description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 json_schema.py（pydantic/pydantic）中 \`model_json_schema\` 展示了完整的参数和返回值类型标注。
+源文件 concurrency.py 使用了 try/except 捕获多种异常类型。
 
-请仿照此模式编写一个带类型标注的函数。
+请仿照此模式编写错误处理代码。
 
-编写函数 model_json_schema(cls, by_alias: bool, ref_template: str, union_format: Literal['any_of', 'primitive_type_array'], schema_generator: type[GenerateJsonSchema], mode: JsonSchemaMode) -> dict[str, Any]，返回格式化字符串。
+编写 try/except 块：尝试 int('not a number')，捕获 StopIteration，并在 finally 中打印 'Cleanup complete'。
 
-来源：pydantic/pydantic — pydantic\\json_schema.py`,
+来源：encode/starlette — starlette\\concurrency.py`,
   content: "",
-  defaultCode: `# 编写带类型标注的函数 model_json_schema`,
+  defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",
-  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
+  hint: `try: ... except SomeError as e: ... finally: ...`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["type-hints", "annotations"],
+  tags: ["error-handling", "try-except"],
 };
 
 export default level;

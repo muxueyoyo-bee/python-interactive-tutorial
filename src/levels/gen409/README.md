@@ -1,25 +1,25 @@
-# 第409关: 编写装饰器: lock
+# 第409关: 编写装饰器: SpecificDecoder
 
-> 真实案例：yt-dlp/yt-dlp 的 `yt_dlp\minicurses.py` 中使用了这个模式。
+> 真实案例：google/protobuf 的 `python\google\protobuf\internal\decoder.py` 中使用了这个模式。
 
 ## 概念介绍
 
 装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 minicurses.py（yt-dlp/yt-dlp）中 `lock` 展示了装饰器模式。
+源文件 decoder.py（google/protobuf）中 `SpecificDecoder` 展示了装饰器模式。
 
 请编写一个装饰器，在函数调用前后各打印一行信息。
 
 ## 代码示例
 
 ```python
-def lock(func):
-    def wrapper(*args, **kwargs):
+def SpecificDecoder(func):
+    def DecodePackedField(*args, **kwargs):
         print('before call')
         result = func(*args, **kwargs)
         print('after call')
         return result
-    return wrapper
+    return DecodePackedField
 ```
 
 ## 关键点
@@ -34,6 +34,6 @@ def lock(func):
 
 ## 你的任务
 
-编写装饰器 lock，包装目标函数并在调用前后打印 'before call' 和 'after call'。
+编写装饰器 SpecificDecoder，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
 预期行为：参考上方代码示例的输出。

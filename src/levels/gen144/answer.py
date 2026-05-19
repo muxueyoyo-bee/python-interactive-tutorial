@@ -1,8 +1,6 @@
-class CeleryWarning(UserWarning):
-    pass
-class AlwaysEagerIgnored(CeleryWarning):
-    pass
-class DuplicateNodenameWarning(CeleryWarning):
-    pass
-class FixupWarning(CeleryWarning):
-    pass
+try:
+    result = int('not a number')
+    except ValueError as e:
+        print(f'Caught ValueError: {e}')
+finally:
+    print('Cleanup complete')

@@ -1,7 +1,8 @@
-def make_encoded_write(func):
-    def encoded_write(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return encoded_write
+try:
+    result = int('not a number')
+    except EOFError as e:
+        print(f'Caught EOFError: {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+finally:
+    print('Cleanup complete')

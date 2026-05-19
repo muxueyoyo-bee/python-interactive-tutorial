@@ -1,20 +1,20 @@
-# 第211关: 编写带类型标注的函数: pack
+# 第211关: 编写带类型标注的函数: run_single_query
 
-> 真实案例：google/protobuf 的 `python\google\protobuf\any.py` 中使用了这个模式。
+> 真实案例：anthropics/skills 的 `skills\skill-creator\scripts\run_eval.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 any.py（google/protobuf）中 `pack` 展示了完整的参数和返回值类型标注。
+源文件 run_eval.py（anthropics/skills）中 `run_single_query` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def pack(msg: Message, type_url_prefix: Optional[str], deterministic: Optional[bool]) -> Any:
-    return f'pack result'
+def run_single_query(query: str, skill_name: str, skill_description: str, timeout: int, project_root: str, model: str | None) -> bool:
+    return f'run_single_query result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 pack(msg: Message, type_url_prefix: Optional[str], deterministic: Optional[bool]) -> Any，返回格式化字符串。
+编写函数 run_single_query(query: str, skill_name: str, skill_description: str, timeout: int, project_root: str, model: str | None) -> bool，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

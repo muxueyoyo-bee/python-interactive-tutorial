@@ -1,0 +1,2 @@
+def new_context(environment: 'Environment', template_name: str | None, blocks: dict[str, t.Callable[['Context'], t.Iterator[str]]], vars: dict[str, t.Any] | None, shared: bool, globals: t.MutableMapping[str, t.Any] | None, locals: t.Mapping[str, t.Any] | None) -> 'Context':
+    return f'new_context result'

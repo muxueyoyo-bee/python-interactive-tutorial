@@ -1,8 +1,2 @@
-class ConsoleError(Exception):
-    pass
-class StyleSyntaxError(ConsoleError):
-    pass
-class StyleStackError(ConsoleError):
-    pass
-class NotRenderableError(ConsoleError):
-    pass
+def on_field_name(self, data: bytes, start: int, end: int) -> None:
+    return f'on_field_name result'

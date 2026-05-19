@@ -1,8 +1,7 @@
-try:
-    result = int('not a number')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except OSError as e:
-        print(f'Caught OSError: {e}')
-finally:
-    print('Cleanup complete')
+def receiver(func):
+    def _decorator(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return _decorator

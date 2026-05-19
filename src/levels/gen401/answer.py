@@ -1,7 +1,6 @@
-def generate_list_convertor(func):
-    def internal_convertor(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return internal_convertor
+try:
+    result = int('not a number')
+    except AttributeError as e:
+        print(f'Caught AttributeError: {e}')
+finally:
+    print('Cleanup complete')

@@ -1,2 +1,2 @@
-def FindFileContainingExtension(self, extendee_name: str, extension_number: int) -> Optional['descriptor_pb2.FileDescriptorProto']:
-    return f'FindFileContainingExtension result'
+def split_eval_set(eval_set: list[dict], holdout: float, seed: int) -> tuple[list[dict], list[dict]]:
+    return f'split_eval_set result'

@@ -1,6 +1,8 @@
 try:
     result = int('not a number')
-    except FileExistsError as e:
-        print(f'Caught FileExistsError: {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except json.JSONDecodeError as e:
+        print(f'Caught json.JSONDecodeError: {e}')
 finally:
     print('Cleanup complete')

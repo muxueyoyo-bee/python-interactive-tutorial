@@ -1,7 +1,6 @@
-def validator(func):
-    def dec(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return dec
+try:
+    result = int('not a number')
+    except (TypeError, ValueError) as e:
+        print(f'Caught (TypeError, ValueError): {e}')
+finally:
+    print('Cleanup complete')

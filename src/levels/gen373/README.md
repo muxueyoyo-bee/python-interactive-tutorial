@@ -1,12 +1,12 @@
 # 第373关: 编写 try/except 错误处理
 
-> 真实案例：sphinx-doc/sphinx 的 `sphinx\events.py` 中使用了这个模式。
+> 真实案例：fastapi/fastapi 的 `fastapi\routing.py` 中使用了这个模式。
 
 ## 概念介绍
 
 健壮的代码用 try/except 优雅地处理异常。
 
-源文件 events.py 使用了 try/except 捕获多种异常类型。
+源文件 routing.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
@@ -17,10 +17,10 @@ try:
     result = int('not a number')
     except Exception as e:
         print(f'Caught Exception: {e}')
-    except SphinxError as e:
-        print(f'Caught SphinxError: {e}')
-    except allowed_exceptions as e:
-        print(f'Caught allowed_exceptions: {e}')
+    except HTTPException as e:
+        print(f'Caught HTTPException: {e}')
+    except TimeoutError as e:
+        print(f'Caught TimeoutError: {e}')
 finally:
     print('Cleanup complete')
 ```
@@ -37,6 +37,6 @@ try: ... except SomeError as e: ... finally: ...
 
 ## 你的任务
 
-编写 try/except 块：尝试 int('not a number')，捕获 Exception, SphinxError, allowed_exceptions，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 Exception, HTTPException, TimeoutError，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

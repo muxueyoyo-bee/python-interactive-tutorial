@@ -1,8 +1,6 @@
 try:
     result = int('not a number')
-    except AttributeError as e:
-        print(f'Caught AttributeError: {e}')
-    except ImportError as e:
-        print(f'Caught ImportError: {e}')
+    except APIStatusError as e:
+        print(f'Caught APIStatusError: {e}')
 finally:
     print('Cleanup complete')

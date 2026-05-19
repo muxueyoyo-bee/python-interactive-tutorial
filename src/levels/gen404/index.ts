@@ -2,32 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen404",
-  title: "定义异常类层级: RequestError",
-  category: "进阶",
-  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
+  title: "编写带类型标注的函数: serialize",
+  category: "中级",
+  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • RequestError → YoutubeDLError
-  • UnsupportedRequest → RequestError
-  • NoSupportingHandlers → RequestError
-  • TransportError → RequestError
+源文件 proto_text.py（google/protobuf）中 \`serialize\` 展示了完整的参数和返回值类型标注。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写一个带类型标注的函数。
 
-定义以下异常类: RequestError(YoutubeDLError), UnsupportedRequest(RequestError), NoSupportingHandlers(RequestError), TransportError(RequestError)
+编写函数 serialize(message: Message, as_utf8: bool, as_one_line: bool, use_short_repeated_primitives: bool, pointy_brackets: bool, use_index_order: bool, use_field_number: bool, descriptor_pool: Optional[DescriptorPool], indent: int, message_formatter: Optional[_MsgFormatter], print_unknown_fields: bool, force_colon: bool) -> str，返回格式化字符串。
 
-来源：yt-dlp/yt-dlp — yt_dlp\\networking\\exceptions.py`,
+来源：google/protobuf — python\\google\\protobuf\\proto_text.py`,
   content: "",
-  defaultCode: `class RequestError(YoutubeDLError):
-    pass
-
-# 定义 UnsupportedRequest, NoSupportingHandlers, TransportError，继承自 RequestError`,
+  defaultCode: `# 编写带类型标注的函数 serialize`,
   answer: "",
-  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
+  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["exception", "class", "inheritance"],
+  tags: ["type-hints", "annotations"],
 };
 
 export default level;

@@ -1,12 +1,12 @@
 # 第223关: 编写 try/except 错误处理
 
-> 真实案例：libgit2/libgit2 的 `script\release.py` 中使用了这个模式。
+> 真实案例：astral-sh/ruff 的 `scripts\generate_builtin_modules.py` 中使用了这个模式。
 
 ## 概念介绍
 
 健壮的代码用 try/except 优雅地处理异常。
 
-源文件 release.py 使用了 try/except 捕获多种异常类型。
+源文件 generate_builtin_modules.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
@@ -15,12 +15,8 @@
 ```python
 try:
     result = int('not a number')
-    except Error as e:
-        print(f'Caught Error: {e}')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except KeyError as e:
-        print(f'Caught KeyError: {e}')
+    except subprocess.CalledProcessError as e:
+        print(f'Caught subprocess.CalledProcessError: {e}')
 finally:
     print('Cleanup complete')
 ```
@@ -37,6 +33,6 @@ try: ... except SomeError as e: ... finally: ...
 
 ## 你的任务
 
-编写 try/except 块：尝试 int('not a number')，捕获 Error, Exception, KeyError，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 subprocess.CalledProcessError，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

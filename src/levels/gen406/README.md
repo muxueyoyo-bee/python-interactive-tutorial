@@ -1,34 +1,42 @@
-# 第406关: 编写带类型标注的函数: generate_table_lines
+# 第406关: 编写 try/except 错误处理
 
-> 真实案例：yt-dlp/yt-dlp 的 `devscripts\update_requirements.py` 中使用了这个模式。
+> 真实案例：google/protobuf 的 `python\google\protobuf\text_format.py` 中使用了这个模式。
 
 ## 概念介绍
 
-类型标注使代码更可读、IDE 能提供更好的自动补全。
+健壮的代码用 try/except 优雅地处理异常。
 
-源文件 update_requirements.py（yt-dlp/yt-dlp）中 `generate_table_lines` 展示了完整的参数和返回值类型标注。
+源文件 text_format.py 使用了 try/except 捕获多种异常类型。
 
-请仿照此模式编写一个带类型标注的函数。
+请仿照此模式编写错误处理代码。
 
 ## 代码示例
 
 ```python
-def generate_table_lines(table_name: str, table: dict[str, str | bool | int | float | list[str | dict[str, str]]]) -> collections.abc.Iterator[str]:
-    return f'generate_table_lines result'
+try:
+    result = int('not a number')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except KeyError as e:
+        print(f'Caught KeyError: {e}')
+    except ParseError as e:
+        print(f'Caught ParseError: {e}')
+finally:
+    print('Cleanup complete')
 ```
 
 ## 关键点
 
-def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
+try: ... except SomeError as e: ... finally: ...
 
 ## 常见陷阱
 
-- 类型标注只是提示，Python 运行时不做类型检查
-- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
-- 返回值类型用 `->` 箭头
+- `except:` 不加异常类型会捕获所有异常(包括 KeyboardInterrupt)，通常不推荐
+- `except Exception as e:` 中的 `as e` 可以获取异常对象
+- `finally` 无论是否发生异常都会执行
 
 ## 你的任务
 
-编写函数 generate_table_lines(table_name: str, table: dict[str, str | bool | int | float | list[str | dict[str, str]]]) -> collections.abc.Iterator[str]，返回格式化字符串。
+编写 try/except 块：尝试 int('not a number')，捕获 Exception, KeyError, ParseError，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

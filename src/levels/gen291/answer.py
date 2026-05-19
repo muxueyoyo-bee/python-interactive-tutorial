@@ -1,8 +1,2 @@
-__all__ = [
-    "AbstractMethodError",
-    "AttributeConflictWarning",
-    "CSSWarning",
-    "CategoricalConversionWarning",
-    "ChainedAssignmentError",
-    "ClosedFileError",
-]
+def request(method: str, url: URL | str) -> Response:
+    return f'request result'

@@ -1,6 +1,8 @@
 try:
     result = int('not a number')
-    except (AttributeError, IndexError) as e:
-        print(f'Caught (AttributeError, IndexError): {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except urllib.error.HTTPError as e:
+        print(f'Caught urllib.error.HTTPError: {e}')
 finally:
     print('Cleanup complete')

@@ -1,2 +1,2 @@
-def init(config: Config, directory: str, template: str, package: bool) -> None:
-    return f'init result'
+def create_model_field(name: str, type_: Any, default: Any | None, field_info: FieldInfo | None, alias: str | None, mode: Literal['validation', 'serialization']) -> ModelField:
+    return f'create_model_field result'

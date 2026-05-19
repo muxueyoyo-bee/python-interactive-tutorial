@@ -1,0 +1,2 @@
+def frame_apply(obj: DataFrame, func: AggFuncType, axis: Axis, raw: bool, result_type: str | None, by_row: Literal[False, 'compat'], engine: str, engine_kwargs: dict[str, bool] | None, args: Any, kwargs: Any) -> FrameApply:
+    return f'frame_apply result'

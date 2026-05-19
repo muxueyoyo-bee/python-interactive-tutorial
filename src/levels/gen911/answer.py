@@ -1,0 +1,2 @@
+def instance(cls, statement: Optional[str], params: Optional[_AnyExecuteParams], orig: Exception, dbapi_base_err: Type[Exception], hide_parameters: bool, connection_invalidated: bool, dialect: Optional[Dialect], ismulti: Optional[bool]) -> StatementError:
+    return f'instance result'

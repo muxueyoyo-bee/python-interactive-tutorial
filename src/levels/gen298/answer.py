@@ -1,7 +1,10 @@
-def wrap_function(func):
-    def wrapper(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return wrapper
+try:
+    result = int('not a number')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
+    except brotli.error as e:
+        print(f'Caught brotli.error: {e}')
+    except zlib.error as e:
+        print(f'Caught zlib.error: {e}')
+finally:
+    print('Cleanup complete')

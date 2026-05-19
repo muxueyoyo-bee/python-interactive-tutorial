@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen405",
-  title: "定义模块的公共 API",
-  category: "进阶",
-  description: `__all__ 是 Python 模块的公共接口声明，控制 \`from module import *\` 的行为。
+  title: "编写 try/except 错误处理",
+  category: "中级",
+  description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 __init__.py 暴露了 5 个公开符号。
+源文件 text_encoding.py 使用了 try/except 捕获多种异常类型。
 
-请仿照此模式，为以下符号定义 __all__ 列表。
+请仿照此模式编写错误处理代码。
 
-定义 __all__ 列表，包含以下 5 个公开符号: YoutubeDL, gen_extractors, list_extractors, main, parse_options
+编写 try/except 块：尝试 int('not a number')，捕获 UnicodeDecodeError，并在 finally 中打印 'Cleanup complete'。
 
-来源：yt-dlp/yt-dlp — yt_dlp\\__init__.py`,
+来源：google/protobuf — python\\google\\protobuf\\text_encoding.py`,
   content: "",
-  defaultCode: `# 定义 __all__ 暴露以下公共 API: YoutubeDL, gen_extractors, list_extractors ...`,
+  defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",
-  hint: `__all__ = ['Name1', 'Name2', ...] —— 字符串列表`,
+  hint: `try: ... except SomeError as e: ... finally: ...`,
   type: "main",
-  difficulty: 1,
+  difficulty: 3,
   compareMode: "return",
-  tags: ["module", "api-design", "__all__"],
+  tags: ["error-handling", "try-except"],
 };
 
 export default level;

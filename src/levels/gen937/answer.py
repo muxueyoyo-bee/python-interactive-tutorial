@@ -1,0 +1,2 @@
+def create(cls, drivername: str, username: Optional[str], password: Optional[str], host: Optional[str], port: Optional[int], database: Optional[str], query: Mapping[str, Union[Sequence[str], str]]) -> URL:
+    return f'create result'

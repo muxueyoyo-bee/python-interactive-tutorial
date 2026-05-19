@@ -1,2 +1,10 @@
-def replace_inconsistent_pandas_namespace(visitor: Visitor, content: str) -> str:
-    return f'replace_inconsistent_pandas_namespace result'
+try:
+    result = int('not a number')
+    except BaseException as e:
+        print(f'Caught BaseException: {e}')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
+    except InvalidURL as e:
+        print(f'Caught InvalidURL: {e}')
+finally:
+    print('Cleanup complete')

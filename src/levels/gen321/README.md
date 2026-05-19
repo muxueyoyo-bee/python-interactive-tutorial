@@ -1,44 +1,34 @@
-# 第321关: 定义异常类层级: PipError
+# 第321关: 编写带类型标注的函数: register_url_convertor
 
-> 真实案例：pypa/pip 的 `src\pip\_internal\exceptions.py` 中使用了这个模式。
+> 真实案例：encode/starlette 的 `starlette\convertors.py` 中使用了这个模式。
 
 ## 概念介绍
 
-好的代码库用自定义异常类让调用方精确捕获不同错误。
+类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • PipError → Exception
-  • DiagnosticPipError → PipError
-  • ConfigurationError → PipError
-  • InstallationError → PipError
+源文件 convertors.py（encode/starlette）中 `register_url_convertor` 展示了完整的参数和返回值类型标注。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-class PipError(Exception):
-    pass
-class DiagnosticPipError(PipError):
-    pass
-class ConfigurationError(PipError):
-    pass
-class InstallationError(PipError):
-    pass
+def register_url_convertor(key: str, convertor: Convertor[Any]) -> None:
+    return f'register_url_convertor result'
 ```
 
 ## 关键点
 
-class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔
+def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
 
 ## 常见陷阱
 
-- `__init__` 不是构造器，是初始化方法（构造器是 `__new__`）
-- 实例方法的第一个参数必须显式写 `self`
-- `pass` 是一个空语句，占位用
+- 类型标注只是提示，Python 运行时不做类型检查
+- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
+- 返回值类型用 `->` 箭头
 
 ## 你的任务
 
-定义以下异常类: PipError(Exception), DiagnosticPipError(PipError), ConfigurationError(PipError), InstallationError(PipError)
+编写函数 register_url_convertor(key: str, convertor: Convertor[Any]) -> None，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

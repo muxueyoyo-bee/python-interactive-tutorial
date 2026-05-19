@@ -1,7 +1,2 @@
-def register(func):
-    def wrapper(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return wrapper
+def markdown_project_section(title: str, content: str | list[str], options: CommandOptions, project: Project) -> list[str]:
+    return f'markdown_project_section result'

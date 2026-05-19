@@ -1,2 +1,2 @@
-def apply_translated_message(self, original_message: str, translated_message: str) -> None:
-    return f'apply_translated_message result'
+def add_api_route(self, path: str, endpoint: Callable[..., Any]) -> None:
+    return f'add_api_route result'

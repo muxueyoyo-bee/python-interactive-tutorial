@@ -1,6 +1,6 @@
 try:
     result = int('not a number')
-    except queue.Empty as e:
-        print(f'Caught queue.Empty: {e}')
+    except FileNotFoundError as e:
+        print(f'Caught FileNotFoundError: {e}')
 finally:
     print('Cleanup complete')

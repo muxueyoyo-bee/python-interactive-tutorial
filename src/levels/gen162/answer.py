@@ -1,7 +1,8 @@
-def receiver(func):
-    def _decorator(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return _decorator
+try:
+    result = int('not a number')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
+    except IndexError as e:
+        print(f'Caught IndexError: {e}')
+finally:
+    print('Cleanup complete')

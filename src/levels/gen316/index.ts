@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen316",
-  title: "编写 try/except 错误处理",
-  category: "中级",
-  description: `健壮的代码用 try/except 优雅地处理异常。
+  title: "编写装饰器: requires",
+  category: "进阶",
+  description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 dataclasses.py 使用了 try/except 捕获多种异常类型。
+源文件 authentication.py（encode/starlette）中 \`requires\` 展示了装饰器模式。
 
-请仿照此模式编写错误处理代码。
+请编写一个装饰器，在函数调用前后各打印一行信息。
 
-编写 try/except 块：尝试 int('not a number')，捕获 AttributeError，并在 finally 中打印 'Cleanup complete'。
+编写装饰器 requires，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
-来源：pydantic/pydantic — pydantic\\dataclasses.py`,
+来源：encode/starlette — starlette\\authentication.py`,
   content: "",
-  defaultCode: `# 编写 try/except/finally 错误处理`,
+  defaultCode: `# 编写装饰器 requires`,
   answer: "",
-  hint: `try: ... except SomeError as e: ... finally: ...`,
+  hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["error-handling", "try-except"],
+  tags: ["decorator", "functional"],
 };
 
 export default level;

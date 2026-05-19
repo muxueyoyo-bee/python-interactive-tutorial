@@ -2,32 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen324",
-  title: "定义异常类层级: ResolverException",
-  category: "进阶",
-  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
+  title: "编写 try/except 错误处理",
+  category: "中级",
+  description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • ResolverException → Exception
-  • RequirementsConflicted → ResolverException, Generic[RT, CT]
-  • InconsistentCandidate → ResolverException, Generic[RT, CT]
-  • ResolutionError → ResolverException
+源文件 formparsers.py 使用了 try/except 捕获多种异常类型。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写错误处理代码。
 
-定义以下异常类: ResolverException(Exception), RequirementsConflicted(ResolverException, Generic[RT, CT]), InconsistentCandidate(ResolverException, Generic[RT, CT]), ResolutionError(ResolverException)
+编写 try/except 块：尝试 int('not a number')，捕获 (UnicodeDecodeError, LookupError), KeyError, ModuleNotFoundError，并在 finally 中打印 'Cleanup complete'。
 
-来源：pypa/pip — src\\pip\\_vendor\\resolvelib\\resolvers\\exceptions.py`,
+来源：encode/starlette — starlette\\formparsers.py`,
   content: "",
-  defaultCode: `class ResolverException(Exception):
-    pass
-
-# 定义 RequirementsConflicted, InconsistentCandidate, ResolutionError，继承自 ResolverException`,
+  defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",
-  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
+  hint: `try: ... except SomeError as e: ... finally: ...`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["exception", "class", "inheritance"],
+  tags: ["error-handling", "try-except"],
 };
 
 export default level;

@@ -1,2 +1,2 @@
-def install_callback(ctx: click.Context, param: click.Parameter, value: Any) -> Any:
-    return f'install_callback result'
+def FindFileContainingExtension(self, extendee_name: str, extension_number: int) -> Optional['descriptor_pb2.FileDescriptorProto']:
+    return f'FindFileContainingExtension result'

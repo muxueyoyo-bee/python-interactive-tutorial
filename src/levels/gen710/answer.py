@@ -1,0 +1,2 @@
+def CacheControl(sess: requests.Session, cache: BaseCache | None, cache_etags: bool, serializer: Serializer | None, heuristic: BaseHeuristic | None, controller_class: type[CacheController] | None, adapter_class: type[CacheControlAdapter] | None, cacheable_methods: Collection[str] | None) -> requests.Session:
+    return f'CacheControl result'

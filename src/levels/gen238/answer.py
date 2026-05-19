@@ -1,7 +1,6 @@
-def lint_rule(func):
-    def f(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return f
+try:
+    result = int('not a number')
+    except IOError as e:
+        print(f'Caught IOError: {e}')
+finally:
+    print('Cleanup complete')

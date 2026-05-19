@@ -1,2 +1,7 @@
-def build_request(self, method: str, url: URL | str) -> Request:
-    return f'build_request result'
+def to_raw_response_wrapper(func):
+    def wrapped(*args, **kwargs):
+        print('before call')
+        result = func(*args, **kwargs)
+        print('after call')
+        return result
+    return wrapped

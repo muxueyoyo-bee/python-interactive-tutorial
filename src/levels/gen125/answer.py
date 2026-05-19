@@ -1,7 +1,2 @@
-def to_streamed_response_wrapper(func):
-    def wrapped(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return wrapped
+def add_field(self, name: str, value: Any) -> None:
+    return f'add_field result'

@@ -1,7 +1,2 @@
-def validate_arguments(func):
-    def validate(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return validate
+def get(self, key: str, cast: Callable[[Any], Any] | None, default: Any) -> Any:
+    return f'get result'

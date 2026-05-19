@@ -1,7 +1,8 @@
-def processor(func):
-    def new_func(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return new_func
+try:
+    result = int('not a number')
+    except KeyError as e:
+        print(f'Caught KeyError: {e}')
+    except LookupError as e:
+        print(f'Caught LookupError: {e}')
+finally:
+    print('Cleanup complete')

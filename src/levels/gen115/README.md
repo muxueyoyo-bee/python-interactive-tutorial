@@ -1,43 +1,34 @@
-# 第115关: 编写上下文管理器: TimerNoop
+# 第115关: 编写带类型标注的函数: KD
 
-> 真实案例：aio-libs/aiohttp 的 `aiohttp\helpers.py` 中使用了这个模式。
+> 真实案例：aio-libs/aiohttp 的 `aiohttp\client_middleware_digest_auth.py` 中使用了这个模式。
 
 ## 概念介绍
 
-上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
+类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 helpers.py 定义了类 `TimerNoop`，实现了 __enter__ / __exit__。
+源文件 client_middleware_digest_auth.py（aio-libs/aiohttp）中 `KD` 展示了完整的参数和返回值类型标注。
 
-请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
+请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-class TimerNoop:
-    def __init__(self, name):
-        self.name = name
-
-    def __enter__(self):
-        print(f'Entering {self.name}')
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print(f'Exiting {self.name}')
-        return False
+def KD(s: bytes, d: bytes) -> bytes:
+    return f'KD result'
 ```
 
 ## 关键点
 
-实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理
+def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
 
 ## 常见陷阱
 
-- `with` 语句块结束时自动调用 `__exit__`，即使发生异常
-- `__exit__` 返回 `True` 可以抑制异常（谨慎使用）
-- 也可以用 `contextlib.contextmanager` 装饰器 + `yield` 实现
+- 类型标注只是提示，Python 运行时不做类型检查
+- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
+- 返回值类型用 `->` 箭头
 
 ## 你的任务
 
-编写类 TimerNoop，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
+编写函数 KD(s: bytes, d: bytes) -> bytes，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

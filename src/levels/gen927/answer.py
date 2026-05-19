@@ -1,0 +1,2 @@
+def before_execute(self, conn: Connection, clauseelement: Executable, multiparams: _CoreMultiExecuteParams, params: _CoreSingleExecuteParams, execution_options: _ExecuteOptions) -> Optional[Tuple[Executable, _CoreMultiExecuteParams, _CoreSingleExecuteParams]]:
+    return f'before_execute result'

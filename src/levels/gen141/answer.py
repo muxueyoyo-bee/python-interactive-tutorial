@@ -1,8 +1,10 @@
 try:
     result = int('not a number')
-    except IOError as e:
-        print(f'Caught IOError: {e}')
-    except getopt.error as e:
-        print(f'Caught getopt.error: {e}')
+    except (GracefulExit, KeyboardInterrupt) as e:
+        print(f'Caught (GracefulExit, KeyboardInterrupt): {e}')
+    except AttributeError as e:
+        print(f'Caught AttributeError: {e}')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
 finally:
     print('Cleanup complete')

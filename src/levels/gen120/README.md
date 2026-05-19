@@ -1,20 +1,20 @@
-# 第120关: 编写带类型标注的函数: get_weather
+# 第120关: 编写带类型标注的函数: get_extra_info
 
-> 真实案例：anthropics/anthropic-sdk-python 的 `examples\tools_runner.py` 中使用了这个模式。
+> 真实案例：aio-libs/aiohttp 的 `aiohttp\client_ws.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 tools_runner.py（anthropics/anthropic-sdk-python）中 `get_weather` 展示了完整的参数和返回值类型标注。
+源文件 client_ws.py（aio-libs/aiohttp）中 `get_extra_info` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def get_weather(location: str, units: Literal['c', 'f']) -> str:
-    return f'get_weather result'
+def get_extra_info(self, name: str, default: Any) -> Any:
+    return f'get_extra_info result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 get_weather(location: str, units: Literal['c', 'f']) -> str，返回格式化字符串。
+编写函数 get_extra_info(self, name: str, default: Any) -> Any，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

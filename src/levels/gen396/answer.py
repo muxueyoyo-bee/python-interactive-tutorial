@@ -1,2 +1,6 @@
-def execute(self, statement: _Executable, params: _CoreAnyExecuteParams | None) -> Result[Any]:
-    return f'execute result'
+try:
+    result = int('not a number')
+    except FileExistsError as e:
+        print(f'Caught FileExistsError: {e}')
+finally:
+    print('Cleanup complete')

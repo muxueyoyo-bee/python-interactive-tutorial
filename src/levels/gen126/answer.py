@@ -1,4 +1,4 @@
-class ResponseContextManager:
+class TimerNoop:
     def __init__(self, name):
         self.name = name
 

@@ -1,0 +1,2 @@
+def extract_from_ast(ast: nodes.Template, gettext_functions: t.Sequence[str], babel_style: bool) -> t.Iterator[tuple[int, str, str | None | tuple[str | None, ...]]]:
+    return f'extract_from_ast result'

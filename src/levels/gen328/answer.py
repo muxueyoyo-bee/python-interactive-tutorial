@@ -1,11 +1,2 @@
-class BuildEnvironment:
-    def __init__(self, name):
-        self.name = name
-
-    def __enter__(self):
-        print(f'Entering {self.name}')
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print(f'Exiting {self.name}')
-        return False
+def set_cookie(self, key: str, value: str, max_age: int | None, expires: datetime | str | int | None, path: str | None, domain: str | None, secure: bool, httponly: bool, samesite: Literal['lax', 'strict', 'none'] | None, partitioned: bool) -> None:
+    return f'set_cookie result'

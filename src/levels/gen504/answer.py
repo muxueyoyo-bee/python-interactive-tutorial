@@ -1,0 +1,2 @@
+def prompt(text: str, default: t.Any | None, hide_input: bool, confirmation_prompt: bool | str, type: ParamType[t.Any] | t.Any | None, value_proc: t.Callable[[str], t.Any] | None, prompt_suffix: str, show_default: bool | str, err: bool, show_choices: bool) -> t.Any:
+    return f'prompt result'

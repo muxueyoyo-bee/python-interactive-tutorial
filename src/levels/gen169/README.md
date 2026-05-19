@@ -1,34 +1,43 @@
-# 第169关: 定义模块的公共 API
+# 第169关: 编写上下文管理器: SyncAPIClient
 
-> 真实案例：encode/httpx 的 `httpx\_transports\__init__.py` 中使用了这个模式。
+> 真实案例：anthropics/anthropic-sdk-python 的 `src\anthropic\_base_client.py` 中使用了这个模式。
 
 ## 概念介绍
 
-__all__ 是 Python 模块的公共接口声明，控制 `from module import *` 的行为。
+上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
 
-源文件 __init__.py 暴露了 7 个公开符号。
+源文件 _base_client.py 定义了类 `SyncAPIClient`，实现了 __enter__ / __exit__。
 
-请仿照此模式，为以下符号定义 __all__ 列表。
+请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
 
 ## 代码示例
 
 ```python
-__all__ = [
-    "ASGITransport",
-    "AsyncBaseTransport",
-    "BaseTransport",
-    "AsyncHTTPTransport",
-    "HTTPTransport",
-    "MockTransport",
-]
+class SyncAPIClient:
+    def __init__(self, name):
+        self.name = name
+
+    def __enter__(self):
+        print(f'Entering {self.name}')
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f'Exiting {self.name}')
+        return False
 ```
 
 ## 关键点
 
-__all__ = ['Name1', 'Name2', ...] —— 字符串列表
+实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理
+
+## 常见陷阱
+
+- `with` 语句块结束时自动调用 `__exit__`，即使发生异常
+- `__exit__` 返回 `True` 可以抑制异常（谨慎使用）
+- 也可以用 `contextlib.contextmanager` 装饰器 + `yield` 实现
 
 ## 你的任务
 
-定义 __all__ 列表，包含以下 6 个公开符号: ASGITransport, AsyncBaseTransport, BaseTransport, AsyncHTTPTransport, HTTPTransport, MockTransport
+编写类 SyncAPIClient，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
 
 预期行为：参考上方代码示例的输出。

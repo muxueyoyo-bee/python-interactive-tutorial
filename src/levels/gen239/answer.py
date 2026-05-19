@@ -1,8 +1,2 @@
-try:
-    result = int('not a number')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except FileNotFoundError as e:
-        print(f'Caught FileNotFoundError: {e}')
-finally:
-    print('Cleanup complete')
+def concatenate_file(out: Any, filename: str, expand_headers: bool) -> int:
+    return f'concatenate_file result'

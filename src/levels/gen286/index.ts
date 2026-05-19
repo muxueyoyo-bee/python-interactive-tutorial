@@ -2,19 +2,19 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen286",
-  title: "编写装饰器: select_autoescape",
+  title: "编写装饰器: crypto_adapter",
   category: "进阶",
   description: `装饰器是 Python 中用于包装函数、添加横切关注点的强大模式。
 
-源文件 utils.py（pallets/jinja）中 \`select_autoescape\` 展示了装饰器模式。
+源文件 config.py（dolphin-emu/dolphin）中 \`crypto_adapter\` 展示了装饰器模式。
 
 请编写一个装饰器，在函数调用前后各打印一行信息。
 
-编写装饰器 select_autoescape，包装目标函数并在调用前后打印 'before call' 和 'after call'。
+编写装饰器 crypto_adapter，包装目标函数并在调用前后打印 'before call' 和 'after call'。
 
-来源：pallets/jinja — src\\jinja2\\utils.py`,
+来源：dolphin-emu/dolphin — Externals\\mbedtls\\scripts\\config.py`,
   content: "",
-  defaultCode: `# 编写装饰器 select_autoescape`,
+  defaultCode: `# 编写装饰器 crypto_adapter`,
   answer: "",
   hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
   type: "main",

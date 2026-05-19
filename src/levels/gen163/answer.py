@@ -1,7 +1,6 @@
-def crypto_adapter(func):
-    def continuation(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return continuation
+try:
+    result = int('not a number')
+    except (ValueError, binascii.Error) as e:
+        print(f'Caught (ValueError, binascii.Error): {e}')
+finally:
+    print('Cleanup complete')

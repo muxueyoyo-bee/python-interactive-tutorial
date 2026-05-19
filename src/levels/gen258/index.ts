@@ -2,25 +2,32 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen258",
-  title: "编写 try/except 错误处理",
-  category: "中级",
-  description: `健壮的代码用 try/except 优雅地处理异常。
+  title: "定义异常类层级: TaskException",
+  category: "进阶",
+  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
 
-源文件 core.py 使用了 try/except 捕获多种异常类型。
+源文件 exceptions.py 定义了如下继承层级：
+  • TaskException → Exception
+  • InvalidTask → TaskException
+  • TaskResultDoesNotExist → TaskException
+  • TaskResultMismatch → TaskException
 
-请仿照此模式编写错误处理代码。
+请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
-编写 try/except 块：尝试 int('not a number')，捕获 (EOFError, KeyboardInterrupt), Abort, BadParameter，并在 finally 中打印 'Cleanup complete'。
+定义以下异常类: TaskException(Exception), InvalidTask(TaskException), TaskResultDoesNotExist(TaskException), TaskResultMismatch(TaskException)
 
-来源：pallets/click — src\\click\\core.py`,
+来源：django/django — django\\tasks\\exceptions.py`,
   content: "",
-  defaultCode: `# 编写 try/except/finally 错误处理`,
+  defaultCode: `class TaskException(Exception):
+    pass
+
+# 定义 InvalidTask, TaskResultDoesNotExist, TaskResultMismatch，继承自 TaskException`,
   answer: "",
-  hint: `try: ... except SomeError as e: ... finally: ...`,
+  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["error-handling", "try-except"],
+  tags: ["exception", "class", "inheritance"],
 };
 
 export default level;

@@ -1,2 +1,2 @@
-def pack(msg: Message, type_url_prefix: Optional[str], deterministic: Optional[bool]) -> Any:
-    return f'pack result'
+def run_single_query(query: str, skill_name: str, skill_description: str, timeout: int, project_root: str, model: str | None) -> bool:
+    return f'run_single_query result'

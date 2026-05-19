@@ -1,2 +1,2 @@
-def infer_author(modified_dir: Path, original_docx: Path, default: str) -> str:
-    return f'infer_author result'
+def content_disposition_filename(params: Mapping[str, str], name: str) -> str | None:
+    return f'content_disposition_filename result'

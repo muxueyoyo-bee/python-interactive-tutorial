@@ -1,10 +1,10 @@
 try:
     result = int('not a number')
-    except EOFError as e:
-        print(f'Caught EOFError: {e}')
-    except KeyboardInterrupt as e:
-        print(f'Caught KeyboardInterrupt: {e}')
-    except OSError as e:
-        print(f'Caught OSError: {e}')
+    except (KeyError, AssertionError) as e:
+        print(f'Caught (KeyError, AssertionError): {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except KeyError as e:
+        print(f'Caught KeyError: {e}')
 finally:
     print('Cleanup complete')

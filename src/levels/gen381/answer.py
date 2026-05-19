@@ -1,7 +1,2 @@
-def register_add_constraint(func):
-    def go(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return go
+def get_prompt(lang_prompt_content: str, old_translation: str | None, language: str, language_name: str, original_content: str, additional_instructions: str) -> str:
+    return f'get_prompt result'

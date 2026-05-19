@@ -1,2 +1,2 @@
-def ints_to_rgba(r: int | str, g: int | str, b: int | str, alpha: float | None) -> RGBA:
-    return f'ints_to_rgba result'
+def mount(self, path: str, app: ASGIApp, name: str | None) -> None:
+    return f'mount result'

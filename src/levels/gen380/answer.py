@@ -1,7 +1,2 @@
-def register_operation(func):
-    def register(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return register
+def update_request_info(self, cost: int, remaining: int, reset_at: str) -> None:
+    return f'update_request_info result'

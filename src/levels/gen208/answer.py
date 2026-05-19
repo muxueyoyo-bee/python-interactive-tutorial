@@ -1,8 +1,2 @@
-try:
-    result = int('not a number')
-    except IOError as e:
-        print(f'Caught IOError: {e}')
-    except NameError as e:
-        print(f'Caught NameError: {e}')
-finally:
-    print('Cleanup complete')
+def improve_description(skill_name: str, skill_content: str, current_description: str, eval_results: dict, history: list[dict], model: str, test_results: dict | None, log_dir: Path | None, iteration: int | None) -> str:
+    return f'improve_description result'

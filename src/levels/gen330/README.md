@@ -1,20 +1,20 @@
-# 第330关: 编写带类型标注的函数: install
+# 第330关: 编写带类型标注的函数: replace_params
 
-> 真实案例：pypa/pip 的 `src\pip\_internal\build_env.py` 中使用了这个模式。
+> 真实案例：encode/starlette 的 `starlette\routing.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 build_env.py（pypa/pip）中 `install` 展示了完整的参数和返回值类型标注。
+源文件 routing.py（encode/starlette）中 `replace_params` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def install(self, requirements: Iterable[str], prefix: _Prefix) -> None:
-    return f'install result'
+def replace_params(path: str, param_convertors: dict[str, Convertor[Any]], path_params: dict[str, str]) -> tuple[str, dict[str, str]]:
+    return f'replace_params result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 install(self, requirements: Iterable[str], prefix: _Prefix) -> None，返回格式化字符串。
+编写函数 replace_params(path: str, param_convertors: dict[str, Convertor[Any]], path_params: dict[str, str]) -> tuple[str, dict[str, str]]，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

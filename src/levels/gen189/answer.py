@@ -1,6 +1,6 @@
 try:
     result = int('not a number')
-    except ValueError as e:
-        print(f'Caught ValueError: {e}')
+    except OSError as e:
+        print(f'Caught OSError: {e}')
 finally:
     print('Cleanup complete')

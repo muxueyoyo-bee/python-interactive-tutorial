@@ -1,20 +1,20 @@
-# 第131关: 编写带类型标注的函数: pack
+# 第131关: 编写带类型标注的函数: enable_compression
 
-> 真实案例：anthropics/skills 的 `skills\xlsx\scripts\office\pack.py` 中使用了这个模式。
+> 真实案例：aio-libs/aiohttp 的 `aiohttp\http_writer.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 pack.py（anthropics/skills）中 `pack` 展示了完整的参数和返回值类型标注。
+源文件 http_writer.py（aio-libs/aiohttp）中 `enable_compression` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def pack(input_directory: str, output_file: str, original_file: str | None, validate: bool, infer_author_func: Any) -> tuple[None, str]:
-    return f'pack result'
+def enable_compression(self, encoding: str, strategy: int | None) -> None:
+    return f'enable_compression result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 pack(input_directory: str, output_file: str, original_file: str | None, validate: bool, infer_author_func: Any) -> tuple[None, str]，返回格式化字符串。
+编写函数 enable_compression(self, encoding: str, strategy: int | None) -> None，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

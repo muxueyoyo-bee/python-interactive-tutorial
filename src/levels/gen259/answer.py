@@ -1,2 +1,4 @@
-def batch(iterable: cabc.Iterable[V], batch_size: int) -> list[tuple[V, ...]]:
-    return f'batch result'
+class TemplateDoesNotExist(Exception):
+    pass
+class TemplateSyntaxError(Exception):
+    pass

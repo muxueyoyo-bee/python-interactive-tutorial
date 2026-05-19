@@ -1,8 +1,8 @@
 try:
     result = int('not a number')
-    except (subprocess.CalledProcessError, FileNotFoundError) as e:
-        print(f'Caught (subprocess.CalledProcessError, FileNotFoundError): {e}')
-    except subprocess.CalledProcessError as e:
-        print(f'Caught subprocess.CalledProcessError: {e}')
+    except OSError as e:
+        print(f'Caught OSError: {e}')
+    except asyncio.TimeoutError as e:
+        print(f'Caught asyncio.TimeoutError: {e}')
 finally:
     print('Cleanup complete')

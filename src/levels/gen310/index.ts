@@ -2,32 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen310",
-  title: "定义异常类层级: PydanticUserError",
-  category: "进阶",
-  description: `好的代码库用自定义异常类让调用方精确捕获不同错误。
+  title: "编写 try/except 错误处理",
+  category: "中级",
+  description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 errors.py 定义了如下继承层级：
-  • PydanticUserError → PydanticErrorMixin, RuntimeError
-  • PydanticSchemaGenerationError → PydanticUserError
-  • PydanticInvalidForJsonSchema → PydanticUserError
-  • PydanticForbiddenQualifier → PydanticUserError
+源文件 asgi.py 使用了 try/except 捕获多种异常类型。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写错误处理代码。
 
-定义以下异常类: PydanticUserError(PydanticErrorMixin, RuntimeError), PydanticSchemaGenerationError(PydanticUserError), PydanticInvalidForJsonSchema(PydanticUserError), PydanticForbiddenQualifier(PydanticUserError)
+编写 try/except 块：尝试 int('not a number')，捕获 Exception, ImportError, StopAsyncIteration，并在 finally 中打印 'Cleanup complete'。
 
-来源：pydantic/pydantic — pydantic\\errors.py`,
+来源：encode/httpx — httpx\\_transports\\asgi.py`,
   content: "",
-  defaultCode: `class PydanticUserError(PydanticErrorMixin, RuntimeError):
-    pass
-
-# 定义 PydanticSchemaGenerationError, PydanticInvalidForJsonSchema, PydanticForbiddenQualifier，继承自 PydanticUserError`,
+  defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",
-  hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
+  hint: `try: ... except SomeError as e: ... finally: ...`,
   type: "main",
   difficulty: 3,
   compareMode: "return",
-  tags: ["exception", "class", "inheritance"],
+  tags: ["error-handling", "try-except"],
 };
 
 export default level;

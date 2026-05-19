@@ -1,20 +1,20 @@
-# 第296关: 编写带类型标注的函数: validate_exception_and_warning_placement
+# 第296关: 编写带类型标注的函数: create_ssl_context
 
-> 真实案例：pandas-dev/pandas 的 `scripts\validate_exception_location.py` 中使用了这个模式。
+> 真实案例：encode/httpx 的 `httpx\_config.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 validate_exception_location.py（pandas-dev/pandas）中 `validate_exception_and_warning_placement` 展示了完整的参数和返回值类型标注。
+源文件 _config.py（encode/httpx）中 `create_ssl_context` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def validate_exception_and_warning_placement(file_path: str, file_content: str, errors: set[str]) -> None:
-    return f'validate_exception_and_warning_placement result'
+def create_ssl_context(verify: ssl.SSLContext | str | bool, cert: CertTypes | None, trust_env: bool) -> ssl.SSLContext:
+    return f'create_ssl_context result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 validate_exception_and_warning_placement(file_path: str, file_content: str, errors: set[str]) -> None，返回格式化字符串。
+编写函数 create_ssl_context(verify: ssl.SSLContext | str | bool, cert: CertTypes | None, trust_env: bool) -> ssl.SSLContext，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

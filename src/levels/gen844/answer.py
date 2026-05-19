@@ -1,0 +1,2 @@
+def code_role(name: str, rawtext: str, text: str, lineno: int, inliner: docutils.parsers.rst.states.Inliner, options: dict[str, Any] | None, content: Sequence[str]) -> tuple[list[Node], list[system_message]]:
+    return f'code_role result'

@@ -1,2 +1,2 @@
-def concatenate_file(out: Any, filename: str, expand_headers: bool) -> int:
-    return f'concatenate_file result'
+def get(self, key: AppKey[_T], default: None) -> _T | None:
+    return f'get result'

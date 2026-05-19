@@ -1,12 +1,12 @@
 # 第137关: 编写 try/except 错误处理
 
-> 真实案例：astral-sh/ruff 的 `scripts\check_ecosystem.py` 中使用了这个模式。
+> 真实案例：aio-libs/aiohttp 的 `aiohttp\resolver.py` 中使用了这个模式。
 
 ## 概念介绍
 
 健壮的代码用 try/except 优雅地处理异常。
 
-源文件 check_ecosystem.py 使用了 try/except 捕获多种异常类型。
+源文件 resolver.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
@@ -15,8 +15,10 @@
 ```python
 try:
     result = int('not a number')
-    except ExceptionGroup as e:
-        print(f'Caught ExceptionGroup: {e}')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
+    except aiodns.error.DNSError as e:
+        print(f'Caught aiodns.error.DNSError: {e}')
 finally:
     print('Cleanup complete')
 ```
@@ -33,6 +35,6 @@ try: ... except SomeError as e: ... finally: ...
 
 ## 你的任务
 
-编写 try/except 块：尝试 int('not a number')，捕获 ExceptionGroup，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 ImportError, aiodns.error.DNSError，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

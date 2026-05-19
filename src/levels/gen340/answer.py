@@ -1,2 +1,10 @@
-def create_poetry(self, cwd: Path | None, with_groups: bool, io: IO | None, disable_plugins: bool, disable_cache: bool) -> Poetry:
-    return f'create_poetry result'
+try:
+    result = int('not a number')
+    except ClientDisconnect as e:
+        print(f'Caught ClientDisconnect: {e}')
+    except Exception as e:
+        print(f'Caught Exception: {e}')
+    except anyio.BrokenResourceError as e:
+        print(f'Caught anyio.BrokenResourceError: {e}')
+finally:
+    print('Cleanup complete')

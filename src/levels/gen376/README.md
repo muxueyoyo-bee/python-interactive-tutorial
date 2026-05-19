@@ -1,20 +1,20 @@
-# 第376关: 编写带类型标注的函数: init
+# 第376关: 编写带类型标注的函数: create_model_field
 
-> 真实案例：sqlalchemy/alembic 的 `alembic\command.py` 中使用了这个模式。
+> 真实案例：fastapi/fastapi 的 `fastapi\utils.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 command.py（sqlalchemy/alembic）中 `init` 展示了完整的参数和返回值类型标注。
+源文件 utils.py（fastapi/fastapi）中 `create_model_field` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def init(config: Config, directory: str, template: str, package: bool) -> None:
-    return f'init result'
+def create_model_field(name: str, type_: Any, default: Any | None, field_info: FieldInfo | None, alias: str | None, mode: Literal['validation', 'serialization']) -> ModelField:
+    return f'create_model_field result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 init(config: Config, directory: str, template: str, package: bool) -> None，返回格式化字符串。
+编写函数 create_model_field(name: str, type_: Any, default: Any | None, field_info: FieldInfo | None, alias: str | None, mode: Literal['validation', 'serialization']) -> ModelField，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

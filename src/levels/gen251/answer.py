@@ -1,2 +1,2 @@
-def find_people_to_blame(raw_services: str, servers: list[tuple[str, str]]) -> dict:
-    return f'find_people_to_blame result'
+def maybe_schedule(s: int | float | timedelta | BaseSchedule, relative: bool, app: Celery | None) -> float | timedelta | BaseSchedule:
+    return f'maybe_schedule result'

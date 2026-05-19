@@ -1,44 +1,34 @@
-# 第404关: 定义异常类层级: RequestError
+# 第404关: 编写带类型标注的函数: serialize
 
-> 真实案例：yt-dlp/yt-dlp 的 `yt_dlp\networking\exceptions.py` 中使用了这个模式。
+> 真实案例：google/protobuf 的 `python\google\protobuf\proto_text.py` 中使用了这个模式。
 
 ## 概念介绍
 
-好的代码库用自定义异常类让调用方精确捕获不同错误。
+类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • RequestError → YoutubeDLError
-  • UnsupportedRequest → RequestError
-  • NoSupportingHandlers → RequestError
-  • TransportError → RequestError
+源文件 proto_text.py（google/protobuf）中 `serialize` 展示了完整的参数和返回值类型标注。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-class RequestError(YoutubeDLError):
-    pass
-class UnsupportedRequest(RequestError):
-    pass
-class NoSupportingHandlers(RequestError):
-    pass
-class TransportError(RequestError):
-    pass
+def serialize(message: Message, as_utf8: bool, as_one_line: bool, use_short_repeated_primitives: bool, pointy_brackets: bool, use_index_order: bool, use_field_number: bool, descriptor_pool: Optional[DescriptorPool], indent: int, message_formatter: Optional[_MsgFormatter], print_unknown_fields: bool, force_colon: bool) -> str:
+    return f'serialize result'
 ```
 
 ## 关键点
 
-class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔
+def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型
 
 ## 常见陷阱
 
-- `__init__` 不是构造器，是初始化方法（构造器是 `__new__`）
-- 实例方法的第一个参数必须显式写 `self`
-- `pass` 是一个空语句，占位用
+- 类型标注只是提示，Python 运行时不做类型检查
+- `from typing import List, Dict, Optional` 在 Python 3.9+ 可用内置 `list`, `dict` 替代
+- 返回值类型用 `->` 箭头
 
 ## 你的任务
 
-定义以下异常类: RequestError(YoutubeDLError), UnsupportedRequest(RequestError), NoSupportingHandlers(RequestError), TransportError(RequestError)
+编写函数 serialize(message: Message, as_utf8: bool, as_one_line: bool, use_short_repeated_primitives: bool, pointy_brackets: bool, use_index_order: bool, use_field_number: bool, descriptor_pool: Optional[DescriptorPool], indent: int, message_formatter: Optional[_MsgFormatter], print_unknown_fields: bool, force_colon: bool) -> str，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

@@ -1,6 +1,2 @@
-try:
-    result = int('not a number')
-    except CompileError as e:
-        print(f'Caught CompileError: {e}')
-finally:
-    print('Cleanup complete')
+def print_version(ctx: click.Context, param: click.Parameter, value: bool) -> None:
+    return f'print_version result'

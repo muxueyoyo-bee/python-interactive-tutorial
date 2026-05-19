@@ -1,8 +1,2 @@
-class PipError(Exception):
-    pass
-class DiagnosticPipError(PipError):
-    pass
-class ConfigurationError(PipError):
-    pass
-class InstallationError(PipError):
-    pass
+def register_url_convertor(key: str, convertor: Convertor[Any]) -> None:
+    return f'register_url_convertor result'

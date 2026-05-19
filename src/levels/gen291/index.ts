@@ -2,25 +2,25 @@ import type { LevelType } from "../level.d";
 
 const level: LevelType = {
   key: "gen291",
-  title: "定义模块的公共 API",
-  category: "进阶",
-  description: `__all__ 是 Python 模块的公共接口声明，控制 \`from module import *\` 的行为。
+  title: "编写带类型标注的函数: request",
+  category: "中级",
+  description: `类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 __init__.py 暴露了 46 个公开符号。
+源文件 _api.py（encode/httpx）中 \`request\` 展示了完整的参数和返回值类型标注。
 
-请仿照此模式，为以下符号定义 __all__ 列表。
+请仿照此模式编写一个带类型标注的函数。
 
-定义 __all__ 列表，包含以下 6 个公开符号: AbstractMethodError, AttributeConflictWarning, CSSWarning, CategoricalConversionWarning, ChainedAssignmentError, ClosedFileError
+编写函数 request(method: str, url: URL | str) -> Response，返回格式化字符串。
 
-来源：pandas-dev/pandas — pandas\\errors\\__init__.py`,
+来源：encode/httpx — httpx\\_api.py`,
   content: "",
-  defaultCode: `# 定义 __all__ 暴露以下公共 API: AbstractMethodError, AttributeConflictWarning, CSSWarning ...`,
+  defaultCode: `# 编写带类型标注的函数 request`,
   answer: "",
-  hint: `__all__ = ['Name1', 'Name2', ...] —— 字符串列表`,
+  hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
-  difficulty: 1,
+  difficulty: 3,
   compareMode: "return",
-  tags: ["module", "api-design", "__all__"],
+  tags: ["type-hints", "annotations"],
 };
 
 export default level;

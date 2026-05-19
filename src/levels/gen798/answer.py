@@ -1,0 +1,2 @@
+def infer_constraints_for_callable(callee: CallableType, arg_types: Sequence[Type | None], arg_kinds: list[ArgKind], arg_names: Sequence[str | None] | None, formal_to_actual: list[list[int]], context: ArgumentInferContext) -> list[Constraint]:
+    return f'infer_constraints_for_callable result'

@@ -1,7 +1,10 @@
-def decorating_function(func):
-    def wrapper(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return wrapper
+try:
+    result = int('not a number')
+    except (FileNotFoundError, NotADirectoryError) as e:
+        print(f'Caught (FileNotFoundError, NotADirectoryError): {e}')
+    except FileNotFoundError as e:
+        print(f'Caught FileNotFoundError: {e}')
+    except KeyError as e:
+        print(f'Caught KeyError: {e}')
+finally:
+    print('Cleanup complete')

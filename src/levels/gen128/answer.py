@@ -1,6 +1,2 @@
-try:
-    result = int('not a number')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-finally:
-    print('Cleanup complete')
+def encode_basic_auth(login: str, password: str, encoding: str) -> str:
+    return f'encode_basic_auth result'

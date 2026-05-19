@@ -1,44 +1,42 @@
-# 第300关: 定义异常类层级: RequestException
+# 第300关: 编写 try/except 错误处理
 
-> 真实案例：psf/requests 的 `src\requests\exceptions.py` 中使用了这个模式。
+> 真实案例：encode/httpx 的 `httpx\_main.py` 中使用了这个模式。
 
 ## 概念介绍
 
-好的代码库用自定义异常类让调用方精确捕获不同错误。
+健壮的代码用 try/except 优雅地处理异常。
 
-源文件 exceptions.py 定义了如下继承层级：
-  • RequestException → IOError
-  • InvalidJSONError → RequestException
-  • HTTPError → RequestException
-  • ConnectionError → RequestException
+源文件 _main.py 使用了 try/except 捕获多种异常类型。
 
-请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
+请仿照此模式编写错误处理代码。
 
 ## 代码示例
 
 ```python
-class RequestException(IOError):
-    pass
-class InvalidJSONError(RequestException):
-    pass
-class HTTPError(RequestException):
-    pass
-class ConnectionError(RequestException):
-    pass
+try:
+    result = int('not a number')
+    except RequestError as e:
+        print(f'Caught RequestError: {e}')
+    except ValueError as e:
+        print(f'Caught ValueError: {e}')
+    except json.JSONDecodeError as e:
+        print(f'Caught json.JSONDecodeError: {e}')
+finally:
+    print('Cleanup complete')
 ```
 
 ## 关键点
 
-class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔
+try: ... except SomeError as e: ... finally: ...
 
 ## 常见陷阱
 
-- `__init__` 不是构造器，是初始化方法（构造器是 `__new__`）
-- 实例方法的第一个参数必须显式写 `self`
-- `pass` 是一个空语句，占位用
+- `except:` 不加异常类型会捕获所有异常(包括 KeyboardInterrupt)，通常不推荐
+- `except Exception as e:` 中的 `as e` 可以获取异常对象
+- `finally` 无论是否发生异常都会执行
 
 ## 你的任务
 
-定义以下异常类: RequestException(IOError), InvalidJSONError(RequestException), HTTPError(RequestException), ConnectionError(RequestException)
+编写 try/except 块：尝试 int('not a number')，捕获 RequestError, ValueError, json.JSONDecodeError，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

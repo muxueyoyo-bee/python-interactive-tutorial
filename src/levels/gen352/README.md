@@ -1,12 +1,12 @@
 # 第352关: 编写 try/except 错误处理
 
-> 真实案例：python/mypy 的 `misc\profile_check.py` 中使用了这个模式。
+> 真实案例：encode/uvicorn 的 `uvicorn\server.py` 中使用了这个模式。
 
 ## 概念介绍
 
 健壮的代码用 try/except 优雅地处理异常。
 
-源文件 profile_check.py 使用了 try/except 捕获多种异常类型。
+源文件 server.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
@@ -15,10 +15,10 @@
 ```python
 try:
     result = int('not a number')
-    except (subprocess.CalledProcessError, FileNotFoundError) as e:
-        print(f'Caught (subprocess.CalledProcessError, FileNotFoundError): {e}')
-    except subprocess.CalledProcessError as e:
-        print(f'Caught subprocess.CalledProcessError: {e}')
+    except OSError as e:
+        print(f'Caught OSError: {e}')
+    except asyncio.TimeoutError as e:
+        print(f'Caught asyncio.TimeoutError: {e}')
 finally:
     print('Cleanup complete')
 ```
@@ -35,6 +35,6 @@ try: ... except SomeError as e: ... finally: ...
 
 ## 你的任务
 
-编写 try/except 块：尝试 int('not a number')，捕获 (subprocess.CalledProcessError, FileNotFoundError), subprocess.CalledProcessError，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 OSError, asyncio.TimeoutError，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

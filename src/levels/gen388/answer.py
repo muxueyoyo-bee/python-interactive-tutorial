@@ -1,2 +1,2 @@
-def create_proxy_methods(target_cls: Type[Any], target_cls_sphinx_name: str, proxy_cls_sphinx_name: str, classmethods: Iterable[str], methods: Iterable[str], attributes: Iterable[str], use_intermediate_variable: Iterable[str]) -> Callable[[Type[_T]], Type[_T]]:
-    return f'create_proxy_methods result'
+def include_file_in_rd_header(filename: str, header_data: RDHeaderStruct, depth: int) -> RDHeaderStruct:
+    return f'include_file_in_rd_header result'

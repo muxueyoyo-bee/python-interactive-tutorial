@@ -1,0 +1,2 @@
+def make_attrgetter(environment: 'Environment', attribute: str | int | None, postprocess: t.Callable[[t.Any], t.Any] | None, default: t.Any | None) -> t.Callable[[t.Any], t.Any]:
+    return f'make_attrgetter result'

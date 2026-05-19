@@ -1,8 +1,8 @@
-class SphinxError(Exception):
+class HTTPException(StarletteHTTPException):
     pass
-class SphinxWarning(SphinxError):
+class WebSocketException(StarletteWebSocketException):
     pass
-class ApplicationError(SphinxError):
+class FastAPIError(RuntimeError):
     pass
-class ExtensionError(SphinxError):
+class DependencyScopeError(FastAPIError):
     pass

@@ -1,7 +1,2 @@
-def register_type(func):
-    def _inner(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return _inner
+def set_parser(self, parser: WebSocketReader, data_received_cb: Callable[[], None] | None) -> None:
+    return f'set_parser result'

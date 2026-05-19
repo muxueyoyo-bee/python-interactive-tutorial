@@ -1,2 +1,10 @@
-def validate_json_files(schema_data: dict[Any, Any], json_file_name: str) -> list[dict[str, str]]:
-    return f'validate_json_files result'
+try:
+    result = int('not a number')
+    except KeyError as e:
+        print(f'Caught KeyError: {e}')
+    except ValueError as e:
+        print(f'Caught ValueError: {e}')
+    except self.ephem.CircumpolarError as e:
+        print(f'Caught self.ephem.CircumpolarError: {e}')
+finally:
+    print('Cleanup complete')

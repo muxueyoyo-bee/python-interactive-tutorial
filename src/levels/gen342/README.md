@@ -1,20 +1,20 @@
-# 第342关: 编写带类型标注的函数: get
+# 第342关: 编写带类型标注的函数: format_line
 
-> 真实案例：python-poetry/poetry 的 `src\poetry\config\config.py` 中使用了这个模式。
+> 真实案例：encode/starlette 的 `starlette\middleware\errors.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 config.py（python-poetry/poetry）中 `get` 展示了完整的参数和返回值类型标注。
+源文件 errors.py（encode/starlette）中 `format_line` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def get(self, setting_name: str | Sequence[str], default: Any) -> Any:
-    return f'get result'
+def format_line(self, index: int, line: str, frame_lineno: int, frame_index: int) -> str:
+    return f'format_line result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 get(self, setting_name: str | Sequence[str], default: Any) -> Any，返回格式化字符串。
+编写函数 format_line(self, index: int, line: str, frame_lineno: int, frame_index: int) -> str，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

@@ -1,7 +1,2 @@
-def inside_circle(func):
-    def _f(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return _f
+def write_rustdoc(out: list[str], doc: str) -> None:
+    return f'write_rustdoc result'

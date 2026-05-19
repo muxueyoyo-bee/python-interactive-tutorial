@@ -1,29 +1,29 @@
-# 第368关: 定义异常类层级: SphinxError
+# 第368关: 定义异常类层级: HTTPException
 
-> 真实案例：sphinx-doc/sphinx 的 `sphinx\errors.py` 中使用了这个模式。
+> 真实案例：fastapi/fastapi 的 `fastapi\exceptions.py` 中使用了这个模式。
 
 ## 概念介绍
 
 好的代码库用自定义异常类让调用方精确捕获不同错误。
 
-源文件 errors.py 定义了如下继承层级：
-  • SphinxError → Exception
-  • SphinxWarning → SphinxError
-  • ApplicationError → SphinxError
-  • ExtensionError → SphinxError
+源文件 exceptions.py 定义了如下继承层级：
+  • HTTPException → StarletteHTTPException
+  • WebSocketException → StarletteWebSocketException
+  • FastAPIError → RuntimeError
+  • DependencyScopeError → FastAPIError
 
 请按照这个模式编写这些异常类（每个类只需 pass 语句体）。
 
 ## 代码示例
 
 ```python
-class SphinxError(Exception):
+class HTTPException(StarletteHTTPException):
     pass
-class SphinxWarning(SphinxError):
+class WebSocketException(StarletteWebSocketException):
     pass
-class ApplicationError(SphinxError):
+class FastAPIError(RuntimeError):
     pass
-class ExtensionError(SphinxError):
+class DependencyScopeError(FastAPIError):
     pass
 ```
 
@@ -39,6 +39,6 @@ class 子类名(父类名): —— 父类写在括号里，多个父类用逗号
 
 ## 你的任务
 
-定义以下异常类: SphinxError(Exception), SphinxWarning(SphinxError), ApplicationError(SphinxError), ExtensionError(SphinxError)
+定义以下异常类: HTTPException(StarletteHTTPException), WebSocketException(StarletteWebSocketException), FastAPIError(RuntimeError), DependencyScopeError(FastAPIError)
 
 预期行为：参考上方代码示例的输出。

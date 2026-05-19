@@ -1,8 +1,8 @@
 __all__ = [
-    "ArrowExtensionArray",
-    "ArrowStringArray",
-    "BooleanArray",
-    "Categorical",
-    "DatetimeArray",
-    "FloatingArray",
+    "ASGITransport",
+    "AsyncBaseTransport",
+    "AsyncByteStream",
+    "AsyncClient",
+    "AsyncHTTPTransport",
+    "Auth",
 ]

@@ -1,2 +1,8 @@
-def find_app_by_string(module: ModuleType, app_name: str) -> Flask:
-    return f'find_app_by_string result'
+try:
+    result = int('not a number')
+    except AttributeError as e:
+        print(f'Caught AttributeError: {e}')
+    except ImportError as e:
+        print(f'Caught ImportError: {e}')
+finally:
+    print('Cleanup complete')

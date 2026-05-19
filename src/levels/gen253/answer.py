@@ -1,10 +1,8 @@
 try:
     result = int('not a number')
-    except AttributeError as e:
-        print(f'Caught AttributeError: {e}')
-    except DiffError as e:
-        print(f'Caught DiffError: {e}')
-    except EnvironmentError as e:
-        print(f'Caught EnvironmentError: {e}')
+    except IndexError as e:
+        print(f'Caught IndexError: {e}')
+    except SystemExit as e:
+        print(f'Caught SystemExit: {e}')
 finally:
     print('Cleanup complete')

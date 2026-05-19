@@ -1,20 +1,20 @@
-# 第227关: 编写带类型标注的函数: from_dict
+# 第227关: 编写带类型标注的函数: normalize_output
 
-> 真实案例：LING71671/Open-ClaudeCode 的 `plugins\hookify\core\config_loader.py` 中使用了这个模式。
+> 真实案例：astral-sh/ruff 的 `scripts\ty_benchmark\src\benchmark\snapshot.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 config_loader.py（LING71671/Open-ClaudeCode）中 `from_dict` 展示了完整的参数和返回值类型标注。
+源文件 snapshot.py（astral-sh/ruff）中 `normalize_output` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def from_dict(cls, frontmatter: Dict[str, Any], message: str) -> 'Rule':
-    return f'from_dict result'
+def normalize_output(output: str, cwd: Path) -> str:
+    return f'normalize_output result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 from_dict(cls, frontmatter: Dict[str, Any], message: str) -> 'Rule'，返回格式化字符串。
+编写函数 normalize_output(output: str, cwd: Path) -> str，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

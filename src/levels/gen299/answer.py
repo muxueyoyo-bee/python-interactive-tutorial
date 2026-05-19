@@ -1,7 +1,6 @@
-def get_corr_func(func):
-    def func(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return func
+try:
+    result = int('not a number')
+    except RequestError as e:
+        print(f'Caught RequestError: {e}')
+finally:
+    print('Cleanup complete')

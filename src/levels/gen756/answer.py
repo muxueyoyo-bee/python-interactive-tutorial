@@ -1,0 +1,2 @@
+def get_package_from_vcs(vcs: str, url: str, branch: str | None, tag: str | None, rev: str | None, subdirectory: str | None, source_root: Path | None) -> Package:
+    return f'get_package_from_vcs result'

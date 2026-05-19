@@ -1,6 +1,6 @@
-class EnvError(Exception):
-    pass
-class IncorrectEnvError(EnvError):
-    pass
-class EnvCommandError(EnvError):
-    pass
+try:
+    result = int('not a number')
+    except AuthenticationError as e:
+        print(f'Caught AuthenticationError: {e}')
+finally:
+    print('Cleanup complete')

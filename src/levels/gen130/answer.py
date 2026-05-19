@@ -1,8 +1,2 @@
-try:
-    result = int('not a number')
-    except Exception as e:
-        print(f'Caught Exception: {e}')
-    except ValueError as e:
-        print(f'Caught ValueError: {e}')
-finally:
-    print('Cleanup complete')
+def feed_data(self, data: bytes, SEP: _SEP, EMPTY: bytes, CONTENT_LENGTH: istr, METH_CONNECT: str, SEC_WEBSOCKET_KEY1: istr) -> tuple[list[tuple[_MsgT, StreamReader]], bool, bytes]:
+    return f'feed_data result'

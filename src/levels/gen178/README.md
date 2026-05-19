@@ -1,19 +1,19 @@
-# 第178关: 编写上下文管理器: HTTPTransport
+# 第178关: 编写上下文管理器: ResponseContextManager
 
-> 真实案例：encode/httpx 的 `httpx\_transports\default.py` 中使用了这个模式。
+> 真实案例：anthropics/anthropic-sdk-python 的 `src\anthropic\_response.py` 中使用了这个模式。
 
 ## 概念介绍
 
 上下文管理器（Context Manager）用 with 语句管理资源的获取和释放。
 
-源文件 default.py 定义了类 `HTTPTransport`，实现了 __enter__ / __exit__。
+源文件 _response.py 定义了类 `ResponseContextManager`，实现了 __enter__ / __exit__。
 
 请仿照此模式编写一个上下文管理器，在进入和退出时打印信息。
 
 ## 代码示例
 
 ```python
-class HTTPTransport:
+class ResponseContextManager:
     def __init__(self, name):
         self.name = name
 
@@ -38,6 +38,6 @@ class HTTPTransport:
 
 ## 你的任务
 
-编写类 HTTPTransport，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
+编写类 ResponseContextManager，实现 __enter__ 和 __exit__，进入时打印 'Entering {name}'，退出时打印 'Exiting {name}'。
 
 预期行为：参考上方代码示例的输出。

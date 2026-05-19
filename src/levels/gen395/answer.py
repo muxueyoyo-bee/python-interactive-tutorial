@@ -1,2 +1,2 @@
-def get_relationship_to(name: str, rel_info: 'RelationshipInfo', annotation: Any) -> Any:
-    return f'get_relationship_to result'
+def MergeMessageTo(cls, source: _T, mask: field_mask_pb2.FieldMask, options: MergeOptions, destination: _T) -> _T:
+    return f'MergeMessageTo result'

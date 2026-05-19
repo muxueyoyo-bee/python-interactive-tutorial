@@ -1,11 +1,2 @@
-class ZipExtFile:
-    def __init__(self, name):
-        self.name = name
-
-    def __enter__(self):
-        print(f'Entering {self.name}')
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print(f'Exiting {self.name}')
-        return False
+def get_directories(self, directory: PathLike | None, packages: list[str | tuple[str, str]] | None) -> list[PathLike]:
+    return f'get_directories result'

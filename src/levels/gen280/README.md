@@ -1,12 +1,12 @@
 # 第280关: 编写 try/except 错误处理
 
-> 真实案例：pallets/jinja 的 `src\jinja2\bccache.py` 中使用了这个模式。
+> 真实案例：django/django 的 `django\forms\models.py` 中使用了这个模式。
 
 ## 概念介绍
 
 健壮的代码用 try/except 优雅地处理异常。
 
-源文件 bccache.py 使用了 try/except 捕获多种异常类型。
+源文件 models.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
@@ -15,12 +15,12 @@
 ```python
 try:
     result = int('not a number')
-    except (EOFError, ValueError, TypeError) as e:
-        print(f'Caught (EOFError, ValueError, TypeError): {e}')
-    except (FileNotFoundError, IsADirectoryError, PermissionError) as e:
-        print(f'Caught (FileNotFoundError, IsADirectoryError, PermissionError): {e}')
-    except BaseException as e:
-        print(f'Caught BaseException: {e}')
+    except (ValueError, TypeError, ValidationError) as e:
+        print(f'Caught (ValueError, TypeError, ValidationError): {e}')
+    except (ValueError, TypeError, self.queryset.model.DoesNotExist, ValidationError) as e:
+        print(f'Caught (ValueError, TypeError, self.queryset.model.DoesNotExist, ValidationError): {e}')
+    except IndexError as e:
+        print(f'Caught IndexError: {e}')
 finally:
     print('Cleanup complete')
 ```
@@ -37,6 +37,6 @@ try: ... except SomeError as e: ... finally: ...
 
 ## 你的任务
 
-编写 try/except 块：尝试 int('not a number')，捕获 (EOFError, ValueError, TypeError), (FileNotFoundError, IsADirectoryError, PermissionError), BaseException，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 (ValueError, TypeError, ValidationError), (ValueError, TypeError, self.queryset.model.DoesNotExist, ValidationError), IndexError，并在 finally 中打印 'Cleanup complete'。
 
 预期行为：参考上方代码示例的输出。

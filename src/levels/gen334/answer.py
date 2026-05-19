@@ -1,11 +1,2 @@
-class CSVBase:
-    def __init__(self, name):
-        self.name = name
-
-    def __enter__(self):
-        print(f'Entering {self.name}')
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print(f'Exiting {self.name}')
-        return False
+def TemplateResponse(self, request: Request, name: str, context: dict[str, Any] | None, status_code: int, headers: Mapping[str, str] | None, media_type: str | None, background: BackgroundTask | None) -> _TemplateResponse:
+    return f'TemplateResponse result'

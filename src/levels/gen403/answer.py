@@ -1,10 +1,2 @@
-try:
-    result = int('not a number')
-    except ImportError as e:
-        print(f'Caught ImportError: {e}')
-    except ValueError as e:
-        print(f'Caught ValueError: {e}')
-    except socket.error as e:
-        print(f'Caught socket.error: {e}')
-finally:
-    print('Cleanup complete')
+def serialize(message: Message, always_print_fields_with_no_presence: bool, preserving_proto_field_name: bool, use_integers_for_enums: bool, descriptor_pool: Optional[DescriptorPool]) -> dict:
+    return f'serialize result'

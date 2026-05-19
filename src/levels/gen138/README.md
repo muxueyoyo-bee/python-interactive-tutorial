@@ -1,20 +1,20 @@
-# 第138关: 编写带类型标注的函数: url_for
+# 第138关: 编写带类型标注的函数: get_resolver
 
-> 真实案例：astral-sh/ruff 的 `scripts\check_ecosystem.py` 中使用了这个模式。
+> 真实案例：aio-libs/aiohttp 的 `aiohttp\resolver.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 check_ecosystem.py（astral-sh/ruff）中 `url_for` 展示了完整的参数和返回值类型标注。
+源文件 resolver.py（aio-libs/aiohttp）中 `get_resolver` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def url_for(self, commit_sha: str, path: str, lnum: int | None) -> str:
-    return f'url_for result'
+def get_resolver(self, client: 'AsyncResolver', loop: asyncio.AbstractEventLoop) -> 'aiodns.DNSResolver':
+    return f'get_resolver result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 url_for(self, commit_sha: str, path: str, lnum: int | None) -> str，返回格式化字符串。
+编写函数 get_resolver(self, client: 'AsyncResolver', loop: asyncio.AbstractEventLoop) -> 'aiodns.DNSResolver'，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。

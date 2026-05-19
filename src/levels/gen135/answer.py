@@ -1,10 +1,10 @@
 try:
     result = int('not a number')
-    except InvalidInput as e:
-        print(f'Caught InvalidInput: {e}')
-    except NotImplementedError as e:
-        print(f'Caught NotImplementedError: {e}')
-    except subprocess.CalledProcessError as e:
-        print(f'Caught subprocess.CalledProcessError: {e}')
+    except (AttributeError, OSError) as e:
+        print(f'Caught (AttributeError, OSError): {e}')
+    except (OSError, AttributeError) as e:
+        print(f'Caught (OSError, AttributeError): {e}')
+    except StopAsyncIteration as e:
+        print(f'Caught StopAsyncIteration: {e}')
 finally:
     print('Cleanup complete')

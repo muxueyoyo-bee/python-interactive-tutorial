@@ -1,6 +1,2 @@
-try:
-    result = int('not a number')
-    except CalledProcessError as e:
-        print(f'Caught CalledProcessError: {e}')
-finally:
-    print('Cleanup complete')
+def tcp_nodelay(transport: asyncio.Transport, value: bool) -> None:
+    return f'tcp_nodelay result'

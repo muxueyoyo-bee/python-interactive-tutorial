@@ -1,0 +1,2 @@
+def explain_template_loading_attempts(app: App, template: str, attempts: list[tuple[BaseLoader, Scaffold, tuple[str, str | None, t.Callable[[], bool] | None] | None]]) -> None:
+    return f'explain_template_loading_attempts result'

@@ -1,7 +1,2 @@
-def delegate_names(func):
-    def add_delegate_accessors(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return add_delegate_accessors
+def encode_multipart_data(data: RequestData, files: RequestFiles, boundary: bytes | None) -> tuple[dict[str, str], MultipartStream]:
+    return f'encode_multipart_data result'

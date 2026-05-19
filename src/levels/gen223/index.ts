@@ -6,13 +6,13 @@ const level: LevelType = {
   category: "中级",
   description: `健壮的代码用 try/except 优雅地处理异常。
 
-源文件 release.py 使用了 try/except 捕获多种异常类型。
+源文件 generate_builtin_modules.py 使用了 try/except 捕获多种异常类型。
 
 请仿照此模式编写错误处理代码。
 
-编写 try/except 块：尝试 int('not a number')，捕获 Error, Exception, KeyError，并在 finally 中打印 'Cleanup complete'。
+编写 try/except 块：尝试 int('not a number')，捕获 subprocess.CalledProcessError，并在 finally 中打印 'Cleanup complete'。
 
-来源：libgit2/libgit2 — script\\release.py`,
+来源：astral-sh/ruff — scripts\\generate_builtin_modules.py`,
   content: "",
   defaultCode: `# 编写 try/except/finally 错误处理`,
   answer: "",

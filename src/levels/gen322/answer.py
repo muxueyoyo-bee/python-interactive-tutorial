@@ -1,8 +1,2 @@
-class UnpackException(Exception):
-    pass
-class BufferFull(UnpackException):
-    pass
-class OutOfData(UnpackException):
-    pass
-class FormatError(ValueError, UnpackException):
-    pass
+def pop(self, key: Any, default: Any) -> Any:
+    return f'pop result'

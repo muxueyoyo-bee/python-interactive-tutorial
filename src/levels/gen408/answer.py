@@ -1,7 +1,2 @@
-def wrap_interpreter(func):
-    def interpret_statement(*args, **kwargs):
-        print('before call')
-        result = func(*args, **kwargs)
-        print('after call')
-        return result
-    return interpret_statement
+def insert(self, key: int, value: _T) -> None:
+    return f'insert result'

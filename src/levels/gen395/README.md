@@ -1,20 +1,20 @@
-# 第395关: 编写带类型标注的函数: get_relationship_to
+# 第395关: 编写带类型标注的函数: MergeMessageTo
 
-> 真实案例：tiangolo/sqlmodel 的 `sqlmodel\_compat.py` 中使用了这个模式。
+> 真实案例：google/protobuf 的 `src\google\protobuf\util\python\field_mask_util.py` 中使用了这个模式。
 
 ## 概念介绍
 
 类型标注使代码更可读、IDE 能提供更好的自动补全。
 
-源文件 _compat.py（tiangolo/sqlmodel）中 `get_relationship_to` 展示了完整的参数和返回值类型标注。
+源文件 field_mask_util.py（google/protobuf）中 `MergeMessageTo` 展示了完整的参数和返回值类型标注。
 
 请仿照此模式编写一个带类型标注的函数。
 
 ## 代码示例
 
 ```python
-def get_relationship_to(name: str, rel_info: 'RelationshipInfo', annotation: Any) -> Any:
-    return f'get_relationship_to result'
+def MergeMessageTo(cls, source: _T, mask: field_mask_pb2.FieldMask, options: MergeOptions, destination: _T) -> _T:
+    return f'MergeMessageTo result'
 ```
 
 ## 关键点
@@ -29,6 +29,6 @@ def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都
 
 ## 你的任务
 
-编写函数 get_relationship_to(name: str, rel_info: 'RelationshipInfo', annotation: Any) -> Any，返回格式化字符串。
+编写函数 MergeMessageTo(cls, source: _T, mask: field_mask_pb2.FieldMask, options: MergeOptions, destination: _T) -> _T，返回格式化字符串。
 
 预期行为：参考上方代码示例的输出。
