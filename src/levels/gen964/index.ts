@@ -1,3 +1,4 @@
+﻿import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {
@@ -15,7 +16,7 @@ const level: LevelType = {
 来源：yt-dlp/yt-dlp — yt_dlp\\__init__.py`,
   content: "",
   defaultCode: `# 定义 __all__ 暴露以下公共 API: YoutubeDL, gen_extractors, list_extractors ...`,
-  answer: "",
+  answer,
   hint: `__all__ = ['Name1', 'Name2', ...] —— 字符串列表`,
   type: "main",
   difficulty: 1,

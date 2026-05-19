@@ -1,3 +1,4 @@
+﻿import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {
@@ -15,7 +16,7 @@ const level: LevelType = {
 来源：scikit-learn/scikit-learn — sklearn\\covariance\\__init__.py`,
   content: "",
   defaultCode: `# 定义 __all__ 暴露以下公共 API: OAS, EllipticEnvelope, EmpiricalCovariance ...`,
-  answer: "",
+  answer,
   hint: `__all__ = ['Name1', 'Name2', ...] —— 字符串列表`,
   type: "main",
   difficulty: 1,

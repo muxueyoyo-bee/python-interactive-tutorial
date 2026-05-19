@@ -1,3 +1,4 @@
+﻿import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {
@@ -17,7 +18,7 @@ const level: LevelType = {
   defaultCode: `import click
 
 # 编写 run_command 命令`,
-  answer: "",
+  answer,
   hint: `用 @click.command() 装饰函数，用 click.echo() 输出`,
   type: "main",
   difficulty: 3,

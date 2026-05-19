@@ -1,3 +1,4 @@
+﻿import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {
@@ -15,7 +16,7 @@ const level: LevelType = {
 来源：python/mypy — mypy\\checker.py`,
   content: "",
   defaultCode: `# 编写上下文管理器 LocalTypeMap`,
-  answer: "",
+  answer,
   hint: `实现 __enter__(self) 返回 self，__exit__(self, exc_type, exc_val, exc_tb) 处理清理`,
   type: "main",
   difficulty: 3,

@@ -1,3 +1,4 @@
+﻿import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {
@@ -15,7 +16,7 @@ const level: LevelType = {
 来源：anthropics/skills — skills\\skill-creator\\scripts\\aggregate_benchmark.py`,
   content: "",
   defaultCode: `# 编写带类型标注的函数 generate_benchmark`,
-  answer: "",
+  answer,
   hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,

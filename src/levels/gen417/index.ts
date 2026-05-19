@@ -1,3 +1,4 @@
+﻿import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {
@@ -15,7 +16,7 @@ const level: LevelType = {
 来源：grpc/grpc — tools\\buildgen\\extract_metadata_from_bazel_xml.py`,
   content: "",
   defaultCode: `# 编写带类型标注的函数 update_test_metadata_with_transitive_metadata`,
-  answer: "",
+  answer,
   hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,

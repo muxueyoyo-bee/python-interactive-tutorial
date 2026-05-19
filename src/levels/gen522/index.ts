@@ -1,3 +1,4 @@
+﻿import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {
@@ -15,7 +16,7 @@ const level: LevelType = {
 来源：pallets/flask — src\\flask\\cli.py`,
   content: "",
   defaultCode: `# 编写装饰器 command`,
-  answer: "",
+  answer,
   hint: `外层函数接受 func 参数，内层定义 wrapper(*args, **kwargs)，外层 return wrapper`,
   type: "main",
   difficulty: 3,

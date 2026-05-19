@@ -1,3 +1,4 @@
+﻿import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {
@@ -15,7 +16,7 @@ const level: LevelType = {
 来源：redis/redis — utils\\generate-commands-json.py`,
   content: "",
   defaultCode: `# 编写 try/except/finally 错误处理`,
-  answer: "",
+  answer,
   hint: `try: ... except SomeError as e: ... finally: ...`,
   type: "main",
   difficulty: 3,

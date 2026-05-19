@@ -1,3 +1,4 @@
+﻿import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {
@@ -15,7 +16,7 @@ const level: LevelType = {
 来源：numpy/numpy — numpy\\lib\\__init__.py`,
   content: "",
   defaultCode: `# 定义 __all__ 暴露以下公共 API: Arrayterator, add_docstring, add_newdoc ...`,
-  answer: "",
+  answer,
   hint: `__all__ = ['Name1', 'Name2', ...] —— 字符串列表`,
   type: "main",
   difficulty: 1,

@@ -1,3 +1,4 @@
+﻿import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {
@@ -15,7 +16,7 @@ const level: LevelType = {
 来源：python/mypy — mypy\\config_parser.py`,
   content: "",
   defaultCode: `# 编写带类型标注的函数 try_split`,
-  answer: "",
+  answer,
   hint: `def 函数名(参数: 类型, ...) -> 返回类型: —— 参数和返回值都标注类型`,
   type: "main",
   difficulty: 3,

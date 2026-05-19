@@ -1,3 +1,4 @@
+﻿import answer from "./answer.py?raw";
 import type { LevelType } from "../level.d";
 
 const level: LevelType = {
@@ -21,7 +22,7 @@ const level: LevelType = {
     pass
 
 # 定义 UsageError, FileError，继承自 ClickException`,
-  answer: "",
+  answer,
   hint: `class 子类名(父类名): —— 父类写在括号里，多个父类用逗号分隔`,
   type: "main",
   difficulty: 3,
