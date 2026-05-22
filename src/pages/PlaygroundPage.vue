@@ -33,7 +33,7 @@
 
       <a-col :md="12" :xs="24">
         <PythonResult
-          :result-status="resultStatus"
+          :has-run="hasRun"
           :stdout="displayStdout"
           :return-value="returnValue"
           :error="errorMsg"
@@ -68,7 +68,7 @@ print("Hello, Python!")
 `;
 
 const code = ref(DEFAULT_CODE);
-const resultStatus = ref(-1);
+const hasRun = ref(false);
 const displayStdout = ref("");
 const returnValue = ref<unknown>(undefined);
 const errorMsg = ref<string | null>(null);
@@ -89,7 +89,7 @@ async function runCode() {
     displayStdout.value = stripPlotMarkers(result.stdout);
     returnValue.value = result.returnValue;
     errorMsg.value = result.error;
-    resultStatus.value = result.error ? 0 : 1;
+    hasRun.value = true;
 
     history.value.unshift({
       code: code.value,
@@ -102,7 +102,7 @@ async function runCode() {
   } catch (e: unknown) {
     const err = e as Error;
     errorMsg.value = err.message || String(e);
-    resultStatus.value = 0;
+    hasRun.value = true;
   } finally {
     isExecuting.value = false;
   }
@@ -110,7 +110,7 @@ async function runCode() {
 
 function clearAll() {
   code.value = DEFAULT_CODE;
-  resultStatus.value = -1;
+  hasRun.value = false;
   displayStdout.value = "";
   errorMsg.value = null;
   plots.value = [];

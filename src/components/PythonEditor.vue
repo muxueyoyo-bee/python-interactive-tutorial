@@ -58,16 +58,22 @@
 
     <div class="result-area">
       <PythonResult
-        :result-status="resultStatus"
+        :has-run="hasRun"
         :stdout="displayStdout"
-        :expected-stdout="expectedStdout"
         :return-value="returnValue"
         :error="errorMsg"
-        :judge-message="judgeMessage"
         :plots="plots"
         :is-executing="isExecuting"
-        :show-expected="resultStatus === 0"
       />
+      <div v-if="hasRun && level.answer" class="answer-reference">
+        <a-divider>参考答案</a-divider>
+        <CodeEditor
+          :model-value="level.answer"
+          :read-only="true"
+          :font-size="14"
+          language="python"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -80,15 +86,10 @@ import PythonResult from "./PythonResult.vue";
 import { useGlobalStore } from "../core/globalStore";
 import { execute } from "../engine/executor";
 import { extractPlots, stripPlotMarkers } from "../engine/pyodide/plot-capture";
-import { judge } from "../judge";
 import type { LevelType } from "../levels";
 
 const props = defineProps<{
   level: LevelType;
-}>();
-
-const emit = defineEmits<{
-  resultChange: [status: number, stdout: string];
 }>();
 
 const store = useGlobalStore();
@@ -96,12 +97,10 @@ const codeEditorRef = ref<InstanceType<typeof CodeEditor> | null>(null);
 
 const currentCode = ref(props.level.defaultCode);
 const isExecuting = ref(false);
-const resultStatus = ref<number>(-1);
+const hasRun = ref(false);
 const displayStdout = ref("");
-const expectedStdout = ref("");
 const returnValue = ref<unknown>(undefined);
 const errorMsg = ref<string | null>(null);
-const judgeMessage = ref<string | null>(null);
 const plots = ref<string[]>([]);
 const executionTime = ref(0);
 const activeCollapseKeys = ref<string[]>([]);
@@ -110,24 +109,14 @@ function onCollapseChange(keys: string[] | string) {
   activeCollapseKeys.value = Array.isArray(keys) ? keys : [keys];
 }
 
-watch(currentCode, () => {
-  if (resultStatus.value === 0) {
-    resultStatus.value = -1;
-    errorMsg.value = null;
-    judgeMessage.value = null;
-  }
-});
-
 watch(
   () => props.level.key,
   () => {
     const savedCode = store.getSavedCode(props.level.key);
     currentCode.value = savedCode || props.level.defaultCode;
-    resultStatus.value = -1;
+    hasRun.value = false;
     displayStdout.value = "";
-    expectedStdout.value = "";
     errorMsg.value = null;
-    judgeMessage.value = null;
     plots.value = [];
     executionTime.value = 0;
     activeCollapseKeys.value = [];
@@ -150,44 +139,23 @@ async function runCode() {
       timeoutMs: 5000,
     });
 
-    const answerResult = await execute({
-      code: setupCode + "\n" + props.level.answer,
-      timeoutMs: 5000,
-    });
-
     plots.value = extractPlots(userResult.stdout);
-    const cleanUser = stripPlotMarkers(userResult.stdout);
-    const cleanAnswer = stripPlotMarkers(answerResult.stdout);
-
-    const result = judge(props.level.compareMode, cleanUser, cleanAnswer, {
-      trimWhitespace: true,
-      ignoreTrailingNewline: true,
-    });
-
-    resultStatus.value = result.status === "pass" ? 1 : 0;
     displayStdout.value = userResult.error
       ? userResult.error
-      : cleanUser + (userResult.stderr ? "\n" + userResult.stderr : "");
-    expectedStdout.value = cleanAnswer;
+      : stripPlotMarkers(userResult.stdout) +
+        (userResult.stderr ? "\n" + userResult.stderr : "");
     returnValue.value = userResult.returnValue;
     errorMsg.value = userResult.error;
-    judgeMessage.value = result.detail;
     executionTime.value = userResult.executionTimeMs;
+    hasRun.value = true;
 
     store.recordAttempt(props.level.key, currentCode.value);
-
-    if (result.status === "pass") {
-      store.completeLevel(props.level.key, currentCode.value);
-    }
-
-    emit("resultChange", resultStatus.value, displayStdout.value);
+    store.completeLevel(props.level.key, currentCode.value);
   } catch (e: unknown) {
     const err = e as Error;
-    resultStatus.value = 0;
     errorMsg.value = err.message || String(e);
-    judgeMessage.value = null;
     displayStdout.value = "";
-    emit("resultChange", 0, "");
+    hasRun.value = true;
   } finally {
     isExecuting.value = false;
   }
@@ -195,10 +163,9 @@ async function runCode() {
 
 function resetCode() {
   currentCode.value = props.level.defaultCode;
-  resultStatus.value = -1;
+  hasRun.value = false;
   displayStdout.value = "";
   errorMsg.value = null;
-  judgeMessage.value = null;
   plots.value = [];
 }
 </script>
@@ -250,5 +217,9 @@ function resetCode() {
   max-height: 40%;
   overflow-y: auto;
   border-top: 1px solid #e8e8e8;
+}
+
+.answer-reference {
+  padding: 0 12px 12px;
 }
 </style>

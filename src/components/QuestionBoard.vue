@@ -32,20 +32,12 @@
           ← 上一关
         </a-button>
         <a-button
-          v-if="nextLevel && resultStatus === 1"
+          v-if="nextLevel"
           type="primary"
           @click="navigateTo(nextLevel.key)"
           size="small"
         >
           下一关 →
-        </a-button>
-        <a-button
-          v-if="isLastMainLevel && resultStatus === 1"
-          type="primary"
-          @click="$emit('congrats')"
-          size="small"
-        >
-          恭喜通关！🎉
         </a-button>
       </a-space>
     </div>
@@ -61,7 +53,7 @@ import MdViewer from "./MdViewer.vue";
 
 const props = defineProps<{
   level: LevelType;
-  resultStatus: number;
+  resultStatus?: number;
 }>();
 
 defineEmits<{

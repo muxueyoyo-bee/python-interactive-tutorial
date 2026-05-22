@@ -1,7 +1,6 @@
 <template>
   <a-card
     title="执行结果"
-    :extra="statusText"
     size="small"
     class="result-card"
   >
@@ -16,26 +15,9 @@
         />
       </template>
 
-      <template v-if="judgeMessage && !error">
-        <a-alert
-          :type="resultStatus === 1 ? 'success' : 'warning'"
-          :message="judgeMessage"
-          show-icon
-          style="margin-bottom: 12px"
-        />
-      </template>
-
       <a-tabs v-if="!isExecuting && hasOutput" size="small">
         <a-tab-pane key="stdout" tab="输出">
           <pre class="output-pre">{{ displayStdout || '(无输出)' }}</pre>
-        </a-tab-pane>
-
-        <a-tab-pane
-          key="expected"
-          tab="预期输出"
-          v-if="showExpected"
-        >
-          <pre class="output-pre">{{ expectedStdout || '(无输出)' }}</pre>
         </a-tab-pane>
 
         <a-tab-pane
@@ -58,7 +40,7 @@
       </a-tabs>
 
       <a-empty
-        v-if="!isExecuting && !hasOutput && !error && !judgeMessage"
+        v-if="!isExecuting && !hasOutput && !error"
         description="点击「运行」按钮执行代码"
       />
     </a-spin>
@@ -68,40 +50,27 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-const STATUS_TEXT: Record<number, string> = {
-  [-1]: "",
-  [0]: "答案错误",
-  [1]: "回答正确",
-};
-
 const props = withDefaults(
   defineProps<{
-    resultStatus?: number;
+    hasRun?: boolean;
     stdout?: string;
-    expectedStdout?: string;
     returnValue?: unknown;
     error?: string | null;
-    judgeMessage?: string | null;
     plots?: string[];
     isExecuting?: boolean;
-    showExpected?: boolean;
   }>(),
   {
-    resultStatus: -1,
+    hasRun: false,
     stdout: "",
-    expectedStdout: "",
     returnValue: undefined,
     error: null,
-    judgeMessage: null,
     plots: () => [],
     isExecuting: false,
-    showExpected: false,
   }
 );
 
-const statusText = computed(() => STATUS_TEXT[props.resultStatus] || "");
 const hasOutput = computed(
-  () => props.stdout || props.plots.length > 0 || props.returnValue !== undefined || !!props.judgeMessage
+  () => props.stdout || props.plots.length > 0 || props.returnValue !== undefined
 );
 const displayStdout = computed(() => props.stdout);
 </script>

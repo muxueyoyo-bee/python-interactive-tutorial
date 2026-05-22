@@ -21,7 +21,6 @@
         <QuestionBoard
           v-if="level"
           :level="level"
-          :result-status="resultStatus"
         />
       </a-col>
 
@@ -32,7 +31,6 @@
           ref="pythonEditorRef"
           :key="level.key"
           :level="level"
-          @result-change="onResultChange"
         />
         <a-empty v-else description="关卡未找到" />
       </a-col>
@@ -41,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, reactive } from "vue";
+import { ref, computed, watch } from "vue";
 import { useRoute } from "vue-router";
 import QuestionBoard from "../components/QuestionBoard.vue";
 import PythonEditor from "../components/PythonEditor.vue";
@@ -53,7 +51,6 @@ const props = defineProps<{ levelKey?: string }>();
 const route = useRoute();
 const store = useGlobalStore();
 
-const resultStatus = ref(-1);
 const loadingPyodide = ref(false);
 const loadingMessage = ref("");
 const levelContent = ref("");
@@ -79,10 +76,6 @@ watch(
   },
   { immediate: true }
 );
-
-function onResultChange(status: number) {
-  resultStatus.value = status;
-}
 </script>
 
 <style scoped>
